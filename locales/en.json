@@ -1,0 +1,162 @@
+{
+  "headerNav": {
+    "about": "About us",
+    "product": "Products",
+    "media": "Media",
+    "industry": "Industries",
+    "openMenu": "Open menu",
+    "icon": "/zyfra-en.svg",
+    "iconAlt": "company logo",
+    "btnText": "Contact us"
+  },
+  "aboutLinks": {
+    "about": "About us",
+    "aboutPath": "https://www.zyfra.com/en/about/",
+    "partners": "Partners",
+    "partnersPath": "https://partners.zyfra.com/",
+    "import": "Import substitution of software",
+    "importPath": "https://local.zyfra.com/",
+    "customer": "Customer Experience",
+    "customerPath": "https://www.zyfra.com/en/about/feedback/",
+    "career": "Career in Zyfra",
+    "careerPath": "https://www.zyfra.com/en/about/hr/",
+    "environmental": "Environmental responsibility",
+    "environmentalPath": "https://www.zyfra.com/en/about/sustainability/",
+    "digital": "Zyfra in Asia",
+    "digitalPath": "https://asia.zyfra.com/"
+  },
+  "productLinks": {
+    "dispatcher": "Dispatcher",
+    "acs": "Zyfra OpenMine",
+    "geonaft": "Geonaft"
+  },
+  "mediaLinks": {
+    "news": "News and scientific publications",
+    "press-kit": "Press-kit",
+    "educational": "Educational materials",
+    "podcasts": "Podcasts"
+  },
+  "industryLinks": {
+    "industrial": "Digital industrial platform",
+    "mining": "Mining",
+    "metalworking": "Mechanical engineering and metalworking",
+    "oil": "Oil and gas",
+    "production": "Continuous production",
+    "ai": "AI Lab",
+    "technology": "Autonomous technology"
+  },
+  "mainHeader": {
+    "title": "Digital Industrial Platform",
+    "collab": "Joint venture",
+    "company": "«Zyfra» Group and «Gazprom Neft»",
+    "zyfraImg": "/zyfra-en.svg"
+  },
+
+  "advantage": {
+    "title": "The synergy «Gazprom Neft» and «Zyfra» gives us advantages:",
+    "text": "We develop and implement an industrial IoT platform for the oil refining and chemical industries. The platform allows an enterprise to combine all industrial data to maximize the economic impact of using IoT technologies, ML and modern functional application architecture. The presence of the platform significantly speeds up the creation and implementation of products that increase the efficiency of technological processes. Microservice architecture makes it possible to use solutions from different developers while maintaining overall process traceability.",
+    "factoryCard": "Fast assessment of hypotheses and effects of decisions due to application on the operating production",
+    "architectureCard": "Continuous updating of architecture of products, due to understanding of today's perspective of business",
+    "directyCard": "Improvement of a product in the mode of non-feet, due to direct contact with the business user"
+  },
+
+  "tasks": {
+    "title": "We help business to solve such problems as:",
+    "task1": "Creation of a uniform digital layer at the enterprise",
+    "task2": "Monitoring and visualization of data of the enterprise",
+    "task3": "Operational management of production",
+    "task4": "Planning, optimum loading of production",
+    "task5": "Identification of losses at speed with production",
+    "task6": "Quality management",
+    "task7": "The standardized processes in laboratory"
+  },
+
+  "definition": {
+    "title": "The digital industrial platform is:",
+    "quality": "Experience more than 10 years of development and deployment of industrial decisions",
+    "integration": "Ability to integrate with other decisions",
+    "functionality": "Constantly expanded functionality",
+    "code": "More than 1 million lines of a code"
+  },
+
+  "products": {
+    "title": "Products"
+  },
+
+  "education": {
+    "title": "Training and partnership",
+    "textTop": "Within development of a product we care for creation of community of business users of our platform and services. For our partners and clients the training courses for experts of introduction and developers are provided.",
+    "textBottom": "If it is interesting to you to undergo this training, please, leave the application:",
+    "btnText": "Contact us"
+  },
+
+  "formDescription": {
+    "text": "Leave the contacts here, and we will contact you to tell how digital decisions can increase safety and efficiency of your enterprise."
+  },
+
+  "feedbackForm": {
+    "firstName": "Firstname *",
+    "lastName": "Lastname *",
+    "position": "Position *",
+    "company": "Company *",
+    "comment": "Comment",
+    "agreementTop": "Pressing the Send button, you agree with our Privacy policy.",
+    "agreementBottom": "We do not share information with the third parties.",
+    "btnText": "Send",
+    "consent": "I give the consent to processing of personal data",
+    "subscrip": "I want to obtain relevant information on products of the company and professional actions in email mailings",
+    "phone": "Phone *",
+    "startCountry": "Russian Federation"
+  },
+
+  "footer": {
+    "newClients": "For new clients",
+    "currentClients": "Current clients.",
+    "adminQuestion": "Administrative matters",
+    "technicalSupport": "Technical support",
+    "monitoring": "System of monitoring Dispatcher",
+    "mining": "Mining industry: WHIST",
+    "about": "About us",
+    "company": "About the company",
+    "career": "Career in Zyfra",
+    "products": "Products",
+    "industry": "Industries",
+    "icon": "/logo-footer-en.svg",
+    "news": "News",
+    "blog": "Blog",
+    "media": "Media",
+    "webinar": "International webinars",
+    "mdcplus": "Zyfra MDCplus",
+    "framework": "Zyfra Industrial Framework",
+    "openmine": "Zyfra OpenMine",
+    "underground": "Zyfra Underground",
+    "safety": "Zyfra Safety",
+    "drill": "Zyfra Precision Drill",
+    "treatment": "Zyfra Heat Treatment",
+    "artificial": "Zyfra Artificial Lift",
+    "robotics": "Robotics",
+    "miningIndustry": "Mining",
+    "upstream": "Upstream",
+    "metalworking": "Metalworking"
+  },
+
+  "sidebar": {
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "branch": "Description of branch",
+    "products": "Products",
+    "education": "Training and partnership",
+    "feedback": "Feedback",
+    "icon": "/zyfra-en.svg"
+  },
+
+  "modal": {
+    "title": "To send a request"
+  },
+
+  "head": {
+    "title": "Digital Industrial Platform",
+    "description": "We develop and introduce the industrial IoT-platform for oil-processing and chemical industry. The platform allows the enterprise to unite all industrial data to maximize economic effect of use of technologies IoT, ML and modern functional architecture of applications. Existence of the platform much accelerates creation and introduction of the products increasing efficiency of technological repartitions.",
+    "lang": "en"
+  }
+}
