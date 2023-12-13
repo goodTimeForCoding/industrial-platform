@@ -18,6 +18,7 @@
         >
           <div class="product-card">
             <div class="product-card-wrap">
+            <!--  везде h2, если уже начал применть тег заголовка, то надо как то ранжировано, те отслеживать h3, ниже h4 такие верщи на seo могу влиять -->
               <h2 class="product-card-title">
                 {{ product.name }}
               </h2>
@@ -28,6 +29,7 @@
                 {{ product.tag.label }}
               </span>
               <div class="btn-wrap" v-if="product.knowMore">
+                <!-- не корректный перенос NuxtLink   -->
                 <NuxtLink class="link-btn" :to="`${product.knowMore}`"
                   >Узнать больше</NuxtLink
                 >

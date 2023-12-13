@@ -79,7 +79,7 @@ const filteredUser = computed(() => {
     return item.toLowerCase().includes(searchQuery.value.toLowerCase());
   });
 });
-
+// не читаемо, без документации, в чем тут смысл
 const addDropDownClass = computed(() => {
   if (selectedItem.value) return 'dropdown-input';
 });
@@ -99,8 +99,7 @@ const addPopoverClass = computed(() => {
 });
 
 const isFilteredData = computed(() => {
-  if (filteredUser.length === 0) return true;
-  return false;
+  return filteredUser.length === 0;
 });
 
 onBeforeMount(() => {

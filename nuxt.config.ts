@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     'nuxt-svgo',
     '@nuxtjs/stylelint-module',
     'maz-ui/nuxt',
+    // это лучше выносить и подключать отдельно тут
     [
       '@nuxtjs/i18n',
       {
@@ -55,6 +56,7 @@ export default defineNuxtConfig({
       scrollBehaviorType: 'smooth',
     },
   },
+  // обычно сразу выноситься в отдельный файл настройка
   stylelint: {
     customSyntax: 'postcss-html',
     fix: true,
@@ -74,6 +76,7 @@ export default defineNuxtConfig({
     '@/assets/styles/global.scss',
     '@/assets/styles/settings.scss',
   ],
+  // автоимпорт зло
   components: [
     {
       path: '@/components',
