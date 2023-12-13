@@ -1,6 +1,9 @@
 <template>
+<!-- стили стоят scoped тут можно проще  -->
   <div class="main-header">
+<!--  далее без  main-header- -->
     <div class="main-header-wrap">
+<!--   левая сторона   -->
       <div class="main-header-left">
         <h1 class="title">{{ $t('mainHeader.title') }}</h1>
         <div class="collab-wrap">
@@ -26,6 +29,7 @@
           </p>
         </div>
       </div>
+<!--   а почему тут не правая?   -->
       <div class="screen-wrap">
         <img
           class="screen-img"

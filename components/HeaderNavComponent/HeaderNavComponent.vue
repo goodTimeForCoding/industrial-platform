@@ -88,6 +88,8 @@ import { useZyfraStore } from '@/store/ZyfraStore.js';
 const localePath = useLocalePath();
 const zyfraStore = useZyfraStore();
 const TABLET_BREAKPOINT = 1024;
+
+// это все похоже на мок данные
 const headerItems = reactive([
   {
     name: 'headerNav.about',

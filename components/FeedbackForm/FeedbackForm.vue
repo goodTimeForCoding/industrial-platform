@@ -6,7 +6,7 @@
         @updateMessages="feedbackFormStore.setNewMessageArray"
       />
     </div>
-
+    <!--  addModalClass() это компьютед свойство  -->
     <form :class="['feedback-form', addModalClass()]" novalidate>
       <div class="form-group" v-for="data of formDatum" :key="data.id">
         <BaseInput

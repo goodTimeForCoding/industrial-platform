@@ -7,6 +7,7 @@
       {{ $t('advantage.text') }}
     </p>
 
+<!-- тк не подключен линтер, то по всему проекту не верный порядок, условие, а потом класс, это рекомендация из доки вью   -->
     <div class="advantage-wrap" v-if="isTabletBreakpoint">
       <Swiper
         class="advantage-swiper"
@@ -48,11 +49,12 @@
 <script setup>
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
+// в одном месте используется, выносить в переменную, ну не знаю
 const MINITABLET_BREAKPOINT = 768;
 const BIGMOBILE_BREAKPOINT = 700;
 const MIDDLEMOBILE_BREAKPOINT = 499;
 const zyfraStore = useZyfraStore();
-
+// очень похоже на мок данный, возможно тут reactive не нужен
 const advantagesData = reactive([
   {
     id: 1,
@@ -78,6 +80,7 @@ const addPerViewCount = computed(() => {
 });
 
 const isTabletBreakpoint = computed(() => {
+  // можно проще return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
   if (zyfraStore.screenWidth <= MINITABLET_BREAKPOINT) return true;
   return false;
 });

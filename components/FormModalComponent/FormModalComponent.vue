@@ -1,11 +1,13 @@
 <template>
   <div class="form-modal" @wheel.prevent @touchmove.prevent @scroll.prevent>
+    <!--  @click тут какой то овер, это не правильно  -->
     <div class="modal-overlay" @click="zyfraStore.closeModal">
       <div class="modal" @click.stop>
         <h2 class="modal-title">
           {{ $t('modal.title') }}
         </h2>
         <FeedbackForm :isModal="true" />
+        <!--  @click.self посмотри доку про мадоифакаторы событий     -->
         <div class="close" @click="zyfraStore.closeModal">
           <img class="close-img" src="/close.svg" alt="" />
         </div>
@@ -16,6 +18,7 @@
 
 <script setup>
 import { useZyfraStore } from '@/store/ZyfraStore.js';
+// zyfraStore - перегружен, тут можно отдельный стор для модалок сделать
 const zyfraStore = useZyfraStore();
 </script>
 

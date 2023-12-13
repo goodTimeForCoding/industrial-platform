@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  // AppInput
   name: 'MyInput',
   props: {
     modelValue: {

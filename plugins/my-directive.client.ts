@@ -4,7 +4,7 @@ export default defineNuxtPlugin(nuxtApp => {
       el.addEventListener('click', e => e.stopPropagation());
       document.body.addEventListener('click', binding.value);
     },
-    unbind(el, binding) {
+    unbind(el:any, binding:any) {
       document.body.removeEventListener('click', binding.value);
     },
   });

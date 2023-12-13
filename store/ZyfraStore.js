@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia';
 import { useFeedbackForm } from './FeedbackForm';
-
+// перегружен, без доки тут замысле угадывается поверхностно
 export const useZyfraStore = defineStore({
   id: 'zyfra-store',
   state: () => {
     return {
       isSidebarClosed: false,
+      // зачем нужна ширина? что за кейс
       screenWidth: null,
       scrollDistance: null,
       toIndustryDistance: null,
