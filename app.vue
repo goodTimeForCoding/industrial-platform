@@ -65,7 +65,9 @@ const onScrollDistanceResize = () => {
 createHydrationRenderer;
 
 const sidebarClose = computed(() => {
-  return zyfraStore.isSidebarClosed ? 'sidebar-container-close' : '';
+  return zyfraStore.isSidebarClosed
+    ? 'sidebar-container-close'
+    : 'sidebar-container-open';
 });
 
 onMounted(() => {
@@ -99,11 +101,38 @@ onBeforeUnmount(() => {
   .sidebar-container {
     flex: 1 0 auto;
     width: 100%;
+  }
+
+  .sidebar-container-open {
     max-width: 284px;
+    animation-duration: 0.5s;
+    animation-name: slideopen;
+  }
+
+  @keyframes slideopen {
+    from {
+      max-width: 150px;
+    }
+
+    to {
+      max-width: 284px;
+    }
   }
 
   .sidebar-container-close {
     max-width: 150px;
+    animation-duration: 0.5s;
+    animation-name: slideclose;
+  }
+
+  @keyframes slideclose {
+    from {
+      max-width: 284px;
+    }
+
+    to {
+      max-width: 150px;
+    }
   }
 }
 </style>

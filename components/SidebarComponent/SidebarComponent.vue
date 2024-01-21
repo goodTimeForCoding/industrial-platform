@@ -15,9 +15,11 @@
       <nav class="page-nav">
         <div class="control" @click="zyfraStore.toggleSidebar()">
           <SidebarArrow :class="['arrow-img', arrowRotate]" />
+
           <span class="control-text" v-if="!zyfraStore.isSidebarClosed">
             {{ $t('sidebar.closeMenu') }}
           </span>
+
           <span class="control-text" v-if="zyfraStore.isSidebarClosed">
             {{ $t('sidebar.openMenu') }}
           </span>
@@ -29,37 +31,46 @@
           v-if="zyfraStore.isIndustryActive || !zyfraStore.isSidebarClosed"
         >
         </NuxtLink>
-        <div
-          :class="['nav-item', addIndustryActiveClass]"
-          @click="zyfraStore.setIndustryActive"
-          v-if="zyfraStore.isIndustryActive || !zyfraStore.isSidebarClosed"
-        >
-          {{ $t('sidebar.branch') }}
-        </div>
 
-        <div
-          :class="['nav-item', addProductsActiveClass]"
-          @click="zyfraStore.setProductsActive"
-          v-if="zyfraStore.isProductsActive || !zyfraStore.isSidebarClosed"
-        >
-          {{ $t('sidebar.products') }}
-        </div>
+        <transition name="slide-fade">
+          <div
+            :class="['nav-item', addIndustryActiveClass]"
+            @click="zyfraStore.setIndustryActive"
+            v-if="zyfraStore.isIndustryActive || !zyfraStore.isSidebarClosed"
+          >
+            {{ $t('sidebar.branch') }}
+          </div>
+        </transition>
 
-        <div
-          :class="['nav-item', addEducationActiveClass]"
-          @click="zyfraStore.setEducationActive"
-          v-if="zyfraStore.isEducationActive || !zyfraStore.isSidebarClosed"
-        >
-          {{ $t('sidebar.education') }}
-        </div>
+        <transition name="slide-fade">
+          <div
+            :class="['nav-item', addProductsActiveClass]"
+            @click="zyfraStore.setProductsActive"
+            v-if="zyfraStore.isProductsActive || !zyfraStore.isSidebarClosed"
+          >
+            {{ $t('sidebar.products') }}
+          </div>
+        </transition>
 
-        <div
-          :class="['nav-item', addFeedbackActiveClass]"
-          @click="zyfraStore.setFeedbackActive"
-          v-if="zyfraStore.isFeedbackActive || !zyfraStore.isSidebarClosed"
-        >
-          {{ $t('sidebar.feedback') }}
-        </div>
+        <transition name="slide-fade">
+          <div
+            :class="['nav-item', addEducationActiveClass]"
+            @click="zyfraStore.setEducationActive"
+            v-if="zyfraStore.isEducationActive || !zyfraStore.isSidebarClosed"
+          >
+            {{ $t('sidebar.education') }}
+          </div>
+        </transition>
+
+        <transition name="slide-fade">
+          <div
+            :class="['nav-item', addFeedbackActiveClass]"
+            @click="zyfraStore.setFeedbackActive"
+            v-if="zyfraStore.isFeedbackActive || !zyfraStore.isSidebarClosed"
+          >
+            {{ $t('sidebar.feedback') }}
+          </div>
+        </transition>
       </nav>
     </div>
   </div>
@@ -97,6 +108,20 @@ const addCloseWrap = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-50px);
+  opacity: 0;
+}
+
 .sidebar {
   position: fixed;
   color: $white;
