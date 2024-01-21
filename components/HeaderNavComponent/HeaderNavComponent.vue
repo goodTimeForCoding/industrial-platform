@@ -377,6 +377,7 @@ const addNavOpenCloseClass = computed(() => {
 
   & .language-wrap {
     align-self: center;
+    transition: display;
   }
 
   & .btn-wrap {
@@ -503,6 +504,8 @@ const addNavOpenCloseClass = computed(() => {
       display: block;
       order: 3;
       padding: 0 25px;
+      animation-name: open-menu;
+      animation-duration: 0.5s;
     }
 
     &--opened .btn-wrap {
@@ -511,6 +514,15 @@ const addNavOpenCloseClass = computed(() => {
       margin-top: 64px;
       margin-bottom: 58px;
       padding: 0 31px;
+      animation-name: open-menu;
+      animation-duration: 0.5s;
+    }
+
+    &--opened .header-contacts,
+    &--opened .language-wrap,
+    &--opened .btn-wrap {
+      animation-name: open-menu;
+      animation-duration: 0.5s;
     }
 
     & .header-contacts {
@@ -579,6 +591,15 @@ const addNavOpenCloseClass = computed(() => {
 @include bigdesktop {
   .header-nav {
     max-width: 1920px;
+  }
+}
+
+@keyframes open-menu {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateX(0px);
   }
 }
 </style>
