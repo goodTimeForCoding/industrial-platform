@@ -1,12 +1,10 @@
 import { defineStore } from 'pinia';
-import { useFeedbackForm } from './FeedbackForm';
-// перегружен, без доки тут замысле угадывается поверхностно
+
 export const useZyfraStore = defineStore({
   id: 'zyfra-store',
   state: () => {
     return {
       isSidebarClosed: false,
-      // зачем нужна ширина? что за кейс
       screenWidth: null,
       scrollDistance: null,
       toIndustryDistance: null,
@@ -17,7 +15,6 @@ export const useZyfraStore = defineStore({
       isProductsActive: false,
       isEducationActive: false,
       isFeedbackActive: false,
-      isShowModal: false,
     };
   },
   persist: true,
@@ -120,20 +117,6 @@ export const useZyfraStore = defineStore({
         left: 0,
         behavior: 'smooth',
       });
-    },
-
-    openModal() {
-      const feedbackFormStore = useFeedbackForm();
-      feedbackFormStore.cleanErrors();
-      feedbackFormStore.cleanMessages();
-      this.isShowModal = true;
-    },
-
-    closeModal() {
-      const feedbackFormStore = useFeedbackForm();
-      feedbackFormStore.cleanErrors();
-      feedbackFormStore.cleanMessages();
-      this.isShowModal = false;
     },
   },
 });

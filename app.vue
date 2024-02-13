@@ -19,7 +19,7 @@
       >
         <SidebarComponent />
       </div>
-      <div v-if="zyfraStore.isShowModal">
+      <div v-if="modalStore.isShowModal">
         <FormModalComponent />
       </div>
     </div>
@@ -28,14 +28,15 @@
 
 <script setup>
 import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useModalStore } from '@/store/ModalStore.js';
 import { createHydrationRenderer } from 'vue';
 
-const DESKTOP_BREAKPOINT = 1025;
+const DESKTOP_BREAKPOINT = 1179;
 const zyfraStore = useZyfraStore();
+const modalStore = useModalStore();
 
 const isDesktopBreakpoint = () => {
-  if (zyfraStore.screenWidth >= DESKTOP_BREAKPOINT) return true;
-  return false;
+  return zyfraStore.screenWidth >= DESKTOP_BREAKPOINT;
 };
 
 const onScreenResize = () => {
@@ -65,7 +66,9 @@ const onScrollDistanceResize = () => {
 createHydrationRenderer;
 
 const sidebarClose = computed(() => {
-  return zyfraStore.isSidebarClosed ? 'sidebar-container-close' : '';
+  return zyfraStore.isSidebarClosed
+    ? 'sidebar-container-close'
+    : 'sidebar-container-open';
 });
 
 onMounted(() => {
@@ -83,26 +86,51 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
-@include desktop {
-  .page {
-    display: flex;
+.page {
+  display: flex;
+}
+
+.page-wrap {
+  flex: 1 1 auto;
+  order: 1;
+  overflow: hidden;
+  transition: width 0.3s;
+  width: 100%;
+}
+
+.sidebar-container {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.sidebar-container-open {
+  max-width: 284px;
+  animation-duration: 0.5s;
+  animation-name: slideopen;
+}
+
+@keyframes slideopen {
+  from {
+    max-width: 150px;
   }
 
-  .page-wrap {
-    flex: 1 1 auto;
-    order: 1;
-    overflow: hidden;
-    transition: width 0.3s;
-    width: 100%;
+  to {
+    max-width: 284px;
   }
+}
 
-  .sidebar-container {
-    flex: 1 0 auto;
-    width: 100%;
+.sidebar-container-close {
+  max-width: 150px;
+  animation-duration: 0.5s;
+  animation-name: slideclose;
+}
+
+@keyframes slideclose {
+  from {
     max-width: 284px;
   }
 
-  .sidebar-container-close {
+  to {
     max-width: 150px;
   }
 }

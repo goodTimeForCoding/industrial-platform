@@ -18,21 +18,19 @@
         >
           <div class="product-card">
             <div class="product-card-wrap">
-            <!--  везде h2, если уже начал применть тег заголовка, то надо как то ранжировано, те отслеживать h3, ниже h4 такие верщи на seo могу влиять -->
-              <h2 class="product-card-title">
+              <h3 class="product-card-title">
                 {{ product.name }}
-              </h2>
+              </h3>
               <p class="card-text">
                 {{ product.description }}
               </p>
               <span v-if="product.tag" class="small-text">
                 {{ product.tag.label }}
               </span>
-              <div class="btn-wrap" v-if="product.knowMore">
-                <!-- не корректный перенос NuxtLink   -->
-                <NuxtLink class="link-btn" :to="`${product.knowMore}`"
-                  >Узнать больше</NuxtLink
-                >
+              <div v-if="product.knowMore" class="btn-wrap">
+                <NuxtLink class="link-btn" :to="`${product.knowMore}`">
+                  Узнать больше
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -52,7 +50,7 @@ const zyfraStore = useZyfraStore();
 const i18nLocale = useI18n();
 const BIGDESKTOP_BREAKPOINT = 1920;
 const MINITABLET_BREAKPOINT = 768;
-const MIDDLEMOBILE_BREAKPOINT = 499;
+const MIDDLEMOBILE_BREAKPOINT = 424;
 
 const getSlidesPerView = computed(() => {
   if (zyfraStore.screenWidth >= BIGDESKTOP_BREAKPOINT) return 3;
@@ -66,8 +64,7 @@ const getSlidesPerView = computed(() => {
 });
 
 const addCenteredSlides = computed(() => {
-  if (zyfraStore.screenWidth <= MINITABLET_BREAKPOINT) return true;
-  return false;
+  return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
 });
 
 onMounted(() => {

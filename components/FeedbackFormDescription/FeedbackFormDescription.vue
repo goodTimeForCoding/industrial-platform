@@ -1,7 +1,6 @@
 <template>
   <div class="feedback-form-description-component">
-<!--  это уже второй тег h1, он может быть только один на странице  -->
-    <h1 class="description-title">{{ addTitle }}</h1>
+    <h2 class="description-title">{{ addTitle }}</h2>
     <p class="description-text">
       {{ $t('formDescription.text') }}
     </p>

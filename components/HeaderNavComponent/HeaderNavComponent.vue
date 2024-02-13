@@ -10,8 +10,8 @@
       </button>
 
       <NuxtLink
-        class="logo-link"
         v-if="isTabletBreakpoint"
+        class="logo-link"
         :to="localePath('/industries/dip')"
       >
         <img
@@ -34,16 +34,16 @@
       >
         {{ $t(menu.name) }}
         <div class="arrow-img-wrap">
-          <IconArrowBottom
+          <SvgoArrowBottom
             :class="['arrow-img', arrowRotate(menu)]"
             :filled="true"
           />
         </div>
         <transition name="slide-fade">
           <NavLinksComponent
-            :menuLinks="menu.links"
-            class="menu-item-link"
             v-if="menu.isHover"
+            class="menu-item-link"
+            :menuLinks="menu.links"
           />
         </transition>
       </div>
@@ -53,7 +53,7 @@
       <a class="header-contact-link email-link" href="mailto:hello@zyfra.com">
         <div class="contact-wrapper">
           <div class="icon-wrap">
-            <IconEmail class="email-icon" />
+            <SvgoIconEmail class="email-icon" />
           </div>
           <span class="email"> hello@zyfra.com </span>
         </div>
@@ -61,7 +61,7 @@
       <a class="header-contact-link phone-link" href="tel:+358942725025">
         <div class="contact-wrapper">
           <div class="icon-wrap">
-            <IconPhone class="phone-icon" :filled="true" />
+            <SvgoIconPhone class="phone-icon" :filled="true" />
           </div>
           <span class="phone"> +358 942 72 50 25 </span>
         </div>
@@ -79,17 +79,14 @@
 </template>
 
 <script setup>
-import ButtonComponent from '~/components/ButttonComponent/ButttonComponent.vue';
-import IconPhone from '@/assets/icons/icon-phone.svg';
-import IconEmail from '@/assets/icons/icon-email.svg';
-import IconArrowBottom from '@/assets/icons/arrow-bottom.svg';
+import ButtonComponent from '@/components/ButttonComponent/ButttonComponent.vue';
+import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
+import NavLinksComponent from '@/components/NavLinksComponent/NavLinksComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
 const localePath = useLocalePath();
 const zyfraStore = useZyfraStore();
-const TABLET_BREAKPOINT = 1024;
-
-// это все похоже на мок данные
+const TABLET_BREAKPOINT = 1179;
 const headerItems = reactive([
   {
     name: 'headerNav.about',
@@ -254,8 +251,7 @@ const openCloseMenuList = menu => {
 };
 
 const isTabletBreakpoint = computed(() => {
-  if (zyfraStore.screenWidth <= TABLET_BREAKPOINT) return true;
-  return false;
+  return zyfraStore.screenWidth < TABLET_BREAKPOINT;
 });
 
 const addNavOpenCloseClass = computed(() => {
@@ -379,6 +375,7 @@ const addNavOpenCloseClass = computed(() => {
 
   & .language-wrap {
     align-self: center;
+    transition: display;
   }
 
   & .btn-wrap {
@@ -505,6 +502,8 @@ const addNavOpenCloseClass = computed(() => {
       display: block;
       order: 3;
       padding: 0 25px;
+      animation-name: open-menu;
+      animation-duration: 0.5s;
     }
 
     &--opened .btn-wrap {
@@ -513,6 +512,15 @@ const addNavOpenCloseClass = computed(() => {
       margin-top: 64px;
       margin-bottom: 58px;
       padding: 0 31px;
+      animation-name: open-menu;
+      animation-duration: 0.5s;
+    }
+
+    &--opened .header-contacts,
+    &--opened .language-wrap,
+    &--opened .btn-wrap {
+      animation-name: open-menu;
+      animation-duration: 0.5s;
     }
 
     & .header-contacts {
@@ -581,6 +589,15 @@ const addNavOpenCloseClass = computed(() => {
 @include bigdesktop {
   .header-nav {
     max-width: 1920px;
+  }
+}
+
+@keyframes open-menu {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateX(0px);
   }
 }
 </style>

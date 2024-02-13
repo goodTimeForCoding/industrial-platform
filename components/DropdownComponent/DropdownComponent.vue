@@ -2,7 +2,7 @@
   <section class="dropdown-component" v-click-outside="noVisible">
     <div class="selected-item">
       <input
-        :class="addDropDownClass"
+        :class="addSelectClass"
         @click="changeView"
         @input="inputChange"
         v-model="searchQuery"
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div :class="['dropdown-popover', addPopoverClass]">
-      <span class="not-data-text" v-if="isFilteredData">Нет данных</span>
+      <span v-if="isFilteredData" class="not-data-text">Нет данных</span>
       <ul class="options">
         <li
           @click="selectItem(item)"
@@ -79,8 +79,12 @@ const filteredUser = computed(() => {
     return item.toLowerCase().includes(searchQuery.value.toLowerCase());
   });
 });
-// не читаемо, без документации, в чем тут смысл
-const addDropDownClass = computed(() => {
+
+/**
+ * Добавляет класс для placeholder при выборе элемента из выпадающего списка, либо если элемент определён через props.
+ * @return {string} название класса
+ */
+const addSelectClass = computed(() => {
   if (selectedItem.value) return 'dropdown-input';
 });
 

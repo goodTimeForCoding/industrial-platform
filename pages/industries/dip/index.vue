@@ -1,22 +1,17 @@
 <template>
   <div class="main">
     <MainHeaderComponent class="container main-header-container" />
-    <!-- почему сразу не повесить ref на компонент   -->
-    <!--  этот компонент и  другие ниже имеет стиль контейнер, почему не сделать див с классом container и в него уже положить компоненты   -->
     <div ref="industry">
       <AdvantageComponent />
     </div>
     <TasksComponent />
     <DefinitionComponent />
     <div ref="products">
-      <!-- почему сразу не повесить ref на компонент   -->
       <ProductsComponent />
     </div>
     <div ref="education">
-      <!-- почему сразу не повесить ref на компонент   -->
       <EducationComponent />
     </div>
-    <!-- почему сразу не повесить клас id ref на компонент   -->
     <div class="feedback container" id="feedback" ref="feedback">
       <FeedbackFormComponent />
     </div>
@@ -24,9 +19,16 @@
 </template>
 
 <script setup>
+import MainHeaderComponent from '@/components/MainHeaderComponent/MainHeaderComponent.vue';
+import AdvantageComponent from '@/components/AdvantageComponent/AdvantageComponent.vue';
+import TasksComponent from '@/components/TasksComponent/TasksComponent.vue';
+import DefinitionComponent from '@/components/DefinitionComponent/DefinitionComponent.vue';
+import ProductsComponent from '@/components/ProductsComponent/ProductsComponent.vue';
+import EducationComponent from '@/components/EducationComponent/EducationComponent.vue';
+import FeedbackFormComponent from '@/components/FeedbackFormComponent/FeedbackFormComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 import { onMounted, ref } from 'vue';
-// работает, но выглядит как то не айс, в идеале возможно есть более изящное решение :)
+
 const zyfraStore = useZyfraStore();
 const industry = ref(null);
 const products = ref(null);
@@ -66,9 +68,7 @@ onMounted(() => {
 .main-header-container {
   margin-top: 68px;
 }
-// почему фон вне компонента задан?
-// к примеру есть форма у нее есть дефолтный цвет, в другом месте при подключении цвет переопределяется
-// в FeedbackFormComponen, я не увидел что бы задавался цвет фона
+
 .feedback {
   background-color: $lightgrey;
 }

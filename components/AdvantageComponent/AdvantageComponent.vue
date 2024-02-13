@@ -7,8 +7,7 @@
       {{ $t('advantage.text') }}
     </p>
 
-<!-- тк не подключен линтер, то по всему проекту не верный порядок, условие, а потом класс, это рекомендация из доки вью   -->
-    <div class="advantage-wrap" v-if="isTabletBreakpoint">
+    <div v-if="isTabletBreakpoint" class="advantage-wrap">
       <Swiper
         class="advantage-swiper"
         :modules="[SwiperPagination]"
@@ -49,13 +48,12 @@
 <script setup>
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
-// в одном месте используется, выносить в переменную, ну не знаю
 const MINITABLET_BREAKPOINT = 768;
-const BIGMOBILE_BREAKPOINT = 700;
-const MIDDLEMOBILE_BREAKPOINT = 499;
+const BIGMOBILE_BREAKPOINT = 699;
+const MIDDLEMOBILE_BREAKPOINT = 424;
 const zyfraStore = useZyfraStore();
-// очень похоже на мок данный, возможно тут reactive не нужен
-const advantagesData = reactive([
+
+const advantagesData = [
   {
     id: 1,
     advantage: 'advantage.factoryCard',
@@ -71,7 +69,7 @@ const advantagesData = reactive([
     advantage: 'advantage.directyCard',
     bgClass: 'direct',
   },
-]);
+];
 
 const addPerViewCount = computed(() => {
   if (zyfraStore.screenWidth <= MIDDLEMOBILE_BREAKPOINT) return 1.15;
@@ -80,9 +78,7 @@ const addPerViewCount = computed(() => {
 });
 
 const isTabletBreakpoint = computed(() => {
-  // можно проще return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
-  if (zyfraStore.screenWidth <= MINITABLET_BREAKPOINT) return true;
-  return false;
+  return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
 });
 </script>
 
@@ -283,7 +279,7 @@ const isTabletBreakpoint = computed(() => {
     }
 
     & .advantage-card {
-      width: 330px;
+      width: 277px;
       height: 350px;
     }
   }

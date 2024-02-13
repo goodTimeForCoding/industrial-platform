@@ -9,7 +9,10 @@
   </div>
 </template>
 
-<script></script>
+<script setup>
+import FeedbackFormDescription from '@/components/FeedbackFormDescription/FeedbackFormDescription.vue';
+import FeedbackForm from '@/components/FeedbackForm/FeedbackForm.vue';
+</script>
 
 <style lang="scss" scoped>
 .feedback-wrap {

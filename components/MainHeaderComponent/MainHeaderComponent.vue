@@ -1,10 +1,7 @@
 <template>
-<!-- стили стоят scoped тут можно проще  -->
   <div class="main-header">
-<!--  далее без  main-header- -->
-    <div class="main-header-wrap">
-<!--   левая сторона   -->
-      <div class="main-header-left">
+    <div class="wrap">
+      <div class="left-wrap">
         <h1 class="title">{{ $t('mainHeader.title') }}</h1>
         <div class="collab-wrap">
           <div class="collab-img-wrap">
@@ -29,8 +26,7 @@
           </p>
         </div>
       </div>
-<!--   а почему тут не правая?   -->
-      <div class="screen-wrap">
+      <div class="right-wrap">
         <img
           class="screen-img"
           width="633"
@@ -48,7 +44,7 @@
 
 <style lang="scss" scoped>
 .main-header {
-  & .main-header-wrap {
+  & .wrap {
     display: flex;
     gap: 49px;
     justify-content: space-around;
@@ -71,7 +67,7 @@
     line-height: 20px;
   }
 
-  & .main-header-left {
+  & .left-wrap {
     width: 420px;
   }
 
@@ -89,7 +85,7 @@
     gap: 6px;
   }
 
-  & .screen-wrap {
+  & .right-wrap {
     position: relative;
   }
 
@@ -115,7 +111,7 @@
       font-size: 35px;
     }
 
-    & .main-header-wrap {
+    & .wrap {
       gap: 20px;
     }
   }
@@ -131,7 +127,7 @@
       font-size: 30px;
     }
 
-    & .main-header-left {
+    & .left-wrap {
       order: 1;
       align-self: center;
     }
@@ -144,7 +140,7 @@
       column-gap: 26px;
     }
 
-    & .main-header-left {
+    & .left-wrap {
       width: auto;
       padding: 0 25px 95px 25px;
     }
@@ -154,7 +150,7 @@
       font-size: 35px;
     }
 
-    & .main-header-wrap {
+    & .wrap {
       flex-direction: column;
       gap: 57px;
     }
@@ -165,17 +161,18 @@
   }
 }
 
-@include desktop {
-  .main-header {
-    & .main-header-wrap {
-      margin: 0 auto;
-    }
-  }
-}
+// @include desktop {
+//   .main-header {
+//     & .wrap {
+//       margin: 0 auto;
+//     }
+//   }
+// }
 
 @include bigdesktop {
   .main-header {
-    & .main-header-wrap {
+    & .wrap {
+      margin: 0 auto;
       justify-content: center;
       gap: 150px;
     }

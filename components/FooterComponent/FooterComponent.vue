@@ -27,38 +27,34 @@
         <div class="left-col">
           <div class="social-item">
             <a href="https://linkedin.com/" class="social-link">
-              <IconLinkedIn class="social-img" :filled="true" alt="LinkedIn" />
+              <SvgoLnk class="social-img" :filled="true" alt="LinkedIn" />
             </a>
           </div>
           <div class="social-item">
             <a href="https://facebook.com/" class="social__link">
-              <IconFacebook class="social-img" :filled="true" alt="Facebook" />
+              <SvgoFb class="social-img" :filled="true" alt="Facebook" />
             </a>
           </div>
           <div v-if="!isTabletBreakpoint" class="social-item">
             <a href="https://habr.com/" class="social__link">
-              <IconHabr class="social-img" :filled="true" alt="Habr" />
+              <SvgoHabr class="social-img" :filled="true" alt="Habr" />
             </a>
           </div>
         </div>
         <div class="right-col">
           <div class="social-item">
             <a href="https://twitter.com/" class="social__link">
-              <IconTwitter class="social-img" :filled="true" alt="Twitter" />
+              <SvgoTw class="social-img" :filled="true" alt="Twitter" />
             </a>
           </div>
           <div class="social-item">
             <a href="https://www.instagram.com/" class="social__link">
-              <IconInstagram
-                class="social-img"
-                :filled="true"
-                alt="Instagram"
-              />
+              <SvgoInst class="social-img" :filled="true" alt="Instagram" />
             </a>
           </div>
           <div v-if="!isTabletBreakpoint" class="social-item">
             <a href="https://web.telegram.org/" class="social__link">
-              <IconTelegram class="social-img" :filled="true" alt="Telegram" />
+              <SvgoTg class="social-img" :filled="true" alt="Telegram" />
             </a>
           </div>
         </div>
@@ -71,7 +67,7 @@
         <a class="header-contact-link phone-link" href="tel:+358942725025">
           <div class="contact-wrapper">
             <div class="icon-wrap">
-              <IconPhone class="phone-icon" :filled="true" />
+              <SvgoIconPhone class="phone-icon" :filled="true" />
             </div>
             <span class="phone"> +358 942 72 50 25 </span>
           </div>
@@ -79,7 +75,7 @@
         <a class="header-contact-link email-link" href="mailto:hello@zyfra.com">
           <div class="contact-wrapper">
             <div class="icon-wrap">
-              <IconEmail class="email-icon" />
+              <SvgoIconEmail class="email-icon" />
             </div>
             <span class="email"> hello@zyfra.com </span>
           </div>
@@ -94,7 +90,7 @@
         <a class="header-contact-link phone-link" href="tel:+358942725025">
           <div class="contact-wrapper">
             <div class="icon-wrap">
-              <IconPhone class="phone-icon" :filled="true" />
+              <SvgoIconPhone class="phone-icon" :filled="true" />
             </div>
             <span class="phone"> +358 942 72 50 25 </span>
           </div>
@@ -102,7 +98,7 @@
         <a class="header-contact-link email-link" href="mailto:hello@zyfra.com">
           <div class="contact-wrapper">
             <div class="icon-wrap">
-              <IconEmail class="email-icon" />
+              <SvgoIconEmail class="email-icon" />
             </div>
             <span class="email"> hello@zyfra.com </span>
           </div>
@@ -117,7 +113,7 @@
         <a class="header-contact-link phone-link" href="tel:+358942725025">
           <div class="contact-wrapper">
             <div class="icon-wrap">
-              <IconPhone class="phone-icon" :filled="true" />
+              <SvgoIconPhone class="phone-icon" :filled="true" />
             </div>
             <span class="phone"> +358 942 72 50 25 </span>
           </div>
@@ -126,7 +122,7 @@
         <a class="header-contact-link phone-link" href="tel:+358942725025">
           <div class="contact-wrapper">
             <div class="icon-wrap">
-              <IconPhone class="phone-icon" :filled="true" />
+              <SvgoIconPhone class="phone-icon" :filled="true" />
             </div>
             <span class="phone"> +358 942 72 50 25 </span>
           </div>
@@ -195,17 +191,10 @@
 </template>
 
 <script setup>
-import IconLinkedIn from '@/assets/icons/lnk.svg';
-import IconTwitter from '@/assets/icons/tw.svg';
-import IconFacebook from '@/assets/icons/fb.svg';
-import IconInstagram from '@/assets/icons/inst.svg';
-import IconHabr from '@/assets/icons/habr.svg';
-import IconTelegram from '@/assets/icons/tg.svg';
-import IconPhone from '@/assets/icons/icon-phone.svg';
-import IconEmail from '@/assets/icons/icon-email.svg';
+import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
-const TABLET_BREAKPOINT = 1024;
+const TABLET_BREAKPOINT = 1179;
 const zyfraStore = useZyfraStore();
 const localePath = useLocalePath();
 
@@ -240,8 +229,7 @@ const industryList = reactive([
 ]);
 
 const isTabletBreakpoint = computed(() => {
-  if (zyfraStore.screenWidth <= TABLET_BREAKPOINT) return true;
-  return false;
+  return zyfraStore.screenWidth <= TABLET_BREAKPOINT;
 });
 </script>
 

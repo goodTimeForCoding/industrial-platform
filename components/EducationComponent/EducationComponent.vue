@@ -10,7 +10,7 @@
           {{ $t('education.textBottom') }}
         </p>
         <div class="btn-wrap">
-          <ButtonComponent @click="zyfraStore.openModal">{{
+          <ButtonComponent @click="modalStore.openModal">{{
             $t('education.btnText')
           }}</ButtonComponent>
         </div>
@@ -20,9 +20,9 @@
 </template>
 
 <script setup>
-import ButtonComponent from '~/components/ButttonComponent/ButttonComponent.vue';
-import { useZyfraStore } from '@/store/ZyfraStore.js';
-const zyfraStore = useZyfraStore();
+import ButtonComponent from '@/components/ButttonComponent/ButttonComponent.vue';
+import { useModalStore } from '@/store/ModalStore.js';
+const modalStore = useModalStore();
 </script>
 
 <style lang="scss" scoped>
@@ -49,9 +49,6 @@ const zyfraStore = useZyfraStore();
     background-repeat: no-repeat;
     background-size: cover;
     color: $white;
-  }
-
-  & .education-wrap {
   }
 
   & .education-title {

@@ -1,15 +1,18 @@
 <template>
   <div class="form-modal" @wheel.prevent @touchmove.prevent @scroll.prevent>
-    <!--  @click тут какой то овер, это не правильно  -->
-    <div class="modal-overlay" @click="zyfraStore.closeModal">
-      <div class="modal" @click.stop>
+    <div class="modal-overlay" @click.self="modalStore.closeModal">
+      <div class="modal">
         <h2 class="modal-title">
           {{ $t('modal.title') }}
         </h2>
         <FeedbackForm :isModal="true" />
-        <!--  @click.self посмотри доку про мадоифакаторы событий     -->
-        <div class="close" @click="zyfraStore.closeModal">
-          <img class="close-img" src="/close.svg" alt="" />
+        <div class="close">
+          <img
+            class="close-img"
+            src="/close.svg"
+            alt=""
+            @click.self="modalStore.closeModal"
+          />
         </div>
       </div>
     </div>
@@ -17,9 +20,9 @@
 </template>
 
 <script setup>
-import { useZyfraStore } from '@/store/ZyfraStore.js';
-// zyfraStore - перегружен, тут можно отдельный стор для модалок сделать
-const zyfraStore = useZyfraStore();
+import FeedbackForm from '@/components/FeedbackForm/FeedbackForm.vue';
+import { useModalStore } from '@/store/ModalStore.js';
+const modalStore = useModalStore();
 </script>
 
 <style lang="scss" scoped>
@@ -51,6 +54,8 @@ const zyfraStore = useZyfraStore();
     top: 32px;
     bottom: 0;
     right: 66px;
+    width: 18px;
+    height: 18px;
   }
 
   & .modal-title {

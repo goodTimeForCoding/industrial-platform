@@ -6,14 +6,14 @@
         @updateMessages="feedbackFormStore.setNewMessageArray"
       />
     </div>
-    <!--  addModalClass() это компьютед свойство  -->
-    <form :class="['feedback-form', addModalClass()]" novalidate>
+
+    <form :class="['feedback-form', addModalClass]" novalidate>
       <div class="form-group" v-for="data of formDatum" :key="data.id">
         <BaseInput
           v-if="data.type === 'text'"
+          :class="data.className"
           v-model.trim="data.value"
           :type="data.type"
-          :class="data.className"
           :placeholder="$t(data.placeholder)"
         />
 
@@ -45,7 +45,7 @@
       </div>
 
       <div class="btn-text-wrap">
-        <div class="check-text consent-wrap" v-if="zyfraStore.isShowModal">
+        <div v-if="modalStore.isShowModal" class="check-text consent-wrap">
           <input
             class="consent-checkbox"
             type="checkbox"
@@ -58,7 +58,7 @@
           </label>
         </div>
 
-        <div class="check-text subscrip" v-if="zyfraStore.isShowModal">
+        <div v-if="modalStore.isShowModal" class="check-text subscrip">
           <input
             class="subscrip-checkbox"
             type="checkbox"
@@ -74,7 +74,7 @@
         <button class="btn btn-feedback" @click="onSubmit" type="button">
           {{ $t('feedbackForm.btnText') }}
         </button>
-        <p class="agreement" v-if="!zyfraStore.isShowModal">
+        <p v-if="!modalStore.isShowModal" class="agreement">
           {{ $t('feedbackForm.agreementTop') }}<br />
           {{ $t('feedbackForm.agreementBottom') }}
         </p>
@@ -84,11 +84,14 @@
 </template>
 
 <script setup>
+import NotificationComponent from '@/components/NotificationComponent/NotificationComponent.vue';
+import BaseInput from '@/components/BaseInput/BaseInput.vue';
+import DropdownComponent from '@/components/DropdownComponent/DropdownComponent.vue';
 import { useFeedbackForm } from '@/store/FeedbackForm.js';
 import countriesArr from '@/mock/countries.json';
 import { useReCaptcha } from 'vue-recaptcha-v3';
 import { reactive } from 'vue';
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useModalStore } from '@/store/ModalStore.js';
 
 const props = defineProps({
   isModal: {
@@ -96,7 +99,7 @@ const props = defineProps({
   },
 });
 
-const zyfraStore = useZyfraStore();
+const modalStore = useModalStore();
 const i18nLocale = useI18n();
 const feedbackFormStore = useFeedbackForm();
 const recaptchaInstance = useReCaptcha();
@@ -179,6 +182,11 @@ const formDatum = reactive([
   },
 ]);
 
+const addModalClass = computed(() => {
+  if (props.isModal) return 'feedback-form-modal';
+  return '';
+});
+
 const addTranslation = () => {
   const translation = {
     countrySelector: {
@@ -194,13 +202,8 @@ const addTranslation = () => {
   return translation;
 };
 
-const addModalClass = () => {
-  if (props.isModal) return 'feedback-form-modal';
-  return '';
-};
-
 const deleteErrorMessage = () => {
-  if (zyfraStore.isShowModal) return 'nomessage';
+  if (modalStore.isShowModal) return 'nomessage';
   return '';
 };
 
