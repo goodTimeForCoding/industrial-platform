@@ -261,62 +261,25 @@ const checkValid = () => {
   feedbackFormStore.cleanErrors();
   formDatum.forEach(item => {
     if (item.formName === 'comment') return;
-    if (
-      (item.value === '' || item.value === null) &&
-      i18nLocale.locale.value === 'ru'
-    ) {
+
+    if (item.value === '' || item.value === null) {
       feedbackFormStore.addErrors({
         name: item.formName,
-        errorText: 'Поле обязательно для заполнения',
+        errorText: i18nLocale.t('validation.requered'),
       });
     }
-    if (
-      (item.value === '' || item.value === null) &&
-      i18nLocale.locale.value === 'en'
-    ) {
+
+    if (!validEmail(item.value) && item.formName === 'email') {
       feedbackFormStore.addErrors({
         name: item.formName,
-        errorText: 'The field is obligatory for filling',
+        errorText: i18nLocale.t('validation.email'),
       });
     }
-    if (
-      !validEmail(item.value) &&
-      item.formName === 'email' &&
-      i18nLocale.locale.value === 'ru'
-    ) {
+
+    if (feedbackFormStore.isPhoneValid === false && item.formName === 'phone') {
       feedbackFormStore.addErrors({
         name: item.formName,
-        errorText: 'Введите корректный email',
-      });
-    }
-    if (
-      !validEmail(item.value) &&
-      item.formName === 'email' &&
-      i18nLocale.locale.value === 'en'
-    ) {
-      feedbackFormStore.addErrors({
-        name: item.formName,
-        errorText: 'Enter correct email',
-      });
-    }
-    if (
-      feedbackFormStore.isPhoneValid === false &&
-      item.formName === 'phone' &&
-      i18nLocale.locale.value === 'ru'
-    ) {
-      feedbackFormStore.addErrors({
-        name: item.formName,
-        errorText: 'Введите корректный телефон',
-      });
-    }
-    if (
-      feedbackFormStore.isPhoneValid === false &&
-      item.formName === 'phone' &&
-      i18nLocale.locale.value === 'en'
-    ) {
-      feedbackFormStore.addErrors({
-        name: item.formName,
-        errorText: 'Enter correct phone',
+        errorText: i18nLocale.t('validation.phone'),
       });
     }
   });
@@ -343,29 +306,17 @@ const onSubmit = async () => {
       const token = await recaptcha();
       const data = adaptForm(token);
       await feedbackFormStore.postFeedbackData(data);
-      i18nLocale.locale.value === 'ru'
-        ? feedbackFormStore.setMessage({
-            name: 'Ваше обращение успешно принято',
-            type: 'check',
-            id: Date.now().toLocaleString(),
-          })
-        : feedbackFormStore.setMessage({
-            name: 'Your address is successfully accepted',
-            type: 'check',
-            id: Date.now().toLocaleString(),
-          });
+      feedbackFormStore.setMessage({
+        name: i18nLocale.t('validation.success'),
+        type: 'check',
+        id: Date.now().toLocaleString(),
+      });
     } else {
-      i18nLocale.locale.value === 'ru'
-        ? feedbackFormStore.setMessage({
-            name: 'Заполните форму',
-            type: 'error',
-            id: Date.now().toLocaleString(),
-          })
-        : feedbackFormStore.setMessage({
-            name: 'Fill a form',
-            type: 'error',
-            id: Date.now().toLocaleString(),
-          });
+      feedbackFormStore.setMessage({
+        name: i18nLocale.t('validation.error'),
+        type: 'error',
+        id: Date.now().toLocaleString(),
+      });
     }
   } catch (error) {
     feedbackFormStore.setMessage({

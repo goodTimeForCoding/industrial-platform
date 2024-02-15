@@ -157,5 +157,13 @@
     "title": "Digital Industrial Platform",
     "description": "We develop and introduce the industrial IoT-platform for oil-processing and chemical industry. The platform allows the enterprise to unite all industrial data to maximize economic effect of use of technologies IoT, ML and modern functional architecture of applications. Existence of the platform much accelerates creation and introduction of the products increasing efficiency of technological repartitions.",
     "lang": "en"
+  },
+
+  "validation": {
+    "requered": "The field is obligatory for filling",
+    "email": "Enter correct email",
+    "phone": "Enter correct phone",
+    "success": "Your address is successfully accepted",
+    "error": "Fill a form"
   }
 }
