@@ -111,8 +111,7 @@
 
   "footer": {
     "newClients": "For new clients",
-    "currentClients": "Current clients.",
-    "adminQuestion": "Administrative matters",
+    "currentClients": "Current clients. Administrative matters",
     "technicalSupport": "Technical support",
     "monitoring": "System of monitoring Dispatcher",
     "mining": "Mining industry: WHIST",

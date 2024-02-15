@@ -45,31 +45,19 @@
       </div>
 
       <div class="btn-text-wrap">
-        <div v-if="modalStore.isShowModal" class="check-text consent-wrap">
-          <input
-            class="consent-checkbox"
-            type="checkbox"
-            name="consent"
-            id="consent"
-            checked
-          />
-          <label class="label consent-label" for="consent">
-            {{ $t('feedbackForm.consent') }}
-          </label>
-        </div>
+        <BaseCheckbox
+          v-if="modalStore.isShowModal"
+          class="consent-wrap"
+          :label="$t('feedbackForm.consent')"
+          :id="consent"
+        />
 
-        <div v-if="modalStore.isShowModal" class="check-text subscrip">
-          <input
-            class="subscrip-checkbox"
-            type="checkbox"
-            name="subscrip"
-            id="subscrip"
-            checked
-          />
-          <label class="label subscrip-label" for="subscrip">
-            {{ $t('feedbackForm.subscrip') }}
-          </label>
-        </div>
+        <BaseCheckbox
+          v-if="modalStore.isShowModal"
+          class="subscrip"
+          :label="$t('feedbackForm.subscrip')"
+          :id="subscrip"
+        />
 
         <button class="btn btn-feedback" @click="onSubmit" type="button">
           {{ $t('feedbackForm.btnText') }}
@@ -87,6 +75,7 @@
 import NotificationComponent from '@/components/NotificationComponent/NotificationComponent.vue';
 import BaseInput from '@/components/BaseInput/BaseInput.vue';
 import DropdownComponent from '@/components/DropdownComponent/DropdownComponent.vue';
+import BaseCheckbox from '@/components/BaseCheckbox/BaseCheckbox.vue';
 import { useFeedbackForm } from '@/store/FeedbackForm.js';
 import countriesArr from '@/mock/countries.json';
 import { useReCaptcha } from 'vue-recaptcha-v3';
@@ -545,18 +534,6 @@ onMounted(() => {
 
   & .subscrip {
     margin-bottom: 31px;
-  }
-
-  & .check-text {
-    display: flex;
-    gap: 2px;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 20px;
-  }
-
-  & .subscrip-checkbox {
-    align-self: start;
   }
 
   & .btn-feedback {

@@ -19,179 +19,50 @@
         />
       </NuxtLink>
 
-      <div class="language-wrap">
-        <LangSwitcher class="lang-switcher-footer" />
-      </div>
-
-      <div class="footer-socials socials">
-        <div class="left-col">
-          <div class="social-item">
-            <a href="https://linkedin.com/" class="social-link">
-              <SvgoLnk class="social-img" :filled="true" alt="LinkedIn" />
-            </a>
-          </div>
-          <div class="social-item">
-            <a href="https://facebook.com/" class="social__link">
-              <SvgoFb class="social-img" :filled="true" alt="Facebook" />
-            </a>
-          </div>
-          <div v-if="!isTabletBreakpoint" class="social-item">
-            <a href="https://habr.com/" class="social__link">
-              <SvgoHabr class="social-img" :filled="true" alt="Habr" />
-            </a>
-          </div>
-        </div>
-        <div class="right-col">
-          <div class="social-item">
-            <a href="https://twitter.com/" class="social__link">
-              <SvgoTw class="social-img" :filled="true" alt="Twitter" />
-            </a>
-          </div>
-          <div class="social-item">
-            <a href="https://www.instagram.com/" class="social__link">
-              <SvgoInst class="social-img" :filled="true" alt="Instagram" />
-            </a>
-          </div>
-          <div v-if="!isTabletBreakpoint" class="social-item">
-            <a href="https://web.telegram.org/" class="social__link">
-              <SvgoTg class="social-img" :filled="true" alt="Telegram" />
-            </a>
-          </div>
-        </div>
-      </div>
+      <LangSwitcher class="language-wrap lang-switcher-footer" />
+      <SocialsComponent :isTabletBreakpoint="isTabletBreakpoint" />
     </div>
 
-    <div class="support">
-      <div class="new-clients">
-        <h3 class="support-title">{{ $t('footer.newClients') }}</h3>
-        <a class="header-contact-link phone-link" href="tel:+358942725025">
-          <div class="contact-wrapper">
-            <div class="icon-wrap">
-              <SvgoIconPhone class="phone-icon" :filled="true" />
-            </div>
-            <span class="phone"> +358 942 72 50 25 </span>
-          </div>
-        </a>
-        <a class="header-contact-link email-link" href="mailto:hello@zyfra.com">
-          <div class="contact-wrapper">
-            <div class="icon-wrap">
-              <SvgoIconEmail class="email-icon" />
-            </div>
-            <span class="email"> hello@zyfra.com </span>
-          </div>
-        </a>
-      </div>
-
-      <div class="current-clients">
-        <h3 class="support-title support-title--ident">
-          {{ $t('footer.currentClients') }} <br />
-          {{ $t('footer.adminQuestion') }}
-        </h3>
-        <a class="header-contact-link phone-link" href="tel:+358942725025">
-          <div class="contact-wrapper">
-            <div class="icon-wrap">
-              <SvgoIconPhone class="phone-icon" :filled="true" />
-            </div>
-            <span class="phone"> +358 942 72 50 25 </span>
-          </div>
-        </a>
-        <a class="header-contact-link email-link" href="mailto:hello@zyfra.com">
-          <div class="contact-wrapper">
-            <div class="icon-wrap">
-              <SvgoIconEmail class="email-icon" />
-            </div>
-            <span class="email"> hello@zyfra.com </span>
-          </div>
-        </a>
-      </div>
-
-      <div class="technical-support">
-        <h3 class="support-title support-title--ident">
-          {{ $t('footer.technicalSupport') }}
-        </h3>
-        <p class="phone-text">{{ $t('footer.monitoring') }}</p>
-        <a class="header-contact-link phone-link" href="tel:+358942725025">
-          <div class="contact-wrapper">
-            <div class="icon-wrap">
-              <SvgoIconPhone class="phone-icon" :filled="true" />
-            </div>
-            <span class="phone"> +358 942 72 50 25 </span>
-          </div>
-        </a>
-        <p class="phone-text">{{ $t('footer.mining') }}</p>
-        <a class="header-contact-link phone-link" href="tel:+358942725025">
-          <div class="contact-wrapper">
-            <div class="icon-wrap">
-              <SvgoIconPhone class="phone-icon" :filled="true" />
-            </div>
-            <span class="phone"> +358 942 72 50 25 </span>
-          </div>
-        </a>
-      </div>
+    <div class="support-wrap">
+      <SupportComponent :title="$t('footer.newClients')" />
+      <SupportComponent :title="$t('footer.currentClients')" />
+      <SupportComponent
+        :title="$t('footer.technicalSupport')"
+        :text1="$t('footer.monitoring')"
+        :text2="$t('footer.mining')"
+        :isTechnicalSupport="true"
+      />
     </div>
 
     <div class="column-wrap">
-      <div class="footer-links about">
-        <h3 class="footer-links-title">{{ $t('footer.about') }}</h3>
-        <ul class="footer-links-list list-reset">
-          <li
-            class="footer-links-item"
-            v-for="menu in companyLinks"
-            :key="menu.id"
-          >
-            <NuxtLink class="footer-links-link">
-              {{ $t(menu.name) }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </div>
+      <LinksListComponent
+        class="about"
+        :title="$t('footer.about')"
+        :links="companyLinks"
+      />
 
-      <div v-if="isTabletBreakpoint" class="footer-links news">
-        <h3 class="footer-links-title">{{ $t('footer.news') }}</h3>
-        <ul class="footer-links-list list-reset">
-          <li
-            class="footer-links-item"
-            v-for="menu in newsLinks"
-            :key="menu.id"
-          >
-            <NuxtLink class="footer-links-link">
-              {{ $t(menu.name) }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </div>
+      <LinksListComponent
+        v-if="isTabletBreakpoint"
+        :title="$t('footer.news')"
+        :links="newsLinks"
+      />
     </div>
 
-    <div class="footer-links products">
-      <h3 class="footer-links-title">{{ $t('footer.products') }}</h3>
-      <ul class="footer-links-list list-reset">
-        <li class="footer-links-item" v-for="menu in helpList" :key="menu.id">
-          <NuxtLink class="footer-links-link">
-            {{ $t(menu.name) }}
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
+    <LinksListComponent
+      class="products"
+      :title="$t('footer.products')"
+      :links="helpList"
+    />
 
-    <div class="footer-links">
-      <h3 class="footer-links-title">{{ $t('footer.industry') }}</h3>
-      <ul class="footer-links-list list-reset">
-        <li
-          class="footer-links-item"
-          v-for="menu in industryList"
-          :key="menu.id"
-        >
-          <NuxtLink class="footer-links-link">
-            {{ $t(menu.name) }}
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
+    <LinksListComponent :title="$t('footer.industry')" :links="industryList" />
   </div>
 </template>
 
 <script setup>
 import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
+import SocialsComponent from '@/components/SocialsComponent/SocialsComponent.vue';
+import SupportComponent from '@/components/SupportComponent/SupportComponent.vue';
+import LinksListComponent from '@/components/LinksListComponent/LinksListComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
 const TABLET_BREAKPOINT = 1179;
@@ -275,116 +146,6 @@ const isTabletBreakpoint = computed(() => {
     }
   }
 
-  .footer-socials {
-    display: flex;
-    gap: 20px;
-    margin-right: 120px;
-    margin-top: 24px;
-  }
-
-  .social-item {
-    margin-bottom: 14px;
-  }
-
-  & .social-img {
-    width: 22px;
-    height: 22px;
-
-    &:hover {
-      fill: $christi;
-    }
-  }
-
-  & .support {
-    margin-right: 50px;
-
-    & .support-title {
-      margin: 0;
-      margin-bottom: 9px;
-      padding: 0;
-      color: $black;
-      font-weight: 600;
-      font-size: 14px;
-
-      &--ident {
-        margin-top: 10px;
-      }
-    }
-
-    & .header-contact-link {
-      position: relative;
-      margin-right: 26px;
-      color: $thunder;
-      font-weight: 500;
-      font-size: 14px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: 0.1s;
-
-      &:hover {
-        color: $christi;
-      }
-    }
-
-    & .contact-wrapper {
-      display: flex;
-      align-items: flex-end;
-      font-size: 12px;
-    }
-
-    & .email-icon {
-      width: 20px;
-      height: 12px;
-      margin-right: 9px;
-    }
-
-    & .phone-icon {
-      width: 15px;
-      height: 15px;
-      margin-right: 6px;
-      stroke: $thunder;
-    }
-
-    & .phone-link {
-      transition: 0.1s;
-
-      &:hover .phone-icon {
-        stroke: $christi;
-      }
-    }
-
-    & .phone-text {
-      margin: 0;
-      padding: 0;
-      margin-top: 7px;
-      margin-bottom: 3px;
-      font-size: 12px;
-    }
-  }
-
-  & .footer-links {
-    & .footer-links-title {
-      margin: 0;
-      margin-bottom: 15px;
-      padding: 0;
-      color: $black;
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    & .footer-links-item {
-      margin-bottom: 15px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 500;
-      color: $black;
-
-      &:hover {
-        color: $christi;
-      }
-    }
-  }
-
   & .about {
     max-width: 91px;
     margin-right: 44px;
@@ -407,10 +168,6 @@ const isTabletBreakpoint = computed(() => {
     grid-template-columns: 235px auto auto 1fr;
     column-gap: 10px;
 
-    & .social-item {
-      margin: 0;
-    }
-
     & .col {
       grid-column-start: 1;
       grid-column-end: 5;
@@ -424,29 +181,6 @@ const isTabletBreakpoint = computed(() => {
       grid-column-start: 3;
       grid-column-end: 4;
       width: 53px;
-    }
-
-    & .footer-socials {
-      grid-column-start: 2;
-      grid-column-end: 3;
-      grid-row-start: 1;
-      grid-row-end: 2;
-      column-gap: 10px;
-      margin: 0 auto;
-    }
-
-    & .left-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      column-gap: 10px;
-    }
-
-    & .right-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      column-gap: 10px;
     }
   }
 }
@@ -478,24 +212,9 @@ const isTabletBreakpoint = computed(() => {
       grid-row-end: 2;
     }
 
-    & .footer-socials {
+    & .support-wrap {
       grid-column-start: 1;
       grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 3;
-      column-gap: 10px;
-      margin: 0;
-    }
-
-    & .support {
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-
-    & .left-col,
-    & .right-col,
-    & .footer-socials {
-      column-gap: 20px;
     }
   }
 }
