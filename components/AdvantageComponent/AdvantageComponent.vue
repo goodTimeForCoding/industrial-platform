@@ -150,24 +150,25 @@ const isTabletBreakpoint = computed(() => {
   }
 
   & .factory {
-    background-image: url('/arrow-right.svg'), url('/arrow-left.svg'),
-      url('/arrow-turn-top.svg'), url('/factory.png');
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/arrow-turn-top.svg'),
+      url('/bg-img/factory.png');
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     background-position: top 63px right 31px, bottom 60px right 31px,
       bottom 60px left 37px, top 38px left 34px;
   }
 
   & .architecture {
-    background-image: url('/arrow-right.svg'), url('/arrow-left.svg'),
-      url('/gears.png');
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/gears.png');
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-position: top 63px right 31px, bottom 60px right 31px,
       top 28px left 30px;
   }
 
   & .direct {
-    background-image: url('/arrow-turn-bottom.svg'), url('/arrow-left.svg'),
-      url('/challenges.png');
+    background-image: url('/bg-img/arrow-turn-bottom.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/challenges.png');
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-position: top 63px right 28px, bottom 60px right 31px,
       top 38px left 34px;

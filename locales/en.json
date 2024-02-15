@@ -5,7 +5,7 @@
     "media": "Media",
     "industry": "Industries",
     "openMenu": "Open menu",
-    "icon": "/zyfra-en.svg",
+    "icon": "/zyfra-logo/zyfra-en.svg",
     "iconAlt": "company logo",
     "btnText": "Contact us"
   },
@@ -49,7 +49,7 @@
     "title": "Digital Industrial Platform",
     "collab": "Joint venture",
     "company": "«Zyfra» Group and «Gazprom Neft»",
-    "zyfraImg": "/zyfra-en.svg"
+    "zyfraImg": "/zyfra-logo/zyfra-en.svg"
   },
 
   "advantage": {
@@ -120,7 +120,7 @@
     "career": "Career in Zyfra",
     "products": "Products",
     "industry": "Industries",
-    "icon": "/logo-footer-en.svg",
+    "icon": "/zyfra-logo/logo-footer-en.svg",
     "news": "News",
     "blog": "Blog",
     "media": "Media",
@@ -146,7 +146,7 @@
     "products": "Products",
     "education": "Training and partnership",
     "feedback": "Feedback",
-    "icon": "/zyfra-en.svg"
+    "icon": "/zyfra-logo/zyfra-en.svg"
   },
 
   "modal": {

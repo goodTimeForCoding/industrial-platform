@@ -5,7 +5,7 @@
     "media": "Медиа центр",
     "industry": "Отрасли",
     "openMenu": "Открыть меню",
-    "icon": "/zyfra-ru.png",
+    "icon": "/zyfra-logo/zyfra-ru.png",
     "iconAlt": "логотип компании",
     "btnText": "Связаться"
   },
@@ -51,7 +51,7 @@
     "title": "Цифровая Индустриальная Платформа",
     "collab": " Совместное предприятие",
     "company": "ГК «Цифра» и «Газпром Нефть»",
-    "zyfraImg": "/zyfra-ru.png"
+    "zyfraImg": "/zyfra-logo/zyfra-ru.png"
   },
 
   "advantage": {
@@ -122,7 +122,7 @@
     "career": "Карьера в Цифре",
     "products": "Продукты",
     "industry": "Индустрии",
-    "icon": "/logo-footer-en.svg",
+    "icon": "/zyfra-logo/logo-footer-en.svg",
     "news": "Новости",
     "blog": "Блог",
     "media": "Медиа",
@@ -148,7 +148,7 @@
     "products": "Продукты",
     "education": "Обучение и партнёрство",
     "feedback": "Обратная связь",
-    "icon": "/zyfra-ru.png"
+    "icon": "/zyfra-logo/zyfra-ru.png"
   },
 
   "modal": {

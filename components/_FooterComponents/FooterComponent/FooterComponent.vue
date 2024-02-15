@@ -60,9 +60,9 @@
 
 <script setup>
 import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
-import SocialsComponent from '@/components/SocialsComponent/SocialsComponent.vue';
-import SupportComponent from '@/components/SupportComponent/SupportComponent.vue';
-import LinksListComponent from '@/components/LinksListComponent/LinksListComponent.vue';
+import SocialsComponent from '@/components/_FooterComponents/SocialsComponent/SocialsComponent.vue';
+import SupportComponent from '@/components/_FooterComponents/SupportComponent/SupportComponent.vue';
+import LinksListComponent from '@/components/_FooterComponents/LinksListComponent/LinksListComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
 const TABLET_BREAKPOINT = 1179;

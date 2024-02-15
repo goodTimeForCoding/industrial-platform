@@ -12,7 +12,7 @@
       <div class="dropdown-icon-wrap" @click="changeView">
         <img
           :class="['dropdown-icon', addIconDropDownClass]"
-          src="/arrow.svg"
+          src="/support-icons/arrow.svg"
         />
       </div>
     </div>

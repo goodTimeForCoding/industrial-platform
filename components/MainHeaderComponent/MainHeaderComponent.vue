@@ -7,7 +7,7 @@
           <div class="collab-img-wrap">
             <img
               class="collab-img"
-              src="/gazprom-logo.png"
+              src="/content-img/gazprom-logo.png"
               width="84"
               height="43"
               alt="логотип Газпром"
@@ -31,10 +31,14 @@
           class="screen-img"
           width="633"
           height="393"
-          src="/screen-video.png"
+          src="/content-img/screen-video.png"
           alt="Скрин видео"
         />
-        <img class="pause-logo" src="/pause-video.svg" alt="Логотип пауза" />
+        <img
+          class="pause-logo"
+          src="/support-icons/pause-video.svg"
+          alt="Логотип пауза"
+        />
       </div>
     </div>
   </div>

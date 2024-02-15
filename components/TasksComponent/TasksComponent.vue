@@ -19,12 +19,16 @@
     <div class="screen-wrap">
       <img
         class="screen-img"
-        src="/screen-video2.png"
+        src="/content-img/screen-video2.png"
         width="601"
         height="359"
         alt="скрин видео"
       />
-      <img class="pause-logo" src="/pause-video.svg" alt="Логотип пауза" />
+      <img
+        class="pause-logo"
+        src="/support-icons/pause-video.svg"
+        alt="Логотип пауза"
+      />
     </div>
   </div>
 </template>

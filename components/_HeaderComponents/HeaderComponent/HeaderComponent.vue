@@ -42,10 +42,10 @@
 </template>
 
 <script setup>
-import ButtonComponent from '@/components/ButttonComponent/ButttonComponent.vue';
+import ButtonComponent from '@/components/_UI/ButtonComponent/ButtonComponent.vue';
 import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
-import HeaderMenuComponent from '@/components/HeaderMenuComponent/HeaderMenuComponent.vue';
-import HeaderContactsComponent from '@/components/HeaderContactsComponent/HeaderContactsComponent.vue';
+import HeaderMenuComponent from '@/components/_HeaderComponents/HeaderMenuComponent/HeaderMenuComponent.vue';
+import HeaderContactsComponent from '@/components/_HeaderComponents/HeaderContactsComponent/HeaderContactsComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
 const localePath = useLocalePath();

@@ -72,10 +72,10 @@
 </template>
 
 <script setup>
-import NotificationComponent from '@/components/NotificationComponent/NotificationComponent.vue';
-import BaseInput from '@/components/BaseInput/BaseInput.vue';
-import DropdownComponent from '@/components/DropdownComponent/DropdownComponent.vue';
-import BaseCheckbox from '@/components/BaseCheckbox/BaseCheckbox.vue';
+import NotificationComponent from '@/components/_FormComponents/NotificationComponent/NotificationComponent.vue';
+import BaseInput from '@/components/_UI/BaseInput/BaseInput.vue';
+import DropdownComponent from '@/components/_FormComponents/DropdownComponent/DropdownComponent.vue';
+import BaseCheckbox from '@/components/_UI/BaseCheckbox/BaseCheckbox.vue';
 import { useFeedbackForm } from '@/store/FeedbackForm.js';
 import countriesArr from '@/mock/countries.json';
 import { useReCaptcha } from 'vue-recaptcha-v3';
@@ -586,6 +586,22 @@ onMounted(() => {
 
     .phone-error-text {
       bottom: 2px;
+    }
+  }
+
+  .feedback-form-modal {
+    & .feedback-form--long,
+    & .feedback-form--short {
+      min-width: 100%;
+    }
+
+    & .feedback-form-input {
+      margin-bottom: 6px;
+      height: 40px;
+    }
+
+    & .btn-text-wrap {
+      margin-top: 10px;
     }
   }
 }

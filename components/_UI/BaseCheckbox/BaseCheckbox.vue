@@ -21,7 +21,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .check {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: 5px;
   font-size: 12px;
   font-weight: 500;

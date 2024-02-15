@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import NavLinksComponent from '@/components/NavLinksComponent/NavLinksComponent.vue';
+import NavLinksComponent from '@/components/_HeaderComponents/NavLinksComponent/NavLinksComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 
 const props = defineProps({

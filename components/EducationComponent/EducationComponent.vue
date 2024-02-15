@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import ButtonComponent from '@/components/ButttonComponent/ButttonComponent.vue';
+import ButtonComponent from '@/components/_UI/ButtonComponent/ButtonComponent.vue';
 import { useModalStore } from '@/store/ModalStore.js';
 const modalStore = useModalStore();
 </script>
@@ -45,7 +45,7 @@ const modalStore = useModalStore();
   & .education-bg {
     padding-top: 66px;
     padding-bottom: 60px;
-    background-image: url('/edu-bg.jpg');
+    background-image: url('/bg-img/edu-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     color: $white;

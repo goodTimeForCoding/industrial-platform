@@ -9,7 +9,7 @@
         <div class="close">
           <img
             class="close-img"
-            src="/close.svg"
+            src="/support-icons/close.svg"
             alt=""
             @click.self="modalStore.closeModal"
           />
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import FeedbackForm from '@/components/FeedbackForm/FeedbackForm.vue';
+import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm.vue';
 import { useModalStore } from '@/store/ModalStore.js';
 const modalStore = useModalStore();
 </script>
@@ -78,6 +78,19 @@ const modalStore = useModalStore();
   }
 }
 
+@include minitablet {
+  .form-modal {
+    & .modal {
+      height: 640px;
+    }
+
+    & .modal-title {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+  }
+}
+
 @include bigmobile {
   .form-modal {
     & .modal {
@@ -85,7 +98,7 @@ const modalStore = useModalStore();
       margin-top: 10px;
       padding: 10px 10px;
       width: 300px;
-      height: 623px;
+      height: 640px;
     }
 
     & .modal-title {

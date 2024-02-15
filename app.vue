@@ -9,7 +9,7 @@
     </div>
     <div class="page">
       <div class="page-wrap">
-        <HeaderNavComponent />
+        <HeaderComponent />
         <NuxtPage />
         <FooterComponent />
       </div>
@@ -27,6 +27,8 @@
 </template>
 
 <script setup>
+import HeaderComponent from '@/components/_HeaderComponents/HeaderComponent/HeaderComponent.vue';
+import FooterComponent from '@/components/_FooterComponents/FooterComponent/FooterComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 import { useModalStore } from '@/store/ModalStore.js';
 import { createHydrationRenderer } from 'vue';

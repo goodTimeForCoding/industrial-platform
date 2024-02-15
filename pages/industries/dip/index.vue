@@ -25,7 +25,7 @@ import TasksComponent from '@/components/TasksComponent/TasksComponent.vue';
 import DefinitionComponent from '@/components/DefinitionComponent/DefinitionComponent.vue';
 import ProductsComponent from '@/components/ProductsComponent/ProductsComponent.vue';
 import EducationComponent from '@/components/EducationComponent/EducationComponent.vue';
-import FeedbackFormComponent from '@/components/FeedbackFormComponent/FeedbackFormComponent.vue';
+import FeedbackFormComponent from '@/components/_FormComponents/FeedbackFormComponent/FeedbackFormComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 import { onMounted, ref } from 'vue';
 
