@@ -94,10 +94,10 @@ const isTabletBreakpoint = computed(
   background-color: $lightgrey;
 
   &::before {
+    z-index: 1;
     position: absolute;
     top: -43px;
     right: 0;
-    z-index: 1;
     border-top: 64px solid $baltic;
     border-right: 0;
     border-bottom: 0;
@@ -107,36 +107,36 @@ const isTabletBreakpoint = computed(
 
   & .advantage-text {
     order: -1;
+    max-width: 968px;
     margin: 0;
     margin-bottom: 30px;
     padding: 0;
-    color: $baltic;
     line-height: 20px;
-    max-width: 968px;
+    color: $baltic;
   }
 
   & .advanatge-title {
     margin: 0;
     margin-bottom: 50px;
     padding: 0;
-    color: $black;
-    font-weight: 700;
     font-size: 22px;
+    font-weight: 700;
+    color: $black;
   }
 
   & .advantage-cards {
     display: flex;
-    gap: 30px;
-    padding-bottom: 50px;
     justify-content: space-between;
+    padding-bottom: 50px;
+    gap: 30px;
   }
 
   & .advantage-card {
     width: 340px;
     height: 396px;
-    background-color: $white;
     border-radius: 4px;
-    box-shadow: 0 8px 26px 0 rgba(22, 44, 86, 0.1);
+    background-color: $white;
+    box-shadow: 0 8px 26px 0 rgb(22 44 86 / 10%);
   }
 
   & .card-text {
@@ -145,48 +145,49 @@ const isTabletBreakpoint = computed(
     padding-top: 122px;
     padding-right: 34px;
     padding-left: 34px;
-    color: $black;
-    font-weight: 700;
     line-height: 20px;
+    font-weight: 700;
     text-transform: uppercase;
+    color: $black;
   }
 
   & .factory {
-    background-image: url('/bg-img/arrow-right.svg'),
-      url('/bg-img/arrow-left.svg'), url('/bg-img/arrow-turn-top.svg'),
-      url('/bg-img/factory.png');
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     background-position:
       top 63px right 31px,
       bottom 60px right 31px,
       bottom 60px left 37px,
       top 38px left 34px;
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/arrow-turn-top.svg'),
+      url('/bg-img/factory.png');
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   }
 
   & .architecture {
-    background-image: url('/bg-img/arrow-right.svg'),
-      url('/bg-img/arrow-left.svg'), url('/bg-img/gears.png');
-    background-repeat: no-repeat, no-repeat, no-repeat;
     background-position:
       top 63px right 31px,
       bottom 60px right 31px,
       top 28px left 30px;
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/gears.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
   }
 
   & .direct {
-    background-image: url('/bg-img/arrow-turn-bottom.svg'),
-      url('/bg-img/arrow-left.svg'), url('/bg-img/challenges.png');
-    background-repeat: no-repeat, no-repeat, no-repeat;
     background-position:
       top 63px right 28px,
       bottom 60px right 31px,
       top 38px left 34px;
+    background-image: url('/bg-img/arrow-turn-bottom.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/challenges.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
   }
 }
 
 @include minidesk {
+
   .advantage {
-    top: 0px;
+    top: 0;
     padding-top: 50px;
 
     & .advantage-cards {
@@ -211,7 +212,9 @@ const isTabletBreakpoint = computed(
 }
 
 @include tablet {
+
   .advantage {
+
     &::before {
       top: -50px;
     }
@@ -239,10 +242,12 @@ const isTabletBreakpoint = computed(
 }
 
 @include minitablet {
+
   .advantage {
+
     & .advantage-wrap {
-      padding-left: 50px;
       padding-bottom: 69px;
+      padding-left: 50px;
     }
 
     & .swiper {
@@ -270,7 +275,9 @@ const isTabletBreakpoint = computed(
 }
 
 @include bigmobile {
+
   .advantage {
+
     &::before {
       top: -16px;
       border-top: 24px solid $baltic;
@@ -296,7 +303,9 @@ const isTabletBreakpoint = computed(
 }
 
 @include middlemobile {
+
   .advantage {
+
     & .advantage-card {
       width: 270px;
       height: 342px;
@@ -309,7 +318,9 @@ const isTabletBreakpoint = computed(
 }
 
 @include mobile {
+
   .advantage {
+
     & .advantage-wrap {
       padding-left: 25px;
     }
@@ -317,6 +328,7 @@ const isTabletBreakpoint = computed(
 }
 
 @include bigdesktop {
+
   .advantage {
     align-items: center;
   }

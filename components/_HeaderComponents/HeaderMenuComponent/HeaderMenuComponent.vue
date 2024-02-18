@@ -231,7 +231,7 @@ const addOpenCloseClass = computed(() => {
     padding-bottom: 40px;
     cursor: pointer;
     transition: color 0.3s ease;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 
     &--active::before {
       position: absolute;
@@ -253,14 +253,16 @@ const addOpenCloseClass = computed(() => {
   }
 
   & .menu-item-link {
+    z-index: 3;
     position: absolute;
     top: 70px;
-    z-index: 3;
   }
 }
 
 @include minidesk {
+
   .header-menu {
+
     & .header-item {
       margin-right: 60px;
     }
@@ -268,10 +270,12 @@ const addOpenCloseClass = computed(() => {
 }
 
 @include tablet {
+
   .header-menu {
+
     &--opened {
-      display: block;
       order: 3;
+      display: block;
       padding: 0 25px;
       animation-name: open-menu;
       animation-duration: 0.5s;
@@ -284,8 +288,8 @@ const addOpenCloseClass = computed(() => {
       margin-right: 0;
       padding-top: 15px;
       padding-bottom: 15px;
-      font-weight: 700;
       font-size: 22px;
+      font-weight: 700;
     }
 
     &--closed .header-item {
@@ -318,11 +322,13 @@ const addOpenCloseClass = computed(() => {
 }
 
 @keyframes open-menu {
+
   from {
     transform: translateY(-50px);
   }
+
   to {
-    transform: translateX(0px);
+    transform: translateX(0);
   }
 }
 </style>

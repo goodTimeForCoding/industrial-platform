@@ -31,24 +31,27 @@ const addTitle = computed(() => {
 
 <style lang="scss" scoped>
 .feedback-form-description-component {
+
   .description-title {
     margin: 0;
-    margin-bottom: 24px;
     margin-top: 19px;
-    font-weight: 700;
+    margin-bottom: 24px;
     font-size: 22px;
+    font-weight: 700;
   }
 
   .description-text {
     margin: 0;
-    font-weight: 500;
     font-size: 14px;
     line-height: 20px;
+    font-weight: 500;
   }
 }
 
 @include mobile {
+
   .feedback-form-description-component {
+
     .description-title {
       margin-bottom: 31px;
     }

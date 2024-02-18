@@ -63,10 +63,10 @@ export default {
 
 <style lang="scss">
 .notification {
+  z-index: 10;
   position: fixed;
   top: 30px;
   right: 16px;
-  z-index: 10;
 
   &__messages_list {
     display: flex;
@@ -75,14 +75,14 @@ export default {
 
   &__content {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     height: 50px;
     margin-bottom: 16px;
     padding: 16px;
-    color: $white;
-    background: $laurel;
     border-radius: 4px;
+    background: $laurel;
+    color: $white;
 
     &.error {
       background: $red;
@@ -98,15 +98,17 @@ export default {
   }
 
   .content {
+
     &__text {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
   }
 }
 
 .v-transition-animate {
+
   &-enter {
     transform: translateX(120px);
     opacity: 0;
@@ -133,8 +135,8 @@ export default {
   }
 
   &-leave-to {
-    height: 0;
     transform: translateX(120px);
+    height: 0;
     opacity: 0;
   }
 

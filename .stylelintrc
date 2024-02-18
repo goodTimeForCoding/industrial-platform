@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-airbnb", "stylelint-config-prettier"],
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
   "plugins": ["stylelint-scss", "stylelint-order"],
   "rules": {
     "selector-max-id": 1,
@@ -76,5 +76,18 @@
       "transition",
       "animation"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.scss", "**/*.scss"],
+      "extends": ["stylelint-config-standard-scss"]
+    },
+    {
+      "files": ["*.vue", "**/*.vue"],
+      "extends": [
+        "stylelint-config-standard-scss",
+        "stylelint-config-standard-vue/scss"
+      ]
+    }
+  ]
 }

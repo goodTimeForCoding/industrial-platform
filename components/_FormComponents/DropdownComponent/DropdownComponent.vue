@@ -112,27 +112,27 @@ onBeforeMount(() => {
 
 <style scoped lang="scss">
 .dropdown-component {
-  position: relative;
   z-index: 4;
+  position: relative;
   margin: 0 auto;
-  font-weight: 500;
   font-size: 14px;
+  font-weight: 500;
 
   .selected-item {
-    padding: 0;
-    background: $white;
-    border-radius: 5px;
-    cursor: pointer;
     height: 100%;
+    padding: 0;
+    border-radius: 5px;
+    background: $white;
+    cursor: pointer;
 
     input {
-      position: relative;
       z-index: 10;
+      position: relative;
       width: 100%;
       height: 100%;
       padding-left: 14px;
-      border: unset;
       border-radius: 5px;
+      border: unset;
       font-weight: 500;
     }
 
@@ -141,10 +141,10 @@ onBeforeMount(() => {
     }
 
     .dropdown-icon-wrap {
+      z-index: 10;
       position: absolute;
       top: 2px;
       right: 0;
-      z-index: 10;
       padding: 14px;
       cursor: pointer;
     }
@@ -161,16 +161,16 @@ onBeforeMount(() => {
   }
 
   .dropdown-popover {
+    z-index: 2;
     position: absolute;
     top: 40px;
     right: 0;
     left: 0;
-    z-index: 2;
     max-width: 100%;
     max-height: 0;
-    overflow: hidden;
-    background-color: $white;
     border-radius: 4px;
+    background-color: $white;
+    overflow: hidden;
     visibility: hidden;
 
     &.visible {
@@ -179,12 +179,11 @@ onBeforeMount(() => {
     }
 
     .options {
-      width: 100%;
       max-height: 180px;
+      width: 100%;
       margin: 0;
       padding-left: 8px;
-      overflow-x: hidden;
-      overflow-y: scroll;
+      overflow: hidden scroll;
       text-align: left;
       list-style: none;
     }

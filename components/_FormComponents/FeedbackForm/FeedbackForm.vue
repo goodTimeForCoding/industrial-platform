@@ -364,12 +364,12 @@ onMounted(() => {
   }
 
   .error-text {
+    z-index: 5;
     position: absolute;
     right: 5px;
     bottom: 5px;
-    z-index: 5;
-    color: red;
     font-size: 10px;
+    color: red;
   }
 
   .error-text-left {
@@ -382,17 +382,17 @@ onMounted(() => {
     margin: 0;
     padding: 0;
     padding-left: 14px;
-    color: $black;
-    font-weight: 500;
-    font-size: 14px;
-    background: $white;
-    border: unset;
     border-radius: 4px;
+    border: unset;
+    background: $white;
+    font-size: 14px;
+    font-weight: 500;
+    color: $black;
 
     &::placeholder {
-      color: $stardust;
-      font-weight: 500;
       font-size: 14px;
+      font-weight: 500;
+      color: $stardust;
     }
   }
 
@@ -412,13 +412,13 @@ onMounted(() => {
     display: inline-block;
     margin-right: 14px;
     padding: 18px 28px;
-    color: $white;
-    font-weight: 700;
-    font-size: 14px;
-    text-decoration: none;
-    background: $christi;
     border-radius: 4px;
+    background: $christi;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
     transition: background-color 0.3s ease;
+    color: $white;
 
     &:hover,
     &:focus {
@@ -442,10 +442,10 @@ onMounted(() => {
     display: inline-block;
     max-width: 490px;
     margin: 0;
-    color: $dustygray;
-    font-weight: 500;
     font-size: 12px;
     line-height: 18px;
+    font-weight: 500;
+    color: $dustygray;
   }
 
   .btn-text-wrap {
@@ -455,13 +455,14 @@ onMounted(() => {
   }
 
   .feedback-form-phone {
-    padding: 0;
     display: flex;
     align-items: center;
+    padding: 0;
   }
 }
 
 .feedback-form-modal {
+
   & .nomessage {
     display: block;
   }
@@ -517,14 +518,16 @@ onMounted(() => {
 }
 
 @include bigmobile {
+
   .feedback-form-modal {
+
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 280px;
     }
 
     & .btn-text-wrap {
-      margin-top: 0px;
+      margin-top: 0;
     }
 
     & .feedback-form-input {
@@ -543,6 +546,7 @@ onMounted(() => {
 }
 
 @include minitablet {
+
   .feedback-form {
     width: 100%;
 
@@ -599,14 +603,15 @@ onMounted(() => {
   }
 
   .feedback-form-modal {
+
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 100%;
     }
 
     & .feedback-form-input {
-      margin-bottom: 6px;
       height: 40px;
+      margin-bottom: 6px;
     }
 
     & .btn-text-wrap {

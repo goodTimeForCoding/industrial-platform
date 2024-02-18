@@ -27,8 +27,8 @@ export default {
   display: flex;
   flex-direction: column;
   width: 210px;
-  background-color: $white;
   border-radius: 4px;
+  background-color: $white;
 
   & .link-item {
     padding: 8px 17px;
@@ -58,10 +58,11 @@ export default {
 }
 
 @include tablet {
+
   .nav-links {
-    font-weight: 500;
-    background-color: transparent;
     border: none;
+    background-color: transparent;
+    font-weight: 500;
 
     & .link-item {
       position: relative;
@@ -69,8 +70,8 @@ export default {
       padding: 0;
       padding-top: 15px;
       padding-bottom: 15px;
-      line-height: normal;
       border-radius: 4px;
+      line-height: normal;
       transition: 0.2s;
 
       &:hover {

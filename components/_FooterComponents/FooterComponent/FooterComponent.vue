@@ -108,18 +108,15 @@ const isTabletBreakpoint = computed(
 .footer {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 48px;
-  padding-bottom: 26px;
-  padding-left: 46px;
-  padding-right: 41px;
-  color: $thunder;
+  padding: 48px 41px 26px 46px;
   background-color: $lightgrey;
+  color: $thunder;
 
   & .logo-text {
     margin-bottom: 20px;
-    color: $black;
-    font-weight: 600;
     font-size: 16px;
+    font-weight: 600;
+    color: $black;
   }
 
   & .logo-img {
@@ -157,69 +154,62 @@ const isTabletBreakpoint = computed(
 }
 
 @include minidesk {
+
   .footer {
     row-gap: 30px;
   }
 }
 
 @include tablet {
+
   .footer {
     display: grid;
     grid-template-columns: 235px auto auto 1fr;
     column-gap: 10px;
 
     & .col {
-      grid-column-start: 1;
-      grid-column-end: 5;
+      grid-column: 1 / 5;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     & .language-wrap {
+      width: 53px;
       margin: 0;
       margin-left: auto;
-      grid-column-start: 3;
-      grid-column-end: 4;
-      width: 53px;
+      grid-column: 3 / 4;
     }
   }
 }
 
 @include bigmobile {
+
   .footer {
     display: grid;
+    padding: 40px 27px 47px;
     grid-template-columns: 1fr 1fr;
-    padding-top: 40px;
-    padding-bottom: 47px;
-    padding-left: 27px;
-    padding-right: 27px;
-    row-gap: 19px;
-    column-gap: 70px;
+    gap: 19px 70px;
 
     & .col {
       display: grid;
-      grid-column-start: 1;
-      grid-column-end: 3;
+      grid-column: 1 / 3;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       row-gap: 10px;
     }
 
     & .language-wrap {
-      grid-column-start: 2;
-      grid-column-end: 3;
-      grid-row-start: 1;
-      grid-row-end: 2;
+      grid-column: 2 / 3;
     }
 
     & .support-wrap {
-      grid-column-start: 1;
-      grid-column-end: 3;
+      grid-column: 1 / 3;
     }
   }
 }
 
 @include bigdesktop {
+
   .footer {
     justify-content: center;
     gap: 30px;

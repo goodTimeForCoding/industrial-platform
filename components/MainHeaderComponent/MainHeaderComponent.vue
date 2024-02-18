@@ -48,6 +48,7 @@
 
 <style lang="scss" scoped>
 .main-header {
+
   & .wrap {
     display: flex;
     gap: 49px;
@@ -59,9 +60,9 @@
     margin: 0;
     margin-bottom: 20px;
     padding: 0;
-    color: $white;
-    font-weight: 800;
     font-size: 45px;
+    font-weight: 800;
+    color: $white;
   }
 
   & .collab-text {
@@ -76,8 +77,8 @@
   }
 
   & .collab-wrap {
-    position: relative;
     z-index: 2;
+    position: relative;
     display: flex;
     align-items: center;
     column-gap: 20px;
@@ -94,23 +95,25 @@
   }
 
   & .screen-img {
-    position: relative;
     z-index: 2;
+    position: relative;
     width: 604px;
     height: 100%;
   }
 
   & .pause-logo {
+    z-index: 8;
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 8;
     transform: translate(-50%, -50%);
   }
 }
 
 @include minidesk {
+
   .main-header {
+
     & .title {
       font-size: 35px;
     }
@@ -122,7 +125,9 @@
 }
 
 @include tablet {
+
   .main-header {
+
     & .collab-wrap {
       column-gap: 10px;
     }
@@ -139,14 +144,16 @@
 }
 
 @include bigmobile {
+
   .main-header {
+
     & .collab-wrap {
       column-gap: 26px;
     }
 
     & .left-wrap {
       width: auto;
-      padding: 0 25px 95px 25px;
+      padding: 0 25px 95px;
     }
 
     & .title {
@@ -174,10 +181,12 @@
 // }
 
 @include bigdesktop {
+
   .main-header {
+
     & .wrap {
-      margin: 0 auto;
       justify-content: center;
+      margin: 0 auto;
       gap: 150px;
     }
   }

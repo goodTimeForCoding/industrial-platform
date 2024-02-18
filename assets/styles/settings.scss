@@ -1,6 +1,6 @@
 .container {
-  padding: 0px 15px 0px 30px;
   margin: 0 auto;
+  padding: 0 15px 0 30px;
 
   @include minitablet {
     padding: 0 50px;
@@ -16,18 +16,19 @@
 }
 
 .feedback-form .feedback-form-phone {
+
   & .m-input-wrapper {
     border: none;
     font-weight: 500;
-    font-family: 'Montserrat';
+    font-family: Montserrat;
     color: $stardust;
   }
 
   & .m-phone-number-input__select {
+    z-index: 2;
     width: 131px !important;
     height: 38px;
     border-right: 1px solid $grey;
-    z-index: 2;
 
     & .m-input.--should-up .m-input-label,
     & .m-input:not(.--should-up) .m-input-label {
@@ -48,6 +49,7 @@
   }
 
   & .m-phone-number-input__input {
+
     & .m-input-input {
       color: $black;
       font-size: 14px;
@@ -61,12 +63,13 @@
 
   & .m-phone-number-input__country-flag {
     z-index: 3;
-    font-weight: 500;
     font-size: 17px;
+    font-weight: 500;
   }
 }
 
 .products-swiper {
+
   & .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
@@ -82,6 +85,7 @@
 }
 
 .advantage-swiper {
+
   & .swiper-pagination {
     display: flex;
     justify-content: center;

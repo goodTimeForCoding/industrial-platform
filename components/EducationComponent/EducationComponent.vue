@@ -28,14 +28,14 @@ const modalStore = useModalStore();
 
 <style lang="scss" scoped>
 .education {
-  margin-bottom: 91px;
   position: relative;
+  margin-bottom: 91px;
 
   &::after {
-    position: absolute;
-    bottom: -150px;
-    right: 0;
     z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: -150px;
     border-top: 64px solid $baltic;
     border-right: 0;
     border-bottom: 0;
@@ -46,9 +46,9 @@ const modalStore = useModalStore();
   & .education-bg {
     padding-top: 66px;
     padding-bottom: 60px;
+    background-size: cover;
     background-image: url('/bg-img/edu-bg.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
     color: $white;
   }
 
@@ -56,14 +56,14 @@ const modalStore = useModalStore();
     margin: 0;
     margin-bottom: 23px;
     padding: 0;
-    font-weight: 700;
     font-size: 22px;
+    font-weight: 700;
   }
 
   & .text {
+    max-width: 808px;
     margin: 0;
     padding: 0;
-    max-width: 808px;
   }
 
   & .text-top {
@@ -76,18 +76,21 @@ const modalStore = useModalStore();
 }
 
 @include bigmobile {
+
   .education {
+
     &::after {
-      border-top: 24px solid $baltic;
       bottom: -115px;
+      border-top: 24px solid $baltic;
     }
   }
 }
 
 @include bigdesktop {
+
   .education-wrap {
-    margin: 0 auto;
     max-width: 800px;
+    margin: 0 auto;
   }
 }
 </style>

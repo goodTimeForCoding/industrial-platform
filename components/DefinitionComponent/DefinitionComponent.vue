@@ -84,8 +84,8 @@
     margin: 0;
     margin-bottom: 60px;
     padding: 0;
-    font-weight: 700;
     font-size: 22px;
+    font-weight: 700;
   }
 
   & .definition-item {
@@ -107,6 +107,7 @@
 }
 
 @include tablet {
+
   .definition {
     color: $white;
 
@@ -118,7 +119,9 @@
 }
 
 @include bigmobile {
+
   .definition {
+
     & .title {
       margin-bottom: 40px;
     }
@@ -126,9 +129,10 @@
 }
 
 @include bigdesktop {
+
   .definition-wrap {
-    margin: 0 auto;
     max-width: 1000px;
+    margin: 0 auto;
   }
 }
 </style>

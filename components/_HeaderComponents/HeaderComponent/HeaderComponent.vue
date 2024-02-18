@@ -73,15 +73,15 @@ const addNavOpenCloseClass = computed(() => {
 
 <style scoped lang="scss">
 .header-nav {
-  position: relative;
-  background-color: $baltic;
   z-index: 10;
-  display: flex;
+  position: relative;
   flex-grow: 1;
-  color: $white;
-  font-weight: 500;
+  display: flex;
+  background-color: $baltic;
   font-size: 14px;
   line-height: 20px;
+  font-weight: 500;
+  color: $white;
 
   & .language-wrap {
     align-self: center;
@@ -95,15 +95,15 @@ const addNavOpenCloseClass = computed(() => {
   &-toggle {
     position: relative;
     display: none;
-    align-self: center;
     width: 40px;
     height: 40px;
     margin: 0;
     padding: 0;
-    background-color: transparent;
     border: none;
+    background-color: transparent;
     cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    align-self: center;
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
   }
 
   &-toggle::before {
@@ -112,8 +112,8 @@ const addNavOpenCloseClass = computed(() => {
     left: 5px;
     width: 30px;
     height: 3px;
-    background-color: $christi;
     border-radius: 2px;
+    background-color: $christi;
     box-shadow:
       0 8px 0 0 $christi,
       0 16px 0 0 $christi;
@@ -121,6 +121,7 @@ const addNavOpenCloseClass = computed(() => {
   }
 
   &--opened &-toggle {
+
     &::before,
     &::after {
       position: absolute;
@@ -128,14 +129,14 @@ const addNavOpenCloseClass = computed(() => {
       left: 5px;
       width: 30px;
       height: 3px;
-      background-color: $christi;
       border-radius: 2px;
+      background-color: $christi;
       content: '';
     }
 
     &::before {
-      box-shadow: none;
       transform: rotate(45deg);
+      box-shadow: none;
     }
 
     &::after {
@@ -145,6 +146,7 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include tablet {
+
   .header-nav {
     display: flex;
     flex-direction: column;
@@ -163,8 +165,8 @@ const addNavOpenCloseClass = computed(() => {
 
     & .nav-wrap {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
       padding-top: 25px;
       padding-bottom: 25px;
@@ -177,14 +179,15 @@ const addNavOpenCloseClass = computed(() => {
     }
 
     & .language-item {
+
       &:hover {
         color: $christi;
       }
     }
 
     &--opened .btn-wrap {
-      display: block;
       order: 4;
+      display: block;
       margin-top: 64px;
       margin-bottom: 58px;
       padding: 0 31px;
@@ -207,7 +210,9 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include mobile {
+
   .header-nav {
+
     &--opened .btn-wrap {
       margin-bottom: 58px;
     }
@@ -225,17 +230,20 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include bigdesktop {
+
   .header-nav {
     max-width: 1920px;
   }
 }
 
 @keyframes open-menu {
+
   from {
     transform: translateY(-50px);
   }
+
   to {
-    transform: translateX(0px);
+    transform: translateX(0);
   }
 }
 </style>

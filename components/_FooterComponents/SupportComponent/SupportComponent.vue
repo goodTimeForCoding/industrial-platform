@@ -63,27 +63,27 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .support {
-  margin-right: 50px;
   max-width: 220px;
+  margin-right: 50px;
 
   & .support-title {
     margin: 0;
     margin-bottom: 9px;
     padding: 0;
-    color: $black;
-    font-weight: 600;
     font-size: 14px;
+    font-weight: 600;
+    color: $black;
   }
 
   & .header-contact-link {
     position: relative;
     margin-right: 26px;
-    color: $thunder;
-    font-weight: 500;
     font-size: 14px;
+    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
     transition: 0.1s;
+    color: $thunder;
 
     &:hover {
       color: $christi;
@@ -119,17 +119,17 @@ const props = defineProps({
 
   & .phone-text {
     margin: 0;
-    padding: 0;
     margin-top: 7px;
     margin-bottom: 3px;
+    padding: 0;
     font-size: 12px;
   }
 }
 
 @include bigmobile {
+
   .support {
-    grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column: 1 / 3;
   }
 }
 </style>

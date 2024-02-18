@@ -22,10 +22,10 @@ const props = defineProps({
 .check {
   display: flex;
   align-items: flex-start;
-  gap: 5px;
   font-size: 12px;
-  font-weight: 500;
   line-height: 20px;
+  font-weight: 500;
+  gap: 5px;
 
   & .check-input {
     margin-top: 4px;
