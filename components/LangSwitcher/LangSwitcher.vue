@@ -20,6 +20,7 @@
 
 <script setup>
 import { useFeedbackForm } from '@/store/FeedbackForm';
+
 const feedbackFormStore = useFeedbackForm();
 const switchLocalePath = useSwitchLocalePath();
 const cleanArr = () => {

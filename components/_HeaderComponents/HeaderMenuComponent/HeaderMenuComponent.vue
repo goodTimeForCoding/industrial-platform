@@ -171,6 +171,7 @@ const headerItems = reactive([
 
 const isHeaderItemActive = menuItem => {
   if (menuItem.isHover) return 'header-item--active';
+
   return '';
 };
 
@@ -194,11 +195,13 @@ const openCloseMenuList = menu => {
 
 const arrowRotate = menuItem => {
   if (menuItem.isHover) return 'arrow-img--rotate';
+
   return '';
 };
 
 const addOpenCloseClass = computed(() => {
   if (props.isLinksClose) return 'header-menu--closed';
+
   if (props.isLinksOpen) return 'header-menu--opened';
 });
 </script>

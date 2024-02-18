@@ -78,6 +78,7 @@
 
 <script setup>
 import { useZyfraStore } from '@/store/ZyfraStore.js';
+
 const zyfraStore = useZyfraStore();
 const localePath = useLocalePath();
 

@@ -72,14 +72,14 @@
 </template>
 
 <script setup>
+import { useReCaptcha } from 'vue-recaptcha-v3';
+import { reactive } from 'vue';
 import NotificationComponent from '@/components/_FormComponents/NotificationComponent/NotificationComponent.vue';
 import BaseInput from '@/components/_UI/BaseInput/BaseInput.vue';
 import DropdownComponent from '@/components/_FormComponents/DropdownComponent/DropdownComponent.vue';
 import BaseCheckbox from '@/components/_UI/BaseCheckbox/BaseCheckbox.vue';
 import { useFeedbackForm } from '@/store/FeedbackForm.js';
 import countriesArr from '@/mock/countries.json';
-import { useReCaptcha } from 'vue-recaptcha-v3';
-import { reactive } from 'vue';
 import { useModalStore } from '@/store/ModalStore.js';
 
 const props = defineProps({
@@ -173,6 +173,7 @@ const formDatum = reactive([
 
 const addModalClass = computed(() => {
   if (props.isModal) return 'feedback-form-modal';
+
   return '';
 });
 
@@ -182,46 +183,50 @@ const addTranslation = () => {
       placeholder: '',
     },
   };
+
   if (i18nLocale.locale.value === 'ru') {
     translation.countrySelector.placeholder = 'Код страны';
   }
+
   if (i18nLocale.locale.value === 'en') {
     translation.countrySelector.placeholder = 'Country code';
   }
+
   return translation;
 };
 
 const deleteErrorMessage = () => {
   if (modalStore.isShowModal) return 'nomessage';
+
   return '';
 };
 
-const getRuCountries = () => {
-  return countriesArr.ru.map(item => item.name);
-};
+const getRuCountries = () => countriesArr.ru.map(item => item.name);
 
-const getEnCountries = () => {
-  return countriesArr.en.map(item => item.name);
-};
+const getEnCountries = () => countriesArr.en.map(item => item.name);
 
 const getLocaleCountries = () => {
   if (i18nLocale.locale.value === 'en') return feedbackFormStore.enCountries;
+
   if (i18nLocale.locale.value === 'ru') return feedbackFormStore.ruCountries;
 };
 
 const addCountryCode = countryData => {
   formDatum[4].value = countryData.country;
   let selectCountry;
+
   if (i18nLocale.locale.value === 'ru') {
-    selectCountry = countriesArr.ru.find(item => {
-      return item.name === formDatum[4].value;
-    });
+    selectCountry = countriesArr.ru.find(
+      item => item.name === formDatum[4].value
+    );
   }
+
   if (i18nLocale.locale.value === 'en') {
-    selectCountry = countriesArr.en.find(item => {
-      return item.name === formDatum[4].value;
-    });
+    selectCountry = countriesArr.en.find(
+      item => item.name === formDatum[4].value
+    );
   }
+
   if (selectCountry) {
     feedbackFormStore.addCountryCode(selectCountry.code);
   }
@@ -232,28 +237,27 @@ const onUpdate = payload => {
   feedbackFormStore.addIsPhoneValid(payload.isValid);
 };
 
-const adaptForm = token => {
-  return {
-    locale: 'ru',
-    firstName: formDatum[0].value,
-    lastName: formDatum[1].value,
-    position: formDatum[2].value,
-    company: formDatum[3].value,
-    industry: 'Процессные индустрии',
-    country: formDatum[4].value,
-    email: formDatum[5].value,
-    phone: formDatum[6].value,
-    comment: formDatum[7].value,
-    countryCode: feedbackFormStore.countryCode,
-    recaptchaToken: token,
-    type: 'contact',
-    page: '/ru/product/industrial-iot-platform/',
-  };
-};
+const adaptForm = token => ({
+  locale: 'ru',
+  firstName: formDatum[0].value,
+  lastName: formDatum[1].value,
+  position: formDatum[2].value,
+  company: formDatum[3].value,
+  industry: 'Процессные индустрии',
+  country: formDatum[4].value,
+  email: formDatum[5].value,
+  phone: formDatum[6].value,
+  comment: formDatum[7].value,
+  countryCode: feedbackFormStore.countryCode,
+  recaptchaToken: token,
+  type: 'contact',
+  page: '/ru/product/industrial-iot-platform/',
+});
 
 const validEmail = email => {
   const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i;
+
   return re.test(email);
 };
 
@@ -287,24 +291,29 @@ const checkValid = () => {
 
 const showErrorText = name => {
   const errElement = feedbackFormStore.getErrorItem(name);
+
   if (errElement) {
     return errElement.errorText;
   }
+
   return errElement;
 };
 
 const recaptcha = async () => {
   await recaptchaInstance?.recaptchaLoaded();
   const token = await recaptchaInstance?.executeRecaptcha('login');
+
   return token;
 };
 
 const onSubmit = async () => {
   try {
     checkValid();
+
     if (feedbackFormStore.errors.length === 0) {
       const token = await recaptcha();
       const data = adaptForm(token);
+
       await feedbackFormStore.postFeedbackData(data);
       feedbackFormStore.setMessage({
         name: i18nLocale.t('validation.success'),

@@ -22,6 +22,7 @@
 <script setup>
 import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm.vue';
 import { useModalStore } from '@/store/ModalStore.js';
+
 const modalStore = useModalStore();
 </script>
 

@@ -73,13 +73,15 @@ const advantagesData = [
 
 const addPerViewCount = computed(() => {
   if (zyfraStore.screenWidth <= MIDDLEMOBILE_BREAKPOINT) return 1.15;
+
   if (zyfraStore.screenWidth <= BIGMOBILE_BREAKPOINT) return 1.5;
+
   return 2.5;
 });
 
-const isTabletBreakpoint = computed(() => {
-  return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
-});
+const isTabletBreakpoint = computed(
+  () => zyfraStore.screenWidth <= MINITABLET_BREAKPOINT
+);
 </script>
 
 <style lang="scss" scoped>
@@ -154,15 +156,20 @@ const isTabletBreakpoint = computed(() => {
       url('/bg-img/arrow-left.svg'), url('/bg-img/arrow-turn-top.svg'),
       url('/bg-img/factory.png');
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position: top 63px right 31px, bottom 60px right 31px,
-      bottom 60px left 37px, top 38px left 34px;
+    background-position:
+      top 63px right 31px,
+      bottom 60px right 31px,
+      bottom 60px left 37px,
+      top 38px left 34px;
   }
 
   & .architecture {
     background-image: url('/bg-img/arrow-right.svg'),
       url('/bg-img/arrow-left.svg'), url('/bg-img/gears.png');
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: top 63px right 31px, bottom 60px right 31px,
+    background-position:
+      top 63px right 31px,
+      bottom 60px right 31px,
       top 28px left 30px;
   }
 
@@ -170,7 +177,9 @@ const isTabletBreakpoint = computed(() => {
     background-image: url('/bg-img/arrow-turn-bottom.svg'),
       url('/bg-img/arrow-left.svg'), url('/bg-img/challenges.png');
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: top 63px right 28px, bottom 60px right 31px,
+    background-position:
+      top 63px right 28px,
+      bottom 60px right 31px,
       top 38px left 34px;
   }
 }

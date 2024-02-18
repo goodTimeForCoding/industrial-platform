@@ -41,9 +41,7 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
-    default: () => {
-      return `Выберите значение`;
-    },
+    default: () => `Выберите значение`,
   },
 });
 
@@ -75,9 +73,10 @@ const selectItem = item => {
 
 const filteredUser = computed(() => {
   if (searchQuery.value === '') return props.options;
-  return props.options.filter(item => {
-    return item.toLowerCase().includes(searchQuery.value.toLowerCase());
-  });
+
+  return props.options.filter(item =>
+    item.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
 });
 
 /**
@@ -90,6 +89,7 @@ const addSelectClass = computed(() => {
 
 const addPlaceholder = computed(() => {
   if (selectedItem.value) return selectedItem.value;
+
   return props.placeholder;
 });
 
@@ -99,12 +99,11 @@ const addIconDropDownClass = computed(() => {
 
 const addPopoverClass = computed(() => {
   if (isVisible.value) return 'visible';
+
   return 'invisible';
 });
 
-const isFilteredData = computed(() => {
-  return filteredUser.length === 0;
-});
+const isFilteredData = computed(() => filteredUser.length === 0);
 
 onBeforeMount(() => {
   selectItem(props.placeholder);

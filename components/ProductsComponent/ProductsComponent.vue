@@ -41,9 +41,9 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
 import { useProductsStore } from '@/store/ProductsStore.js';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
-import { useI18n } from 'vue-i18n';
 
 const productsStore = useProductsStore();
 const zyfraStore = useZyfraStore();
@@ -54,18 +54,21 @@ const MIDDLEMOBILE_BREAKPOINT = 424;
 
 const getSlidesPerView = computed(() => {
   if (zyfraStore.screenWidth >= BIGDESKTOP_BREAKPOINT) return 3;
+
   if (
     zyfraStore.screenWidth <= MINITABLET_BREAKPOINT &&
     zyfraStore.screenWidth > MIDDLEMOBILE_BREAKPOINT
   )
     return 1.99;
+
   if (zyfraStore.screenWidth <= MIDDLEMOBILE_BREAKPOINT) return 1.2;
+
   return 2.8;
 });
 
-const addCenteredSlides = computed(() => {
-  return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
-});
+const addCenteredSlides = computed(
+  () => zyfraStore.screenWidth <= MINITABLET_BREAKPOINT
+);
 
 onMounted(() => {
   productsStore.getProducts(i18nLocale.locale.value);

@@ -60,12 +60,13 @@ const changeNav = () => {
   isNavOpened.value = !isNavOpened.value;
 };
 
-const isTabletBreakpoint = computed(() => {
-  return zyfraStore.screenWidth < TABLET_BREAKPOINT;
-});
+const isTabletBreakpoint = computed(
+  () => zyfraStore.screenWidth < TABLET_BREAKPOINT
+);
 
 const addNavOpenCloseClass = computed(() => {
   if (isNavClosed.value) return 'header-nav--closed';
+
   if (isNavOpened.value) return 'header-nav--opened';
 });
 </script>
@@ -113,7 +114,9 @@ const addNavOpenCloseClass = computed(() => {
     height: 3px;
     background-color: $christi;
     border-radius: 2px;
-    box-shadow: 0 8px 0 0 $christi, 0 16px 0 0 $christi;
+    box-shadow:
+      0 8px 0 0 $christi,
+      0 16px 0 0 $christi;
     content: '';
   }
 

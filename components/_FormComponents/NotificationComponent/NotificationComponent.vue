@@ -25,9 +25,7 @@ export default {
   props: {
     messages: {
       type: Array,
-      default: () => {
-        return [];
-      },
+      default: () => [],
     },
     timeout: {
       type: Number,
@@ -39,6 +37,7 @@ export default {
     hideNotification() {
       setTimeout(() => {
         const messagesArray = this.messages.map(a => ({ ...a }));
+
         if (this.messages.length) {
           messagesArray.splice(messagesArray.length - 1, 1);
           this.$emit('updateMessages', messagesArray);
@@ -127,7 +126,10 @@ export default {
   }
 
   &-leave-active {
-    transition: transform 0.6s ease, opacity 0.6s, height 0.6s 0.2s;
+    transition:
+      transform 0.6s ease,
+      opacity 0.6s,
+      height 0.6s 0.2s;
   }
 
   &-leave-to {

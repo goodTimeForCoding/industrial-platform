@@ -27,19 +27,17 @@
 </template>
 
 <script setup>
+import { createHydrationRenderer } from 'vue';
 import HeaderComponent from '@/components/_HeaderComponents/HeaderComponent/HeaderComponent.vue';
 import FooterComponent from '@/components/_FooterComponents/FooterComponent/FooterComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
 import { useModalStore } from '@/store/ModalStore.js';
-import { createHydrationRenderer } from 'vue';
 
 const DESKTOP_BREAKPOINT = 1179;
 const zyfraStore = useZyfraStore();
 const modalStore = useModalStore();
 
-const isDesktopBreakpoint = () => {
-  return zyfraStore.screenWidth >= DESKTOP_BREAKPOINT;
-};
+const isDesktopBreakpoint = () => zyfraStore.screenWidth >= DESKTOP_BREAKPOINT;
 
 const onScreenResize = () => {
   window.addEventListener('resize', () => {
@@ -50,15 +48,19 @@ const onScreenResize = () => {
 const onScrollDistanceResize = () => {
   window.addEventListener('scroll', () => {
     zyfraStore.updateScrollDistance();
+
     if (zyfraStore.scrollDistance >= zyfraStore.toIndustryDistance - 5) {
       zyfraStore.setIndustryActiveClass();
     }
+
     if (zyfraStore.scrollDistance >= zyfraStore.toProductsDistance - 5) {
       zyfraStore.setProductsActiveClass();
     }
+
     if (zyfraStore.scrollDistance >= zyfraStore.toEducationDistance - 5) {
       zyfraStore.setEducationActiveClass();
     }
+
     if (zyfraStore.scrollDistance >= zyfraStore.toFeedbackDistance - 5) {
       zyfraStore.setFeedbackActiveClass();
     }
@@ -67,11 +69,11 @@ const onScrollDistanceResize = () => {
 
 createHydrationRenderer;
 
-const sidebarClose = computed(() => {
-  return zyfraStore.isSidebarClosed
+const sidebarClose = computed(() =>
+  zyfraStore.isSidebarClosed
     ? 'sidebar-container-close'
-    : 'sidebar-container-open';
-});
+    : 'sidebar-container-open'
+);
 
 onMounted(() => {
   zyfraStore.updateScreenWidth();

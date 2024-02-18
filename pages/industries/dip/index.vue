@@ -19,6 +19,7 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
 import MainHeaderComponent from '@/components/MainHeaderComponent/MainHeaderComponent.vue';
 import AdvantageComponent from '@/components/AdvantageComponent/AdvantageComponent.vue';
 import TasksComponent from '@/components/TasksComponent/TasksComponent.vue';
@@ -27,7 +28,6 @@ import ProductsComponent from '@/components/ProductsComponent/ProductsComponent.
 import EducationComponent from '@/components/EducationComponent/EducationComponent.vue';
 import FeedbackFormComponent from '@/components/_FormComponents/FeedbackFormComponent/FeedbackFormComponent.vue';
 import { useZyfraStore } from '@/store/ZyfraStore.js';
-import { onMounted, ref } from 'vue';
 
 const zyfraStore = useZyfraStore();
 const industry = ref(null);
@@ -37,21 +37,25 @@ const feedback = ref(null);
 
 const setToIndustryDistance = () => {
   const distance = industry.value.offsetTop;
+
   zyfraStore.updateToIndustryDistance(distance);
 };
 
 const setToProductsDistance = () => {
   const distance = products.value.offsetTop;
+
   zyfraStore.updateToProductsDistance(distance);
 };
 
 const setToEducationDistance = () => {
   const distance = education.value.offsetTop;
+
   zyfraStore.updateToEducationDistance(distance);
 };
 
 const setToFeedbackDistance = () => {
   const distance = feedback.value.offsetTop;
+
   zyfraStore.updateToFeedbackDistance(distance);
 };
 

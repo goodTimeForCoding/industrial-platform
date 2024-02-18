@@ -22,6 +22,7 @@
 <script setup>
 import ButtonComponent from '@/components/_UI/ButtonComponent/ButtonComponent.vue';
 import { useModalStore } from '@/store/ModalStore.js';
+
 const modalStore = useModalStore();
 </script>
 

@@ -9,6 +9,7 @@
 
 <script setup>
 import { useZyfraStore } from '@/store/ZyfraStore.js';
+
 const zyfraStore = useZyfraStore();
 const i18nLocale = useI18n();
 
@@ -18,9 +19,12 @@ const MINITABLET_BREAKPOINT = 768;
 const addTitle = computed(() => {
   if (zyfraStore.screenWidth < MINITABLET_BREAKPOINT && currentLocale === 'ru')
     return 'Свяжитесь с нами';
+
   if (zyfraStore.screenWidth < MINITABLET_BREAKPOINT && currentLocale === 'en')
     return 'Contact us';
+
   if (currentLocale === 'ru') return 'Будем на связи';
+
   if (currentLocale === 'en') return "Let's be in touch";
 });
 </script>

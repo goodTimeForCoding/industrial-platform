@@ -1,23 +1,21 @@
 import { defineStore } from 'pinia';
 
+// eslint-disable-next-line import/prefer-default-export
 export const useFeedbackForm = defineStore({
   id: 'feedback-form-store',
-  state: () => {
-    return {
-      errors: [],
-      ruCountries: [],
-      enCountries: [],
-      messages: [],
-      countryCode: 'RU',
-      validPhone: '',
-      isPhoneValid: '',
-    };
-  },
+  state: () => ({
+    errors: [],
+    ruCountries: [],
+    enCountries: [],
+    messages: [],
+    countryCode: 'RU',
+    validPhone: '',
+    isPhoneValid: '',
+  }),
 
   getters: {
-    getErrorItem: state => {
-      return name => state.errors.find(item => item.name === name);
-    },
+    getErrorItem: state => name =>
+      state.errors.find(item => item.name === name),
 
     getMessages(state) {
       return state.messages;
@@ -67,6 +65,7 @@ export const useFeedbackForm = defineStore({
 
     async postFeedbackData(data) {
       const url = useRuntimeConfig().public.postFormUrl;
+
       await fetch(url, {
         method: 'POST',
         headers: {

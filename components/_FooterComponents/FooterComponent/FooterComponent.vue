@@ -99,9 +99,9 @@ const industryList = reactive([
   { name: 'footer.metalworking', id: 44 },
 ]);
 
-const isTabletBreakpoint = computed(() => {
-  return zyfraStore.screenWidth <= TABLET_BREAKPOINT;
-});
+const isTabletBreakpoint = computed(
+  () => zyfraStore.screenWidth <= TABLET_BREAKPOINT
+);
 </script>
 
 <style scoped lang="scss">
