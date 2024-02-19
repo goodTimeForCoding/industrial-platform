@@ -21,7 +21,7 @@
 
 <script setup>
 import ButtonComponent from '@/components/_UI/ButtonComponent/ButtonComponent.vue';
-import { useModalStore } from '@/store/ModalStore.js';
+import { useModalStore } from '@/store/ModalStore';
 
 const modalStore = useModalStore();
 </script>
@@ -76,9 +76,7 @@ const modalStore = useModalStore();
 }
 
 @include bigmobile {
-
   .education {
-
     &::after {
       bottom: -115px;
       border-top: 24px solid $baltic;
@@ -87,7 +85,6 @@ const modalStore = useModalStore();
 }
 
 @include bigdesktop {
-
   .education-wrap {
     max-width: 800px;
     margin: 0 auto;

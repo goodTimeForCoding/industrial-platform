@@ -8,13 +8,13 @@
         :slides-per-view="getSlidesPerView"
         :space-between="18"
         :pagination="{ clickable: true }"
-        :centeredSlides="addCenteredSlides"
+        :centered-slides="addCenteredSlides"
         :loop="true"
       >
         <SwiperSlide
-          class="product-slide"
           v-for="product in productsStore.products"
           :key="product.id"
+          class="product-slide"
         >
           <div class="product-card">
             <div class="product-card-wrap">
@@ -42,8 +42,9 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { useProductsStore } from '@/store/ProductsStore.js';
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+
+import { useProductsStore } from '@/store/ProductsStore';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const productsStore = useProductsStore();
 const zyfraStore = useZyfraStore();
@@ -54,21 +55,18 @@ const MIDDLEMOBILE_BREAKPOINT = 424;
 
 const getSlidesPerView = computed(() => {
   if (zyfraStore.screenWidth >= BIGDESKTOP_BREAKPOINT) return 3;
-
   if (
     zyfraStore.screenWidth <= MINITABLET_BREAKPOINT &&
     zyfraStore.screenWidth > MIDDLEMOBILE_BREAKPOINT
   )
     return 1.99;
-
   if (zyfraStore.screenWidth <= MIDDLEMOBILE_BREAKPOINT) return 1.2;
-
   return 2.8;
 });
 
-const addCenteredSlides = computed(
-  () => zyfraStore.screenWidth <= MINITABLET_BREAKPOINT
-);
+const addCenteredSlides = computed(() => {
+  return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
+});
 
 onMounted(() => {
   productsStore.getProducts(i18nLocale.locale.value);
@@ -83,18 +81,18 @@ onMounted(() => {
   background-color: $lightgrey;
 
   & .product-slide {
-    height: auto;
-    border-radius: 4px;
-    background-color: $white;
-    box-shadow: 4px 8px 26px 0 rgb(41 8 8 / 10%);
     cursor: pointer;
+    height: auto;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 4px 8px 26px 0 rgba(41, 8, 8, 0.1);
   }
 
   &::before {
-    z-index: 1;
     position: absolute;
     top: -39px;
     right: 0;
+    z-index: 1;
     border-top: 64px solid $baltic;
     border-right: 0;
     border-bottom: 0;
@@ -105,26 +103,29 @@ onMounted(() => {
   & .title {
     margin: 0;
     margin-bottom: 26px;
-    font-size: 22px;
-    font-weight: 700;
     color: $black;
+    font-weight: 700;
+    font-size: 22px;
   }
 
   & .product-card-wrap {
     display: flex;
     flex-direction: column;
-    padding: 34px 40px;
+    padding-top: 34px;
+    padding-right: 40px;
+    padding-bottom: 34px;
+    padding-left: 40px;
   }
 
   & .product-card-title {
     margin: 0;
     margin-bottom: 15px;
     padding: 0;
+    color: $christi;
+    font-weight: 700;
     font-size: 14px;
     line-height: 20px;
-    font-weight: 700;
     text-transform: uppercase;
-    color: $christi;
   }
 
   & .card-text {
@@ -151,15 +152,15 @@ onMounted(() => {
 
   & .link-btn {
     padding: 18px 35px;
-    border-radius: 4px;
-    background: $christi;
-    box-shadow: 0 8px 26px 0 rgb(22 44 86 / 10%);
-    font-size: 14px;
+    color: $white;
     font-weight: 700;
+    font-size: 14px;
     font-style: normal;
+    background: $christi;
+    border-radius: 4px;
+    box-shadow: 0 8px 26px 0 rgba(22, 44, 86, 0.1);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    color: $white;
 
     &:hover,
     &:focus {
@@ -177,48 +178,49 @@ onMounted(() => {
 }
 
 @include minidesk {
-
   .products {
-
     & .product-card-wrap {
-      padding: 20px 20px 0;
+      padding-top: 20px;
+      padding-right: 20px;
+      padding-bottom: 0px;
+      padding-left: 20px;
     }
   }
 }
 
 @include minitablet {
-
   .products {
-
     & .swiper {
-      padding-left: 0;
+      padding-left: 0px;
     }
 
     & .product-card-wrap {
-      padding: 25px 20px 30px 40px;
+      padding-top: 25px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      padding-left: 40px;
     }
   }
 }
 
 @include bigmobile {
-
   .products {
-
     &::before {
-      top: 0;
       border-top: 24px solid $baltic;
+      top: 0px;
     }
 
     & .product-card-wrap {
-      padding: 25px 20px 34px;
+      padding-top: 25px;
+      padding-right: 20px;
+      padding-bottom: 34px;
+      padding-left: 20px;
     }
   }
 }
 
 @include bigdesktop {
-
   .products {
-
     & .products-wrap {
       max-width: 1920px;
       margin: 0 auto;

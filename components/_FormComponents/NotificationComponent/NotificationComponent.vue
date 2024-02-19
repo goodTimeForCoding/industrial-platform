@@ -6,9 +6,9 @@
       class="messages_list"
     >
       <div
-        :class="['notification__content', message.type]"
         v-for="message in messages"
         :key="message.id"
+        :class="['notification__content', message.type]"
       >
         <div class="content__text">
           <span>{{ message.name }}</span>
@@ -25,30 +25,20 @@ export default {
   props: {
     messages: {
       type: Array,
-      default: () => [],
+      default: () => {
+        return [];
+      },
     },
     timeout: {
       type: Number,
       default: 5000,
     },
   },
-
-  methods: {
-    hideNotification() {
-      setTimeout(() => {
-        const messagesArray = this.messages.map(a => ({ ...a }));
-
-        if (this.messages.length) {
-          messagesArray.splice(messagesArray.length - 1, 1);
-          this.$emit('updateMessages', messagesArray);
-        }
-      }, this.timeout);
-    },
-  },
+  emits: ['updateMessages'],
 
   watch: {
     messages: {
-      handler(val, oldVal) {
+      handler() {
         this.hideNotification();
       },
       deep: true,
@@ -58,15 +48,27 @@ export default {
   mounted() {
     this.hideNotification();
   },
+
+  methods: {
+    hideNotification() {
+      setTimeout(() => {
+        const messagesArray = this.messages.map(a => ({ ...a }));
+        if (this.messages.length) {
+          messagesArray.splice(messagesArray.length - 1, 1);
+          this.$emit('updateMessages', messagesArray);
+        }
+      }, this.timeout);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .notification {
-  z-index: 10;
   position: fixed;
   top: 30px;
   right: 16px;
+  z-index: 10;
 
   &__messages_list {
     display: flex;
@@ -75,14 +77,14 @@ export default {
 
   &__content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     height: 50px;
     margin-bottom: 16px;
     padding: 16px;
-    border-radius: 4px;
-    background: $laurel;
     color: $white;
+    background: $laurel;
+    border-radius: 4px;
 
     &.error {
       background: $red;
@@ -98,17 +100,15 @@ export default {
   }
 
   .content {
-
     &__text {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
   }
 }
 
 .v-transition-animate {
-
   &-enter {
     transform: translateX(120px);
     opacity: 0;
@@ -135,8 +135,8 @@ export default {
   }
 
   &-leave-to {
-    transform: translateX(120px);
     height: 0;
+    transform: translateX(120px);
     opacity: 0;
   }
 

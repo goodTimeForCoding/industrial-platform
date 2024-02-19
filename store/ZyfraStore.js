@@ -2,19 +2,21 @@ import { defineStore } from 'pinia';
 
 export const useZyfraStore = defineStore({
   id: 'zyfra-store',
-  state: () => ({
-    isSidebarClosed: false,
-    screenWidth: null,
-    scrollDistance: null,
-    toIndustryDistance: null,
-    toProductsDistance: null,
-    toEducationDistance: null,
-    toFeedbackDistance: null,
-    isIndustryActive: false,
-    isProductsActive: false,
-    isEducationActive: false,
-    isFeedbackActive: false,
-  }),
+  state: () => {
+    return {
+      isSidebarClosed: false,
+      screenWidth: null,
+      scrollDistance: null,
+      toIndustryDistance: null,
+      toProductsDistance: null,
+      toEducationDistance: null,
+      toFeedbackDistance: null,
+      isIndustryActive: false,
+      isProductsActive: false,
+      isEducationActive: false,
+      isFeedbackActive: false,
+    };
+  },
   persist: true,
 
   actions: {

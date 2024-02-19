@@ -5,7 +5,7 @@
         <h2 class="modal-title">
           {{ $t('modal.title') }}
         </h2>
-        <FeedbackForm :isModal="true" />
+        <FeedbackForm :is-modal="true" />
         <div class="close">
           <img
             class="close-img"
@@ -21,40 +21,42 @@
 
 <script setup>
 import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm.vue';
-import { useModalStore } from '@/store/ModalStore.js';
+import { useModalStore } from '@/store/ModalStore';
 
 const modalStore = useModalStore();
 </script>
 
 <style lang="scss" scoped>
 .form-modal {
-
   & .modal-overlay {
-    z-index: 20;
     position: fixed;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: center;
+    z-index: 20;
     background-color: $lightblack;
   }
 
   & .modal {
     position: relative;
+    background-color: $white;
     width: 707px;
     height: 654px;
     margin-top: 10px;
     padding: 66px 112px 40px;
-    background-color: $white;
   }
 
   & .close {
     position: absolute;
+    cursor: pointer;
     top: 32px;
-    right: 66px;
     bottom: 0;
+    right: 66px;
     width: 18px;
     height: 18px;
-    cursor: pointer;
   }
 
   & .modal-title {
@@ -68,21 +70,17 @@ const modalStore = useModalStore();
 }
 
 @include tablet {
-
   .form-modal {
-
     & .modal {
+      padding: 20px 30px 20px;
       width: 543px;
       height: 577px;
-      padding: 20px 30px;
     }
   }
 }
 
 @include minitablet {
-
   .form-modal {
-
     & .modal {
       height: 640px;
     }
@@ -95,15 +93,13 @@ const modalStore = useModalStore();
 }
 
 @include bigmobile {
-
   .form-modal {
-
     & .modal {
-      width: 300px;
-      height: 640px;
       margin: 0;
       margin-top: 10px;
-      padding: 10px;
+      padding: 10px 10px;
+      width: 300px;
+      height: 640px;
     }
 
     & .modal-title {

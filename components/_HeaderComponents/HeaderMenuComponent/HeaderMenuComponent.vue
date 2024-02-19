@@ -1,9 +1,9 @@
 <template>
   <div :class="['header-menu', addOpenCloseClass]">
     <div
-      :class="['header-item', isHeaderItemActive(menu)]"
       v-for="menu in headerItems"
       :key="menu.id"
+      :class="['header-item', isHeaderItemActive(menu)]"
       @mouseover="openMenuList(menu)"
       @mouseleave="closeMenuList(menu)"
       @click="openCloseMenuList(menu)"
@@ -19,7 +19,7 @@
         <NavLinksComponent
           v-if="menu.isHover"
           class="menu-item-link"
-          :menuLinks="menu.links"
+          :menu-links="menu.links"
         />
       </transition>
     </div>
@@ -28,7 +28,7 @@
 
 <script setup>
 import NavLinksComponent from '@/components/_HeaderComponents/NavLinksComponent/NavLinksComponent.vue';
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const props = defineProps({
   isLinksOpen: {
@@ -171,10 +171,10 @@ const headerItems = reactive([
 
 const isHeaderItemActive = menuItem => {
   if (menuItem.isHover) return 'header-item--active';
-
   return '';
 };
 
+/* eslint-disable no-param-reassign */
 const openMenuList = menu => {
   if (zyfraStore.screenWidth > TABLET_BREAKPOINT) {
     menu.isHover = true;
@@ -192,17 +192,17 @@ const openCloseMenuList = menu => {
     menu.isHover = !menu.isHover;
   }
 };
+/* eslint-enable no-param-reassign */
 
 const arrowRotate = menuItem => {
   if (menuItem.isHover) return 'arrow-img--rotate';
-
   return '';
 };
 
 const addOpenCloseClass = computed(() => {
   if (props.isLinksClose) return 'header-menu--closed';
-
   if (props.isLinksOpen) return 'header-menu--opened';
+  return false;
 });
 </script>
 
@@ -231,7 +231,7 @@ const addOpenCloseClass = computed(() => {
     padding-bottom: 40px;
     cursor: pointer;
     transition: color 0.3s ease;
-    -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     &--active::before {
       position: absolute;
@@ -253,16 +253,14 @@ const addOpenCloseClass = computed(() => {
   }
 
   & .menu-item-link {
-    z-index: 3;
     position: absolute;
     top: 70px;
+    z-index: 3;
   }
 }
 
 @include minidesk {
-
   .header-menu {
-
     & .header-item {
       margin-right: 60px;
     }
@@ -270,12 +268,10 @@ const addOpenCloseClass = computed(() => {
 }
 
 @include tablet {
-
   .header-menu {
-
     &--opened {
-      order: 3;
       display: block;
+      order: 3;
       padding: 0 25px;
       animation-name: open-menu;
       animation-duration: 0.5s;
@@ -288,8 +284,8 @@ const addOpenCloseClass = computed(() => {
       margin-right: 0;
       padding-top: 15px;
       padding-bottom: 15px;
-      font-size: 22px;
       font-weight: 700;
+      font-size: 22px;
     }
 
     &--closed .header-item {
@@ -322,13 +318,11 @@ const addOpenCloseClass = computed(() => {
 }
 
 @keyframes open-menu {
-
   from {
     transform: translateY(-50px);
   }
-
   to {
-    transform: translateX(0);
+    transform: translateX(0px);
   }
 }
 </style>

@@ -77,33 +77,39 @@
 </template>
 
 <script setup>
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const zyfraStore = useZyfraStore();
 const localePath = useLocalePath();
 
 const addIndustryActiveClass = computed(() => {
   if (zyfraStore.isIndustryActive) return 'nav-item-active';
+  return false;
 });
 
 const addProductsActiveClass = computed(() => {
   if (zyfraStore.isProductsActive) return 'nav-item-active';
+  return false;
 });
 
 const addEducationActiveClass = computed(() => {
   if (zyfraStore.isEducationActive) return 'nav-item-active';
+  return false;
 });
 
 const addFeedbackActiveClass = computed(() => {
   if (zyfraStore.isFeedbackActive) return 'nav-item-active';
+  return false;
 });
 
 const arrowRotate = computed(() => {
   if (zyfraStore.isSidebarClosed) return 'arrow-img--rotate';
+  return false;
 });
 
 const addCloseWrap = computed(() => {
   if (zyfraStore.isSidebarClosed) return 'sidebar-close-wrap';
+  return false;
 });
 </script>
 
@@ -133,9 +139,9 @@ const addCloseWrap = computed(() => {
   }
 
   & .sidebar-close-wrap {
-    max-width: 150px;
     padding-right: 5px;
     padding-left: 10px;
+    max-width: 150px;
   }
 
   & .page-nav {

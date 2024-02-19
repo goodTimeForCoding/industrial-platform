@@ -1,6 +1,0 @@
-*.ts
-*.js
-*.md
-*.svg
-.eslintrc.cjs
-/node_modules

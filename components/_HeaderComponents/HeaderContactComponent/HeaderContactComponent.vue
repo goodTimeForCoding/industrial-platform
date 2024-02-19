@@ -36,13 +36,13 @@
   & .header-contact-link {
     position: relative;
     margin-right: 26px;
+    color: $white;
+    font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
     transition: 0.1s;
-    color: $white;
 
     &:hover {
       color: $christi;
@@ -72,9 +72,7 @@
 }
 
 @include minidesk {
-
   .header-contacts {
-
     & .email,
     & .phone {
       display: none;
@@ -83,14 +81,13 @@
 }
 
 @include tablet {
-
   .header-contacts {
-    order: 5;
     flex-direction: column;
-    margin: 0;
-    padding: 0 31px;
     gap: 36px;
     align-self: start;
+    order: 5;
+    margin: 0;
+    padding: 0 31px;
 
     & .email,
     & .phone {

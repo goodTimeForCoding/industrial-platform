@@ -27,12 +27,12 @@
       </Swiper>
     </div>
 
-    <div class="advantage-wrap" v-else>
+    <div v-else class="advantage-wrap">
       <div class="advantage-cards">
         <div
-          :class="['advantage-card', card.bgClass]"
           v-for="card in advantagesData"
           :key="card.id"
+          :class="['advantage-card', card.bgClass]"
         >
           <div class="advantage-card-wrap">
             <p class="card-text">
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const MINITABLET_BREAKPOINT = 768;
 const BIGMOBILE_BREAKPOINT = 699;
@@ -73,15 +73,13 @@ const advantagesData = [
 
 const addPerViewCount = computed(() => {
   if (zyfraStore.screenWidth <= MIDDLEMOBILE_BREAKPOINT) return 1.15;
-
   if (zyfraStore.screenWidth <= BIGMOBILE_BREAKPOINT) return 1.5;
-
   return 2.5;
 });
 
-const isTabletBreakpoint = computed(
-  () => zyfraStore.screenWidth <= MINITABLET_BREAKPOINT
-);
+const isTabletBreakpoint = computed(() => {
+  return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
+});
 </script>
 
 <style lang="scss" scoped>
@@ -94,10 +92,10 @@ const isTabletBreakpoint = computed(
   background-color: $lightgrey;
 
   &::before {
-    z-index: 1;
     position: absolute;
     top: -43px;
     right: 0;
+    z-index: 1;
     border-top: 64px solid $baltic;
     border-right: 0;
     border-bottom: 0;
@@ -107,36 +105,36 @@ const isTabletBreakpoint = computed(
 
   & .advantage-text {
     order: -1;
-    max-width: 968px;
     margin: 0;
     margin-bottom: 30px;
     padding: 0;
-    line-height: 20px;
     color: $baltic;
+    line-height: 20px;
+    max-width: 968px;
   }
 
   & .advanatge-title {
     margin: 0;
     margin-bottom: 50px;
     padding: 0;
-    font-size: 22px;
-    font-weight: 700;
     color: $black;
+    font-weight: 700;
+    font-size: 22px;
   }
 
   & .advantage-cards {
     display: flex;
-    justify-content: space-between;
-    padding-bottom: 50px;
     gap: 30px;
+    padding-bottom: 50px;
+    justify-content: space-between;
   }
 
   & .advantage-card {
     width: 340px;
     height: 396px;
-    border-radius: 4px;
     background-color: $white;
-    box-shadow: 0 8px 26px 0 rgb(22 44 86 / 10%);
+    border-radius: 4px;
+    box-shadow: 0 8px 26px 0 rgba(22, 44, 86, 0.1);
   }
 
   & .card-text {
@@ -145,49 +143,48 @@ const isTabletBreakpoint = computed(
     padding-top: 122px;
     padding-right: 34px;
     padding-left: 34px;
-    line-height: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
     color: $black;
+    font-weight: 700;
+    line-height: 20px;
+    text-transform: uppercase;
   }
 
   & .factory {
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/arrow-turn-top.svg'),
+      url('/bg-img/factory.png');
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     background-position:
       top 63px right 31px,
       bottom 60px right 31px,
       bottom 60px left 37px,
       top 38px left 34px;
-    background-image: url('/bg-img/arrow-right.svg'),
-      url('/bg-img/arrow-left.svg'), url('/bg-img/arrow-turn-top.svg'),
-      url('/bg-img/factory.png');
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   }
 
   & .architecture {
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/gears.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
     background-position:
       top 63px right 31px,
       bottom 60px right 31px,
       top 28px left 30px;
-    background-image: url('/bg-img/arrow-right.svg'),
-      url('/bg-img/arrow-left.svg'), url('/bg-img/gears.png');
-    background-repeat: no-repeat, no-repeat, no-repeat;
   }
 
   & .direct {
+    background-image: url('/bg-img/arrow-turn-bottom.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/challenges.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
     background-position:
       top 63px right 28px,
       bottom 60px right 31px,
       top 38px left 34px;
-    background-image: url('/bg-img/arrow-turn-bottom.svg'),
-      url('/bg-img/arrow-left.svg'), url('/bg-img/challenges.png');
-    background-repeat: no-repeat, no-repeat, no-repeat;
   }
 }
 
 @include minidesk {
-
   .advantage {
-    top: 0;
+    top: 0px;
     padding-top: 50px;
 
     & .advantage-cards {
@@ -212,9 +209,7 @@ const isTabletBreakpoint = computed(
 }
 
 @include tablet {
-
   .advantage {
-
     &::before {
       top: -50px;
     }
@@ -242,12 +237,10 @@ const isTabletBreakpoint = computed(
 }
 
 @include minitablet {
-
   .advantage {
-
     & .advantage-wrap {
-      padding-bottom: 69px;
       padding-left: 50px;
+      padding-bottom: 69px;
     }
 
     & .swiper {
@@ -275,9 +268,7 @@ const isTabletBreakpoint = computed(
 }
 
 @include bigmobile {
-
   .advantage {
-
     &::before {
       top: -16px;
       border-top: 24px solid $baltic;
@@ -303,9 +294,7 @@ const isTabletBreakpoint = computed(
 }
 
 @include middlemobile {
-
   .advantage {
-
     & .advantage-card {
       width: 270px;
       height: 342px;
@@ -318,9 +307,7 @@ const isTabletBreakpoint = computed(
 }
 
 @include mobile {
-
   .advantage {
-
     & .advantage-wrap {
       padding-left: 25px;
     }
@@ -328,7 +315,6 @@ const isTabletBreakpoint = computed(
 }
 
 @include bigdesktop {
-
   .advantage {
     align-items: center;
   }

@@ -4,7 +4,15 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['airbnb-base', 'plugin:vue/vue3-essential', 'stylelint', 'prettier'],
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+  },
+  extends: [
+    'airbnb-base',
+    '@nuxt/eslint-config',
+    'plugin:prettier/recommended',
+  ],
   overrides: [
     {
       env: {
@@ -15,14 +23,36 @@ module.exports = {
         sourceType: 'script',
       },
     },
+    {
+      files: [
+        'pages/**/*.vue',
+        'components/**/*.vue',
+        'store/**/*.js',
+        'plugins/**/*.ts',
+      ],
+      rules: {
+        'vue/multi-word-component-names': 0,
+        'import/prefer-default-export': 'off',
+      },
+    },
   ],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+
+  plugins: ['vue'],
+  rules: {
+    'max-len': ['error', { code: 120 }],
+    'vue/max-len': [
+      'error',
+      {
+        code: 120,
+        template: 120,
+      },
+    ],
   },
-  plugins: ['vue', 'prettier'],
-  rules: { 
-    'prettier/prettier': 2, 
-    'linebreak-style': 0
-},
+  settings: {
+    'import/resolver': {
+      nuxt: {
+        extensions: ['.js', '.vue'],
+      },
+    },
+  },
 };

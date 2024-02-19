@@ -1,7 +1,7 @@
 <template>
   <div class="nav-links">
     <ul class="list-reset links-list">
-      <li class="link-item" v-for="(link, index) in menuLinks" :key="index">
+      <li v-for="(link, index) in menuLinks" :key="index" class="link-item">
         <NuxtLink class="link" :to="$t(link.path)">
           {{ $t(link.name) }}
         </NuxtLink>
@@ -27,8 +27,8 @@ export default {
   display: flex;
   flex-direction: column;
   width: 210px;
-  border-radius: 4px;
   background-color: $white;
+  border-radius: 4px;
 
   & .link-item {
     padding: 8px 17px;
@@ -58,11 +58,10 @@ export default {
 }
 
 @include tablet {
-
   .nav-links {
-    border: none;
-    background-color: transparent;
     font-weight: 500;
+    background-color: transparent;
+    border: none;
 
     & .link-item {
       position: relative;
@@ -70,8 +69,8 @@ export default {
       padding: 0;
       padding-top: 15px;
       padding-bottom: 15px;
-      border-radius: 4px;
       line-height: normal;
+      border-radius: 4px;
       transition: 0.2s;
 
       &:hover {

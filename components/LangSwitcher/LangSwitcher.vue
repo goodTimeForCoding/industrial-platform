@@ -7,7 +7,9 @@
     >
       <div class="language-item">EN</div>
     </NuxtLink>
+    <!-- eslint-disable -->
     <div>&nbsp|&nbsp</div>
+    <!-- eslint-enable -->
     <NuxtLink
       class="lang-link"
       :to="switchLocalePath('ru')"
@@ -58,7 +60,6 @@ const cleanArr = () => {
 }
 
 @include tablet {
-
   .lang-switcher {
     justify-content: start;
     width: 100%;

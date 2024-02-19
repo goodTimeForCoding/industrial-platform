@@ -1,13 +1,13 @@
 <template>
-  <section class="dropdown-component" v-click-outside="noVisible">
+  <section v-click-outside="noVisible" class="dropdown-component">
     <div class="selected-item">
       <input
-        :class="addSelectClass"
-        @click="changeView"
-        @input="inputChange"
         v-model="searchQuery"
+        :class="addSelectClass"
         type="text"
         :placeholder="addPlaceholder"
+        @click="changeView"
+        @input="inputChange"
       />
       <div class="dropdown-icon-wrap" @click="changeView">
         <img
@@ -20,9 +20,9 @@
       <span v-if="isFilteredData" class="not-data-text">Нет данных</span>
       <ul class="options">
         <li
-          @click="selectItem(item)"
           v-for="(item, index) in filteredUser"
           :key="`item-${index}`"
+          @click="selectItem(item)"
         >
           {{ item }}
         </li>
@@ -41,7 +41,9 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
-    default: () => `Выберите значение`,
+    default: () => {
+      return `Выберите значение`;
+    },
   },
 });
 
@@ -73,10 +75,9 @@ const selectItem = item => {
 
 const filteredUser = computed(() => {
   if (searchQuery.value === '') return props.options;
-
-  return props.options.filter(item =>
-    item.toLowerCase().includes(searchQuery.value.toLowerCase())
-  );
+  return props.options.filter(item => {
+    return item.toLowerCase().includes(searchQuery.value.toLowerCase());
+  });
 });
 
 /**
@@ -85,25 +86,27 @@ const filteredUser = computed(() => {
  */
 const addSelectClass = computed(() => {
   if (selectedItem.value) return 'dropdown-input';
+  return false;
 });
 
 const addPlaceholder = computed(() => {
   if (selectedItem.value) return selectedItem.value;
-
   return props.placeholder;
 });
 
 const addIconDropDownClass = computed(() => {
   if (isVisible.value) return 'dropdown';
+  return false;
 });
 
 const addPopoverClass = computed(() => {
   if (isVisible.value) return 'visible';
-
   return 'invisible';
 });
 
-const isFilteredData = computed(() => filteredUser.length === 0);
+const isFilteredData = computed(() => {
+  return filteredUser.length === 0;
+});
 
 onBeforeMount(() => {
   selectItem(props.placeholder);
@@ -112,27 +115,27 @@ onBeforeMount(() => {
 
 <style scoped lang="scss">
 .dropdown-component {
-  z-index: 4;
   position: relative;
+  z-index: 4;
   margin: 0 auto;
-  font-size: 14px;
   font-weight: 500;
+  font-size: 14px;
 
   .selected-item {
-    height: 100%;
     padding: 0;
-    border-radius: 5px;
     background: $white;
+    border-radius: 5px;
     cursor: pointer;
+    height: 100%;
 
     input {
-      z-index: 10;
       position: relative;
+      z-index: 10;
       width: 100%;
       height: 100%;
       padding-left: 14px;
-      border-radius: 5px;
       border: unset;
+      border-radius: 5px;
       font-weight: 500;
     }
 
@@ -141,10 +144,10 @@ onBeforeMount(() => {
     }
 
     .dropdown-icon-wrap {
-      z-index: 10;
       position: absolute;
       top: 2px;
       right: 0;
+      z-index: 10;
       padding: 14px;
       cursor: pointer;
     }
@@ -161,16 +164,16 @@ onBeforeMount(() => {
   }
 
   .dropdown-popover {
-    z-index: 2;
     position: absolute;
     top: 40px;
     right: 0;
     left: 0;
+    z-index: 2;
     max-width: 100%;
     max-height: 0;
-    border-radius: 4px;
-    background-color: $white;
     overflow: hidden;
+    background-color: $white;
+    border-radius: 4px;
     visibility: hidden;
 
     &.visible {
@@ -179,11 +182,12 @@ onBeforeMount(() => {
     }
 
     .options {
-      max-height: 180px;
       width: 100%;
+      max-height: 180px;
       margin: 0;
       padding-left: 8px;
-      overflow: hidden scroll;
+      overflow-x: hidden;
+      overflow-y: scroll;
       text-align: left;
       list-style: none;
     }

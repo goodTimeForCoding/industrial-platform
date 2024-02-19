@@ -46,10 +46,10 @@
   background-color: $lightgrey;
 
   &::after {
-    z-index: 1;
     position: absolute;
-    right: 0;
     bottom: -16px;
+    right: 0;
+    z-index: 1;
     border-top: 0;
     border-right: 100vw solid $lightgrey;
     border-bottom: 64px solid $baltic;
@@ -61,11 +61,11 @@
     margin: 0;
     margin-bottom: 40px;
     padding: 0;
+    color: $thunder;
+    font-weight: 700;
     font-size: 14px;
     line-height: 20px;
-    font-weight: 700;
     text-transform: uppercase;
-    color: $thunder;
   }
 
   & .tasks-list {
@@ -83,8 +83,8 @@
       left: -20px;
       width: 10px;
       height: 10px;
-      border-radius: 50%;
       background: $christi;
+      border-radius: 50%;
       content: '';
     }
   }
@@ -104,9 +104,8 @@
 }
 
 @include minitablet {
-
   .tasks {
-    top: 0;
+    top: 0px;
 
     & .task-item {
       margin-bottom: 14px;
@@ -119,7 +118,6 @@
 }
 
 @include bigmobile {
-
   .tasks {
     flex-wrap: wrap;
     gap: 55px;
@@ -152,7 +150,6 @@
 }
 
 @include bigdesktop {
-
   .tasks {
     justify-content: center;
     gap: 150px;

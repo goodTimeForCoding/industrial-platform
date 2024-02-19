@@ -3,16 +3,16 @@
     <div>
       <NotificationComponent
         :messages="feedbackFormStore.getMessages"
-        @updateMessages="feedbackFormStore.setNewMessageArray"
+        @update-messages="feedbackFormStore.setNewMessageArray"
       />
     </div>
 
     <form :class="['feedback-form', addModalClass]" novalidate>
-      <div class="form-group" v-for="data of formDatum" :key="data.id">
+      <div v-for="data of formDatum" :key="data.id" class="form-group">
         <BaseInput
           v-if="data.type === 'text'"
-          :class="data.className"
           v-model.trim="data.value"
+          :class="data.className"
           :type="data.type"
           :placeholder="$t(data.placeholder)"
         />
@@ -21,19 +21,19 @@
           v-if="data.type === 'dropDown'"
           :class="data.className"
           :options="getLocaleCountries()"
-          @select="addCountryCode"
           :placeholder="$t(data.placeholder)"
+          @select="addCountryCode"
         />
 
         <MazPhoneNumberInput
           v-if="data.type === 'phoneNumberInput'"
+          v-model.trim="data.value"
           :class="data.className"
           :placeholder="$t(data.placeholder)"
           :translations="addTranslation()"
           country-locale="en"
-          v-model.trim="data.value"
           :default-country-code="feedbackFormStore.countryCode"
-          noSearch
+          no-search
           @update="onUpdate"
         />
         <span
@@ -47,19 +47,19 @@
       <div class="btn-text-wrap">
         <BaseCheckbox
           v-if="modalStore.isShowModal"
+          :id="consent"
           class="consent-wrap"
           :label="$t('feedbackForm.consent')"
-          :id="consent"
         />
 
         <BaseCheckbox
           v-if="modalStore.isShowModal"
+          :id="subscrip"
           class="subscrip"
           :label="$t('feedbackForm.subscrip')"
-          :id="subscrip"
         />
 
-        <button class="btn btn-feedback" @click="onSubmit" type="button">
+        <button class="btn btn-feedback" type="button" @click="onSubmit">
           {{ $t('feedbackForm.btnText') }}
         </button>
         <p v-if="!modalStore.isShowModal" class="agreement">
@@ -72,15 +72,16 @@
 </template>
 
 <script setup>
-import { useReCaptcha } from 'vue-recaptcha-v3';
 import { reactive } from 'vue';
-import NotificationComponent from '@/components/_FormComponents/NotificationComponent/NotificationComponent.vue';
-import BaseInput from '@/components/_UI/BaseInput/BaseInput.vue';
+import { useReCaptcha } from 'vue-recaptcha-v3';
+
 import DropdownComponent from '@/components/_FormComponents/DropdownComponent/DropdownComponent.vue';
+import NotificationComponent from '@/components/_FormComponents/NotificationComponent/NotificationComponent.vue';
 import BaseCheckbox from '@/components/_UI/BaseCheckbox/BaseCheckbox.vue';
-import { useFeedbackForm } from '@/store/FeedbackForm.js';
+import BaseInput from '@/components/_UI/BaseInput/BaseInput.vue';
 import countriesArr from '@/mock/countries.json';
-import { useModalStore } from '@/store/ModalStore.js';
+import { useFeedbackForm } from '@/store/FeedbackForm';
+import { useModalStore } from '@/store/ModalStore';
 
 const props = defineProps({
   isModal: {
@@ -173,7 +174,6 @@ const formDatum = reactive([
 
 const addModalClass = computed(() => {
   if (props.isModal) return 'feedback-form-modal';
-
   return '';
 });
 
@@ -183,50 +183,47 @@ const addTranslation = () => {
       placeholder: '',
     },
   };
-
   if (i18nLocale.locale.value === 'ru') {
     translation.countrySelector.placeholder = 'Код страны';
   }
-
   if (i18nLocale.locale.value === 'en') {
     translation.countrySelector.placeholder = 'Country code';
   }
-
   return translation;
 };
 
 const deleteErrorMessage = () => {
   if (modalStore.isShowModal) return 'nomessage';
-
   return '';
 };
 
-const getRuCountries = () => countriesArr.ru.map(item => item.name);
+const getRuCountries = () => {
+  return countriesArr.ru.map(item => item.name);
+};
 
-const getEnCountries = () => countriesArr.en.map(item => item.name);
+const getEnCountries = () => {
+  return countriesArr.en.map(item => item.name);
+};
 
 const getLocaleCountries = () => {
   if (i18nLocale.locale.value === 'en') return feedbackFormStore.enCountries;
-
   if (i18nLocale.locale.value === 'ru') return feedbackFormStore.ruCountries;
+  return false;
 };
 
 const addCountryCode = countryData => {
   formDatum[4].value = countryData.country;
   let selectCountry;
-
   if (i18nLocale.locale.value === 'ru') {
-    selectCountry = countriesArr.ru.find(
-      item => item.name === formDatum[4].value
-    );
+    selectCountry = countriesArr.ru.find(item => {
+      return item.name === formDatum[4].value;
+    });
   }
-
   if (i18nLocale.locale.value === 'en') {
-    selectCountry = countriesArr.en.find(
-      item => item.name === formDatum[4].value
-    );
+    selectCountry = countriesArr.en.find(item => {
+      return item.name === formDatum[4].value;
+    });
   }
-
   if (selectCountry) {
     feedbackFormStore.addCountryCode(selectCountry.code);
   }
@@ -237,29 +234,32 @@ const onUpdate = payload => {
   feedbackFormStore.addIsPhoneValid(payload.isValid);
 };
 
-const adaptForm = token => ({
-  locale: 'ru',
-  firstName: formDatum[0].value,
-  lastName: formDatum[1].value,
-  position: formDatum[2].value,
-  company: formDatum[3].value,
-  industry: 'Процессные индустрии',
-  country: formDatum[4].value,
-  email: formDatum[5].value,
-  phone: formDatum[6].value,
-  comment: formDatum[7].value,
-  countryCode: feedbackFormStore.countryCode,
-  recaptchaToken: token,
-  type: 'contact',
-  page: '/ru/product/industrial-iot-platform/',
-});
+const adaptForm = token => {
+  return {
+    locale: 'ru',
+    firstName: formDatum[0].value,
+    lastName: formDatum[1].value,
+    position: formDatum[2].value,
+    company: formDatum[3].value,
+    industry: 'Процессные индустрии',
+    country: formDatum[4].value,
+    email: formDatum[5].value,
+    phone: formDatum[6].value,
+    comment: formDatum[7].value,
+    countryCode: feedbackFormStore.countryCode,
+    recaptchaToken: token,
+    type: 'contact',
+    page: '/ru/product/industrial-iot-platform/',
+  };
+};
 
+/* eslint-disable */
 const validEmail = email => {
   const re =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i;
-
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 };
+/* eslint-enable  */
 
 const checkValid = () => {
   feedbackFormStore.cleanErrors();
@@ -291,29 +291,24 @@ const checkValid = () => {
 
 const showErrorText = name => {
   const errElement = feedbackFormStore.getErrorItem(name);
-
   if (errElement) {
     return errElement.errorText;
   }
-
   return errElement;
 };
 
 const recaptcha = async () => {
   await recaptchaInstance?.recaptchaLoaded();
   const token = await recaptchaInstance?.executeRecaptcha('login');
-
   return token;
 };
 
 const onSubmit = async () => {
   try {
     checkValid();
-
     if (feedbackFormStore.errors.length === 0) {
       const token = await recaptcha();
       const data = adaptForm(token);
-
       await feedbackFormStore.postFeedbackData(data);
       feedbackFormStore.setMessage({
         name: i18nLocale.t('validation.success'),
@@ -364,12 +359,12 @@ onMounted(() => {
   }
 
   .error-text {
-    z-index: 5;
     position: absolute;
     right: 5px;
     bottom: 5px;
-    font-size: 10px;
+    z-index: 5;
     color: red;
+    font-size: 10px;
   }
 
   .error-text-left {
@@ -382,17 +377,17 @@ onMounted(() => {
     margin: 0;
     padding: 0;
     padding-left: 14px;
-    border-radius: 4px;
-    border: unset;
-    background: $white;
-    font-size: 14px;
-    font-weight: 500;
     color: $black;
+    font-weight: 500;
+    font-size: 14px;
+    background: $white;
+    border: unset;
+    border-radius: 4px;
 
     &::placeholder {
-      font-size: 14px;
-      font-weight: 500;
       color: $stardust;
+      font-weight: 500;
+      font-size: 14px;
     }
   }
 
@@ -412,13 +407,13 @@ onMounted(() => {
     display: inline-block;
     margin-right: 14px;
     padding: 18px 28px;
-    border-radius: 4px;
-    background: $christi;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
     color: $white;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    background: $christi;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 
     &:hover,
     &:focus {
@@ -442,10 +437,10 @@ onMounted(() => {
     display: inline-block;
     max-width: 490px;
     margin: 0;
+    color: $dustygray;
+    font-weight: 500;
     font-size: 12px;
     line-height: 18px;
-    font-weight: 500;
-    color: $dustygray;
   }
 
   .btn-text-wrap {
@@ -455,14 +450,13 @@ onMounted(() => {
   }
 
   .feedback-form-phone {
+    padding: 0;
     display: flex;
     align-items: center;
-    padding: 0;
   }
 }
 
 .feedback-form-modal {
-
   & .nomessage {
     display: block;
   }
@@ -518,16 +512,14 @@ onMounted(() => {
 }
 
 @include bigmobile {
-
   .feedback-form-modal {
-
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 280px;
     }
 
     & .btn-text-wrap {
-      margin-top: 0;
+      margin-top: 0px;
     }
 
     & .feedback-form-input {
@@ -546,7 +538,6 @@ onMounted(() => {
 }
 
 @include minitablet {
-
   .feedback-form {
     width: 100%;
 
@@ -603,15 +594,14 @@ onMounted(() => {
   }
 
   .feedback-form-modal {
-
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 100%;
     }
 
     & .feedback-form-input {
-      height: 40px;
       margin-bottom: 6px;
+      height: 40px;
     }
 
     & .btn-text-wrap {

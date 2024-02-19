@@ -5,7 +5,7 @@
         <FeedbackFormDescription />
       </div>
       <div class="feedback-form-wrap">
-        <FeedbackForm :isModal="false" />
+        <FeedbackForm :is-modal="false" />
       </div>
     </div>
   </div>
@@ -22,10 +22,10 @@ import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm
 
   .feedback-wrap {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    padding-top: 107px;
     gap: 30px;
+    padding-top: 107px;
+    justify-content: center;
 
     .feedback-description-wrap {
       max-width: 370px;
@@ -39,9 +39,7 @@ import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm
 }
 
 @include tablet {
-
   .feedback {
-
     .feedback-wrap {
       display: flex;
       flex-direction: column;
@@ -53,9 +51,7 @@ import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm
 }
 
 @include mobile {
-
   .feedback {
-
     .feedback-wrap {
       display: block;
 

@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-svgo',
-    '@nuxtjs/stylelint-module',
     'maz-ui/nuxt',
     [
       '@nuxtjs/i18n',
@@ -56,13 +55,6 @@ export default defineNuxtConfig({
       scrollBehaviorType: 'smooth',
     },
   },
-  stylelint: {
-    customSyntax: 'postcss-html',
-    fix: true,
-    cache: false,
-    failOnWarning: false,
-    lintOnStart: false,
-  },
   runtimeConfig: {
     public: {
       postFormUrl: process.env.postFormUrl,
@@ -84,4 +76,4 @@ export default defineNuxtConfig({
       },
     },
   },
-})
+});

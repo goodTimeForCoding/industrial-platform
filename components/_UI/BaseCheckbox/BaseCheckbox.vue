@@ -1,6 +1,12 @@
 <template>
   <div class="check">
-    <input class="check-input" type="checkbox" :name="id" :id="id" checked />
+    <input
+      :id="props.id"
+      class="check-input"
+      type="checkbox"
+      :name="props.id"
+      checked
+    />
     <label :for="id">
       {{ label }}
     </label>
@@ -11,9 +17,11 @@
 const props = defineProps({
   label: {
     type: String,
+    required: true,
   },
   id: {
     type: String,
+    required: true,
   },
 });
 </script>

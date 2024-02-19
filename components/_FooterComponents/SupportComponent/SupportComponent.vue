@@ -2,7 +2,7 @@
   <div class="support">
     <div class="new-clients">
       <h3 class="support-title">{{ title }}</h3>
-      <p v-if="isTechnicalSupport" class="phone-text">
+      <p v-if="props.isTechnicalSupport" class="phone-text">
         {{ $t('footer.monitoring') }}
       </p>
       <a class="header-contact-link phone-link" href="tel:+358942725025">
@@ -13,11 +13,11 @@
           <span class="phone"> +358 942 72 50 25 </span>
         </div>
       </a>
-      <p v-if="isTechnicalSupport" class="phone-text">
+      <p v-if="props.isTechnicalSupport" class="phone-text">
         {{ $t('footer.mining') }}
       </p>
       <a
-        v-if="isTechnicalSupport"
+        v-if="props.isTechnicalSupport"
         class="header-contact-link phone-link"
         href="tel:+358942725025"
       >
@@ -29,7 +29,7 @@
         </div>
       </a>
       <a
-        v-if="!isTechnicalSupport"
+        v-if="!props.isTechnicalSupport"
         class="header-contact-link email-link"
         href="mailto:hello@zyfra.com"
       >
@@ -48,42 +48,46 @@
 const props = defineProps({
   title: {
     type: String,
+    required: true,
   },
   text1: {
     type: String,
+    default: '',
   },
   text2: {
     type: String,
+    default: '',
   },
   isTechnicalSupport: {
     type: Boolean,
+    default: false,
   },
 });
 </script>
 
 <style scoped lang="scss">
 .support {
-  max-width: 220px;
   margin-right: 50px;
+  max-width: 220px;
 
   & .support-title {
     margin: 0;
     margin-bottom: 9px;
     padding: 0;
-    font-size: 14px;
-    font-weight: 600;
     color: $black;
+    font-weight: 600;
+    font-size: 14px;
   }
 
   & .header-contact-link {
     position: relative;
     margin-right: 26px;
-    font-size: 14px;
+    color: $thunder;
     font-weight: 500;
+    font-size: 14px;
     text-decoration: none;
     cursor: pointer;
     transition: 0.1s;
-    color: $thunder;
 
     &:hover {
       color: $christi;
@@ -119,17 +123,17 @@ const props = defineProps({
 
   & .phone-text {
     margin: 0;
+    padding: 0;
     margin-top: 7px;
     margin-bottom: 3px;
-    padding: 0;
     font-size: 12px;
   }
 }
 
 @include bigmobile {
-
   .support {
-    grid-column: 1 / 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 }
 </style>

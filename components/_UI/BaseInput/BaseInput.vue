@@ -11,6 +11,7 @@ export default {
       default: '',
     },
   },
+  emits: ['update:modelValue'],
   methods: {
     inputHundler(event) {
       this.$emit('update:modelValue', event.target.value);

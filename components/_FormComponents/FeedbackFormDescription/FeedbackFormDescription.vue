@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const zyfraStore = useZyfraStore();
 const i18nLocale = useI18n();
@@ -19,39 +19,34 @@ const MINITABLET_BREAKPOINT = 768;
 const addTitle = computed(() => {
   if (zyfraStore.screenWidth < MINITABLET_BREAKPOINT && currentLocale === 'ru')
     return 'Свяжитесь с нами';
-
   if (zyfraStore.screenWidth < MINITABLET_BREAKPOINT && currentLocale === 'en')
     return 'Contact us';
-
   if (currentLocale === 'ru') return 'Будем на связи';
-
   if (currentLocale === 'en') return "Let's be in touch";
+  return false;
 });
 </script>
 
 <style lang="scss" scoped>
 .feedback-form-description-component {
-
   .description-title {
     margin: 0;
-    margin-top: 19px;
     margin-bottom: 24px;
-    font-size: 22px;
+    margin-top: 19px;
     font-weight: 700;
+    font-size: 22px;
   }
 
   .description-text {
     margin: 0;
+    font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    font-weight: 500;
   }
 }
 
 @include mobile {
-
   .feedback-form-description-component {
-
     .description-title {
       margin-bottom: 31px;
     }

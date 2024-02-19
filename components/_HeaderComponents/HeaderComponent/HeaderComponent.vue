@@ -3,8 +3,8 @@
     <div class="nav-wrap">
       <button
         class="button header-nav-toggle"
-        @click="changeNav()"
         type="button"
+        @click="changeNav()"
       >
         <span class="visually-hidden">{{ $t('headerNav.openMenu') }}</span>
       </button>
@@ -25,11 +25,11 @@
     </div>
 
     <HeaderMenuComponent
-      :isLinksOpen="isNavOpened"
-      :isLinksClose="isNavClosed"
+      :is-links-open="isNavOpened"
+      :is-links-close="isNavClosed"
     />
 
-    <HeaderContactsComponent class="header-contacts-wrap" />
+    <HeaderContactComponent class="header-contacts-wrap" />
 
     <div class="language-wrap">
       <LangSwitcher class="lang-switcher-header" />
@@ -42,11 +42,11 @@
 </template>
 
 <script setup>
+import HeaderContactComponent from '@/components/_HeaderComponents/HeaderContactComponent/HeaderContactComponent.vue';
+import HeaderMenuComponent from '@/components/_HeaderComponents/HeaderMenuComponent/HeaderMenuComponent.vue';
 import ButtonComponent from '@/components/_UI/ButtonComponent/ButtonComponent.vue';
 import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
-import HeaderMenuComponent from '@/components/_HeaderComponents/HeaderMenuComponent/HeaderMenuComponent.vue';
-import HeaderContactsComponent from '@/components/_HeaderComponents/HeaderContactsComponent/HeaderContactsComponent.vue';
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const localePath = useLocalePath();
 const zyfraStore = useZyfraStore();
@@ -60,28 +60,28 @@ const changeNav = () => {
   isNavOpened.value = !isNavOpened.value;
 };
 
-const isTabletBreakpoint = computed(
-  () => zyfraStore.screenWidth < TABLET_BREAKPOINT
-);
+const isTabletBreakpoint = computed(() => {
+  return zyfraStore.screenWidth < TABLET_BREAKPOINT;
+});
 
 const addNavOpenCloseClass = computed(() => {
   if (isNavClosed.value) return 'header-nav--closed';
-
   if (isNavOpened.value) return 'header-nav--opened';
+  return false;
 });
 </script>
 
 <style scoped lang="scss">
 .header-nav {
-  z-index: 10;
   position: relative;
-  flex-grow: 1;
-  display: flex;
   background-color: $baltic;
+  z-index: 10;
+  display: flex;
+  flex-grow: 1;
+  color: $white;
+  font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  font-weight: 500;
-  color: $white;
 
   & .language-wrap {
     align-self: center;
@@ -95,15 +95,15 @@ const addNavOpenCloseClass = computed(() => {
   &-toggle {
     position: relative;
     display: none;
+    align-self: center;
     width: 40px;
     height: 40px;
     margin: 0;
     padding: 0;
-    border: none;
     background-color: transparent;
+    border: none;
     cursor: pointer;
-    align-self: center;
-    -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   &-toggle::before {
@@ -112,8 +112,8 @@ const addNavOpenCloseClass = computed(() => {
     left: 5px;
     width: 30px;
     height: 3px;
-    border-radius: 2px;
     background-color: $christi;
+    border-radius: 2px;
     box-shadow:
       0 8px 0 0 $christi,
       0 16px 0 0 $christi;
@@ -121,7 +121,6 @@ const addNavOpenCloseClass = computed(() => {
   }
 
   &--opened &-toggle {
-
     &::before,
     &::after {
       position: absolute;
@@ -129,14 +128,14 @@ const addNavOpenCloseClass = computed(() => {
       left: 5px;
       width: 30px;
       height: 3px;
-      border-radius: 2px;
       background-color: $christi;
+      border-radius: 2px;
       content: '';
     }
 
     &::before {
-      transform: rotate(45deg);
       box-shadow: none;
+      transform: rotate(45deg);
     }
 
     &::after {
@@ -146,7 +145,6 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include tablet {
-
   .header-nav {
     display: flex;
     flex-direction: column;
@@ -165,8 +163,8 @@ const addNavOpenCloseClass = computed(() => {
 
     & .nav-wrap {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       width: 100%;
       padding-top: 25px;
       padding-bottom: 25px;
@@ -179,15 +177,14 @@ const addNavOpenCloseClass = computed(() => {
     }
 
     & .language-item {
-
       &:hover {
         color: $christi;
       }
     }
 
     &--opened .btn-wrap {
-      order: 4;
       display: block;
+      order: 4;
       margin-top: 64px;
       margin-bottom: 58px;
       padding: 0 31px;
@@ -210,9 +207,7 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include mobile {
-
   .header-nav {
-
     &--opened .btn-wrap {
       margin-bottom: 58px;
     }
@@ -230,20 +225,17 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include bigdesktop {
-
   .header-nav {
     max-width: 1920px;
   }
 }
 
 @keyframes open-menu {
-
   from {
     transform: translateY(-50px);
   }
-
   to {
-    transform: translateX(0);
+    transform: translateX(0px);
   }
 }
 </style>

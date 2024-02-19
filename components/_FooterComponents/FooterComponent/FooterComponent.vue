@@ -20,7 +20,7 @@
       </NuxtLink>
 
       <LangSwitcher class="language-wrap lang-switcher-footer" />
-      <SocialsComponent :isTabletBreakpoint="isTabletBreakpoint" />
+      <SocialsComponent :is-tablet-breakpoint="isTabletBreakpoint" />
     </div>
 
     <div class="support-wrap">
@@ -30,7 +30,7 @@
         :title="$t('footer.technicalSupport')"
         :text1="$t('footer.monitoring')"
         :text2="$t('footer.mining')"
-        :isTechnicalSupport="true"
+        :is-technical-support="true"
       />
     </div>
 
@@ -59,11 +59,11 @@
 </template>
 
 <script setup>
-import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
+import LinksListComponent from '@/components/_FooterComponents/LinksListComponent/LinksListComponent.vue';
 import SocialsComponent from '@/components/_FooterComponents/SocialsComponent/SocialsComponent.vue';
 import SupportComponent from '@/components/_FooterComponents/SupportComponent/SupportComponent.vue';
-import LinksListComponent from '@/components/_FooterComponents/LinksListComponent/LinksListComponent.vue';
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import LangSwitcher from '@/components/LangSwitcher/LangSwitcher.vue';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const TABLET_BREAKPOINT = 1179;
 const zyfraStore = useZyfraStore();
@@ -99,24 +99,27 @@ const industryList = reactive([
   { name: 'footer.metalworking', id: 44 },
 ]);
 
-const isTabletBreakpoint = computed(
-  () => zyfraStore.screenWidth <= TABLET_BREAKPOINT
-);
+const isTabletBreakpoint = computed(() => {
+  return zyfraStore.screenWidth <= TABLET_BREAKPOINT;
+});
 </script>
 
 <style scoped lang="scss">
 .footer {
   display: flex;
   flex-wrap: wrap;
-  padding: 48px 41px 26px 46px;
-  background-color: $lightgrey;
+  padding-top: 48px;
+  padding-bottom: 26px;
+  padding-left: 46px;
+  padding-right: 41px;
   color: $thunder;
+  background-color: $lightgrey;
 
   & .logo-text {
     margin-bottom: 20px;
-    font-size: 16px;
-    font-weight: 600;
     color: $black;
+    font-weight: 600;
+    font-size: 16px;
   }
 
   & .logo-img {
@@ -154,62 +157,69 @@ const isTabletBreakpoint = computed(
 }
 
 @include minidesk {
-
   .footer {
     row-gap: 30px;
   }
 }
 
 @include tablet {
-
   .footer {
     display: grid;
     grid-template-columns: 235px auto auto 1fr;
     column-gap: 10px;
 
     & .col {
-      grid-column: 1 / 5;
+      grid-column-start: 1;
+      grid-column-end: 5;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     & .language-wrap {
-      width: 53px;
       margin: 0;
       margin-left: auto;
-      grid-column: 3 / 4;
+      grid-column-start: 3;
+      grid-column-end: 4;
+      width: 53px;
     }
   }
 }
 
 @include bigmobile {
-
   .footer {
     display: grid;
-    padding: 40px 27px 47px;
     grid-template-columns: 1fr 1fr;
-    gap: 19px 70px;
+    padding-top: 40px;
+    padding-bottom: 47px;
+    padding-left: 27px;
+    padding-right: 27px;
+    row-gap: 19px;
+    column-gap: 70px;
 
     & .col {
       display: grid;
-      grid-column: 1 / 3;
+      grid-column-start: 1;
+      grid-column-end: 3;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       row-gap: 10px;
     }
 
     & .language-wrap {
-      grid-column: 2 / 3;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
     }
 
     & .support-wrap {
-      grid-column: 1 / 3;
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
   }
 }
 
 @include bigdesktop {
-
   .footer {
     justify-content: center;
     gap: 30px;

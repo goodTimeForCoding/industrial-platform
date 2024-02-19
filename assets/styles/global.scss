@@ -5,13 +5,13 @@
 }
 
 body {
-  min-width: 320px;
   margin: 0;
-  background-color: $baltic;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: 'Montserrat', 'Open Sans';
   font-style: normal;
-  font-family: Montserrat, "Open Sans";
+  font-weight: 500;
+  font-size: 14px;
+  min-width: 320px;
+  background-color: $baltic;
   color: $black;
 }
 
@@ -25,8 +25,8 @@ img {
 }
 
 button {
-  padding: 0;
   border: none;
+  padding: 0;
   background: transparent;
   cursor: pointer;
 }
@@ -42,8 +42,8 @@ button {
   width: 1px;
   height: 1px;
   margin: -1px;
-  padding: 0;
   border: 0;
+  padding: 0;
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
