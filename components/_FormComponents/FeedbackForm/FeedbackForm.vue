@@ -450,13 +450,14 @@ onMounted(() => {
   }
 
   .feedback-form-phone {
-    padding: 0;
     display: flex;
     align-items: center;
+    padding: 0;
   }
 }
 
 .feedback-form-modal {
+
   & .nomessage {
     display: block;
   }
@@ -512,14 +513,16 @@ onMounted(() => {
 }
 
 @include bigmobile {
+
   .feedback-form-modal {
+
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 280px;
     }
 
     & .btn-text-wrap {
-      margin-top: 0px;
+      margin-top: 0;
     }
 
     & .feedback-form-input {
@@ -538,6 +541,7 @@ onMounted(() => {
 }
 
 @include minitablet {
+
   .feedback-form {
     width: 100%;
 
@@ -594,14 +598,15 @@ onMounted(() => {
   }
 
   .feedback-form-modal {
+
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 100%;
     }
 
     & .feedback-form-input {
-      margin-bottom: 6px;
       height: 40px;
+      margin-bottom: 6px;
     }
 
     & .btn-text-wrap {

@@ -58,6 +58,7 @@ export default {
 }
 
 @include tablet {
+
   .nav-links {
     font-weight: 500;
     background-color: transparent;

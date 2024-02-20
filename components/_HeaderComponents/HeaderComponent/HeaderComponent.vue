@@ -74,7 +74,6 @@ const addNavOpenCloseClass = computed(() => {
 <style scoped lang="scss">
 .header-nav {
   position: relative;
-  background-color: $baltic;
   z-index: 10;
   display: flex;
   flex-grow: 1;
@@ -82,6 +81,7 @@ const addNavOpenCloseClass = computed(() => {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  background-color: $baltic;
 
   & .language-wrap {
     align-self: center;
@@ -121,6 +121,7 @@ const addNavOpenCloseClass = computed(() => {
   }
 
   &--opened &-toggle {
+
     &::before,
     &::after {
       position: absolute;
@@ -145,6 +146,7 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include tablet {
+
   .header-nav {
     display: flex;
     flex-direction: column;
@@ -177,6 +179,7 @@ const addNavOpenCloseClass = computed(() => {
     }
 
     & .language-item {
+
       &:hover {
         color: $christi;
       }
@@ -207,7 +210,9 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include mobile {
+
   .header-nav {
+
     &--opened .btn-wrap {
       margin-bottom: 58px;
     }
@@ -225,17 +230,20 @@ const addNavOpenCloseClass = computed(() => {
 }
 
 @include bigdesktop {
+
   .header-nav {
     max-width: 1920px;
   }
 }
 
 @keyframes open-menu {
+
   from {
     transform: translateY(-50px);
   }
+
   to {
-    transform: translateX(0px);
+    transform: translateX(0);
   }
 }
 </style>

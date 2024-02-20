@@ -100,6 +100,7 @@ export default {
   }
 
   .content {
+
     &__text {
       display: flex;
       align-items: center;
@@ -109,6 +110,7 @@ export default {
 }
 
 .v-transition-animate {
+
   &-enter {
     transform: translateX(120px);
     opacity: 0;

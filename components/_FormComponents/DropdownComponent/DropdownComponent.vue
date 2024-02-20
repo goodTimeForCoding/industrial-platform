@@ -122,11 +122,11 @@ onBeforeMount(() => {
   font-size: 14px;
 
   .selected-item {
+    height: 100%;
     padding: 0;
     background: $white;
     border-radius: 5px;
     cursor: pointer;
-    height: 100%;
 
     input {
       position: relative;
@@ -134,9 +134,9 @@ onBeforeMount(() => {
       width: 100%;
       height: 100%;
       padding-left: 14px;
+      font-weight: 500;
       border: unset;
       border-radius: 5px;
-      font-weight: 500;
     }
 
     .dropdown-input::placeholder {

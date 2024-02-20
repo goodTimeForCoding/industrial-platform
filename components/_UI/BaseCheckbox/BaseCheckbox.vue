@@ -29,11 +29,11 @@ const props = defineProps({
 <style lang="scss" scoped>
 .check {
   display: flex;
+  gap: 5px;
   align-items: flex-start;
+  font-weight: 500;
   font-size: 12px;
   line-height: 20px;
-  font-weight: 500;
-  gap: 5px;
 
   & .check-input {
     margin-top: 4px;

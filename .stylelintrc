@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-rational-order-fix",
+    "stylelint-config-prettier"
+  ],
+  "plugins": ["stylelint-order", "stylelint-config-rational-order-fix/plugin"],
+  "rules": {
+    "alpha-value-notation": null,
+    "rule-empty-line-before": "always",
+    "at-rule-no-unknown": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "media-feature-range-notation": null,
+    "color-function-notation": null,
+    "number-max-precision": null,
+    "declaration-block-no-redundant-longhand-properties": null
+  }
+}

@@ -32,10 +32,10 @@ const modalStore = useModalStore();
   margin-bottom: 91px;
 
   &::after {
-    z-index: 1;
     position: absolute;
     right: 0;
     bottom: -150px;
+    z-index: 1;
     border-top: 64px solid $baltic;
     border-right: 0;
     border-bottom: 0;
@@ -46,18 +46,18 @@ const modalStore = useModalStore();
   & .education-bg {
     padding-top: 66px;
     padding-bottom: 60px;
-    background-size: cover;
+    color: $white;
     background-image: url('/bg-img/edu-bg.jpg');
     background-repeat: no-repeat;
-    color: $white;
+    background-size: cover;
   }
 
   & .education-title {
     margin: 0;
     margin-bottom: 23px;
     padding: 0;
-    font-size: 22px;
     font-weight: 700;
+    font-size: 22px;
   }
 
   & .text {
@@ -76,7 +76,9 @@ const modalStore = useModalStore();
 }
 
 @include bigmobile {
+
   .education {
+
     &::after {
       bottom: -115px;
       border-top: 24px solid $baltic;
@@ -85,6 +87,7 @@ const modalStore = useModalStore();
 }
 
 @include bigdesktop {
+
   .education-wrap {
     max-width: 800px;
     margin: 0 auto;

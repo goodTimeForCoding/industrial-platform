@@ -48,6 +48,7 @@
 
 <style lang="scss" scoped>
 .main-header {
+
   & .wrap {
     display: flex;
     gap: 49px;
@@ -110,7 +111,9 @@
 }
 
 @include minidesk {
+
   .main-header {
+
     & .title {
       font-size: 35px;
     }
@@ -122,7 +125,9 @@
 }
 
 @include tablet {
+
   .main-header {
+
     & .collab-wrap {
       column-gap: 10px;
     }
@@ -132,21 +137,23 @@
     }
 
     & .left-wrap {
-      order: 1;
       align-self: center;
+      order: 1;
     }
   }
 }
 
 @include bigmobile {
+
   .main-header {
+
     & .collab-wrap {
       column-gap: 26px;
     }
 
     & .left-wrap {
       width: auto;
-      padding: 0 25px 95px 25px;
+      padding: 0 25px 95px;
     }
 
     & .title {
@@ -174,11 +181,13 @@
 // }
 
 @include bigdesktop {
+
   .main-header {
+
     & .wrap {
-      margin: 0 auto;
-      justify-content: center;
       gap: 150px;
+      justify-content: center;
+      margin: 0 auto;
     }
   }
 }

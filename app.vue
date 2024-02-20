@@ -92,9 +92,9 @@ onBeforeUnmount(() => {
 .page-wrap {
   flex: 1 1 auto;
   order: 1;
+  width: 100%;
   overflow: hidden;
   transition: width 0.3s;
-  width: 100%;
 }
 
 .sidebar-container {
@@ -104,11 +104,12 @@ onBeforeUnmount(() => {
 
 .sidebar-container-open {
   max-width: 284px;
-  animation-duration: 0.5s;
   animation-name: slideopen;
+  animation-duration: 0.5s;
 }
 
 @keyframes slideopen {
+
   from {
     max-width: 150px;
   }
@@ -120,11 +121,12 @@ onBeforeUnmount(() => {
 
 .sidebar-container-close {
   max-width: 150px;
-  animation-duration: 0.5s;
   animation-name: slideclose;
+  animation-duration: 0.5s;
 }
 
 @keyframes slideclose {
+
   from {
     max-width: 284px;
   }

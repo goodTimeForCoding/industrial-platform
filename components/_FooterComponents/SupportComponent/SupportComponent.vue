@@ -67,8 +67,8 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .support {
-  margin-right: 50px;
   max-width: 220px;
+  margin-right: 50px;
 
   & .support-title {
     margin: 0;
@@ -123,14 +123,15 @@ const props = defineProps({
 
   & .phone-text {
     margin: 0;
-    padding: 0;
     margin-top: 7px;
     margin-bottom: 3px;
+    padding: 0;
     font-size: 12px;
   }
 }
 
 @include bigmobile {
+
   .support {
     grid-column-start: 1;
     grid-column-end: 3;

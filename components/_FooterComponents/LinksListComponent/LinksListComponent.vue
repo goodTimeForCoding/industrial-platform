@@ -26,6 +26,7 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .footer-links {
+
   & .footer-links-title {
     margin: 0;
     margin-bottom: 15px;
@@ -37,10 +38,10 @@ const props = defineProps({
 
   & .footer-links-item {
     margin-bottom: 15px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 500;
     color: $black;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
 
     &:hover {
       color: $christi;

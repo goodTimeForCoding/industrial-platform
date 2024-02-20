@@ -139,9 +139,9 @@ const addCloseWrap = computed(() => {
   }
 
   & .sidebar-close-wrap {
+    max-width: 150px;
     padding-right: 5px;
     padding-left: 10px;
-    max-width: 150px;
   }
 
   & .page-nav {

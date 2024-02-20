@@ -81,11 +81,11 @@ onMounted(() => {
   background-color: $lightgrey;
 
   & .product-slide {
-    cursor: pointer;
     height: auto;
     background-color: $white;
     border-radius: 4px;
     box-shadow: 4px 8px 26px 0 rgba(41, 8, 8, 0.1);
+    cursor: pointer;
   }
 
   &::before {
@@ -178,20 +178,24 @@ onMounted(() => {
 }
 
 @include minidesk {
+
   .products {
+
     & .product-card-wrap {
       padding-top: 20px;
       padding-right: 20px;
-      padding-bottom: 0px;
+      padding-bottom: 0;
       padding-left: 20px;
     }
   }
 }
 
 @include minitablet {
+
   .products {
+
     & .swiper {
-      padding-left: 0px;
+      padding-left: 0;
     }
 
     & .product-card-wrap {
@@ -204,10 +208,12 @@ onMounted(() => {
 }
 
 @include bigmobile {
+
   .products {
+
     &::before {
+      top: 0;
       border-top: 24px solid $baltic;
-      top: 0px;
     }
 
     & .product-card-wrap {
@@ -220,7 +226,9 @@ onMounted(() => {
 }
 
 @include bigdesktop {
+
   .products {
+
     & .products-wrap {
       max-width: 1920px;
       margin: 0 auto;

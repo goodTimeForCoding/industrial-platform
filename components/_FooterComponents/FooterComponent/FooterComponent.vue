@@ -109,9 +109,9 @@ const isTabletBreakpoint = computed(() => {
   display: flex;
   flex-wrap: wrap;
   padding-top: 48px;
+  padding-right: 41px;
   padding-bottom: 26px;
   padding-left: 46px;
-  padding-right: 41px;
   color: $thunder;
   background-color: $lightgrey;
 
@@ -157,59 +157,62 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include minidesk {
+
   .footer {
     row-gap: 30px;
   }
 }
 
 @include tablet {
+
   .footer {
     display: grid;
     grid-template-columns: 235px auto auto 1fr;
     column-gap: 10px;
 
     & .col {
+      display: grid;
       grid-column-start: 1;
       grid-column-end: 5;
-      display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     & .language-wrap {
-      margin: 0;
-      margin-left: auto;
       grid-column-start: 3;
       grid-column-end: 4;
       width: 53px;
+      margin: 0;
+      margin-left: auto;
     }
   }
 }
 
 @include bigmobile {
+
   .footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-top: 40px;
+    padding-right: 27px;
     padding-bottom: 47px;
     padding-left: 27px;
-    padding-right: 27px;
-    row-gap: 19px;
     column-gap: 70px;
+    row-gap: 19px;
 
     & .col {
       display: grid;
       grid-column-start: 1;
       grid-column-end: 3;
-      grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       row-gap: 10px;
     }
 
     & .language-wrap {
-      grid-column-start: 2;
-      grid-column-end: 3;
       grid-row-start: 1;
       grid-row-end: 2;
+      grid-column-start: 2;
+      grid-column-end: 3;
     }
 
     & .support-wrap {
@@ -220,9 +223,10 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include bigdesktop {
+
   .footer {
-    justify-content: center;
     gap: 30px;
+    justify-content: center;
   }
 }
 </style>

@@ -49,8 +49,8 @@ const props = defineProps({
 .footer-socials {
   display: flex;
   gap: 20px;
-  margin-right: 120px;
   margin-top: 24px;
+  margin-right: 120px;
 
   & .social-item {
     margin-bottom: 14px;
@@ -67,13 +67,14 @@ const props = defineProps({
 }
 
 @include tablet {
+
   .footer-socials {
-    grid-column-start: 2;
-    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-    column-gap: 10px;
+    grid-column-start: 2;
+    grid-column-end: 3;
     margin: 0 auto;
+    column-gap: 10px;
 
     & .social-item {
       margin: 0;
@@ -96,13 +97,14 @@ const props = defineProps({
 }
 
 @include bigmobile {
+
   .footer-socials {
-    grid-column-start: 1;
-    grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-    column-gap: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
     margin: 0;
+    column-gap: 20px;
 
     & .left-col,
     & .right-col {
