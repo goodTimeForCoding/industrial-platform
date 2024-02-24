@@ -11,6 +11,9 @@ export const useModalStore = defineStore({
   persist: true,
 
   actions: {
+    /**
+     * Открывает модальное окно с формой
+     */
     openModal() {
       const feedbackFormStore = useFeedbackForm();
       feedbackFormStore.cleanErrors();
@@ -18,6 +21,9 @@ export const useModalStore = defineStore({
       this.isShowModal = true;
     },
 
+    /**
+     * Закрывает модальное окно с формой
+     */
     closeModal() {
       const feedbackFormStore = useFeedbackForm();
       feedbackFormStore.cleanErrors();

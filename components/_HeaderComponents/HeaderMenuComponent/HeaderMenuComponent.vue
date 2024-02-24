@@ -260,9 +260,7 @@ const addOpenCloseClass = computed(() => {
 }
 
 @include minidesk {
-
   .header-menu {
-
     & .header-item {
       margin-right: 60px;
     }
@@ -270,9 +268,7 @@ const addOpenCloseClass = computed(() => {
 }
 
 @include tablet {
-
   .header-menu {
-
     &--opened {
       display: block;
       order: 3;
@@ -322,13 +318,11 @@ const addOpenCloseClass = computed(() => {
 }
 
 @keyframes open-menu {
-
   from {
     transform: translateY(-50px);
   }
-
   to {
-    transform: translateX(0);
+    transform: translateX(0px);
   }
 }
 </style>

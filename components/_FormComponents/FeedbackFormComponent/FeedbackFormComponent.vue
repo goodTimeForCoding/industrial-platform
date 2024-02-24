@@ -24,8 +24,8 @@ import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    justify-content: center;
     padding-top: 107px;
+    justify-content: center;
 
     .feedback-description-wrap {
       max-width: 370px;
@@ -39,9 +39,7 @@ import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm
 }
 
 @include tablet {
-
   .feedback {
-
     .feedback-wrap {
       display: flex;
       flex-direction: column;
@@ -53,9 +51,7 @@ import FeedbackForm from '@/components/_FormComponents/FeedbackForm/FeedbackForm
 }
 
 @include mobile {
-
   .feedback {
-
     .feedback-wrap {
       display: block;
 

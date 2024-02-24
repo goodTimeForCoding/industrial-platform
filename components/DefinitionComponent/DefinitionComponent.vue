@@ -107,7 +107,6 @@
 }
 
 @include tablet {
-
   .definition {
     color: $white;
 
@@ -119,9 +118,7 @@
 }
 
 @include bigmobile {
-
   .definition {
-
     & .title {
       margin-bottom: 40px;
     }
@@ -129,10 +126,9 @@
 }
 
 @include bigdesktop {
-
   .definition-wrap {
-    max-width: 1000px;
     margin: 0 auto;
+    max-width: 1000px;
   }
 }
 </style>

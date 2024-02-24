@@ -1,3 +1,6 @@
+/**
+ * Директива для отслеживания события клика вне элемента.
+ */
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.directive('click-outside', {
     mounted(el: any, binding: any) {

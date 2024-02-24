@@ -47,8 +47,8 @@
 
   &::after {
     position: absolute;
-    right: 0;
     bottom: -16px;
+    right: 0;
     z-index: 1;
     border-top: 0;
     border-right: 100vw solid $lightgrey;
@@ -91,8 +91,8 @@
 
   & .screen-wrap {
     position: relative;
-    align-self: center;
     width: 600px;
+    align-self: center;
   }
 
   & .pause-logo {
@@ -104,9 +104,8 @@
 }
 
 @include minitablet {
-
   .tasks {
-    top: 0;
+    top: 0px;
 
     & .task-item {
       margin-bottom: 14px;
@@ -119,7 +118,6 @@
 }
 
 @include bigmobile {
-
   .tasks {
     flex-wrap: wrap;
     gap: 55px;
@@ -152,10 +150,9 @@
 }
 
 @include bigdesktop {
-
   .tasks {
-    gap: 150px;
     justify-content: center;
+    gap: 150px;
   }
 }
 </style>

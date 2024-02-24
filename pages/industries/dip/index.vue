@@ -74,14 +74,12 @@ onMounted(() => {
 }
 
 @include tablet {
-
   .main-header-container {
-    margin-top: 0;
+    margin-top: 0px;
   }
 }
 
 @include bigmobile {
-
   .main-header-container {
     padding: 0;
   }

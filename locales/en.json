@@ -163,7 +163,7 @@
     "requered": "The field is obligatory for filling",
     "email": "Enter correct email",
     "phone": "Enter correct phone",
-    "success": "Your address is successfully accepted",
+    "success": "Your request has been sent",
     "error": "Fill a form"
   }
 }

@@ -60,7 +60,6 @@ const cleanArr = () => {
 }
 
 @include tablet {
-
   .lang-switcher {
     justify-content: start;
     width: 100%;

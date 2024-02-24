@@ -72,9 +72,7 @@
 }
 
 @include minidesk {
-
   .header-contacts {
-
     & .email,
     & .phone {
       display: none;
@@ -83,7 +81,6 @@
 }
 
 @include tablet {
-
   .header-contacts {
     flex-direction: column;
     gap: 36px;

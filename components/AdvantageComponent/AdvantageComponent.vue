@@ -105,12 +105,12 @@ const isTabletBreakpoint = computed(() => {
 
   & .advantage-text {
     order: -1;
-    max-width: 968px;
     margin: 0;
     margin-bottom: 30px;
     padding: 0;
     color: $baltic;
     line-height: 20px;
+    max-width: 968px;
   }
 
   & .advanatge-title {
@@ -125,8 +125,8 @@ const isTabletBreakpoint = computed(() => {
   & .advantage-cards {
     display: flex;
     gap: 30px;
-    justify-content: space-between;
     padding-bottom: 50px;
+    justify-content: space-between;
   }
 
   & .advantage-card {
@@ -183,9 +183,8 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include minidesk {
-
   .advantage {
-    top: 0;
+    top: 0px;
     padding-top: 50px;
 
     & .advantage-cards {
@@ -210,9 +209,7 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include tablet {
-
   .advantage {
-
     &::before {
       top: -50px;
     }
@@ -240,12 +237,10 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include minitablet {
-
   .advantage {
-
     & .advantage-wrap {
-      padding-bottom: 69px;
       padding-left: 50px;
+      padding-bottom: 69px;
     }
 
     & .swiper {
@@ -273,9 +268,7 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include bigmobile {
-
   .advantage {
-
     &::before {
       top: -16px;
       border-top: 24px solid $baltic;
@@ -301,9 +294,7 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include middlemobile {
-
   .advantage {
-
     & .advantage-card {
       width: 270px;
       height: 342px;
@@ -316,9 +307,7 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include mobile {
-
   .advantage {
-
     & .advantage-wrap {
       padding-left: 25px;
     }
@@ -326,7 +315,6 @@ const isTabletBreakpoint = computed(() => {
 }
 
 @include bigdesktop {
-
   .advantage {
     align-items: center;
   }

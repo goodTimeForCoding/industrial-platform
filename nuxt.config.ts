@@ -6,16 +6,7 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-svgo',
     'maz-ui/nuxt',
-    [
-      '@nuxtjs/stylelint-module',
-      {
-        customSyntax: 'postcss-html',
-        fix: true,
-        cache: false,
-        failOnWarning: false,
-        lintOnStart: false,
-      },
-    ],
+    '@pinia/nuxt',
     [
       '@nuxtjs/i18n',
       {

@@ -50,6 +50,9 @@ export default {
   },
 
   methods: {
+    /**
+     * удаляет первое добавленное в массив сообщение каждые 5 секунд
+     */
     hideNotification() {
       setTimeout(() => {
         const messagesArray = this.messages.map(a => ({ ...a }));
@@ -100,7 +103,6 @@ export default {
   }
 
   .content {
-
     &__text {
       display: flex;
       align-items: center;
@@ -110,7 +112,6 @@ export default {
 }
 
 .v-transition-animate {
-
   &-enter {
     transform: translateX(120px);
     opacity: 0;

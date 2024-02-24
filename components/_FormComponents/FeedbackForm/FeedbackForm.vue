@@ -230,7 +230,6 @@ const addCountryCode = countryData => {
 };
 
 const onUpdate = payload => {
-  feedbackFormStore.addValidPhone(payload.e164);
   feedbackFormStore.addIsPhoneValid(payload.isValid);
 };
 
@@ -261,27 +260,30 @@ const validEmail = email => {
 };
 /* eslint-enable  */
 
+/**
+ * Проводит валидацию формы
+ */
 const checkValid = () => {
   feedbackFormStore.cleanErrors();
   formDatum.forEach(item => {
     if (item.formName === 'comment') return;
 
     if (item.value === '' || item.value === null) {
-      feedbackFormStore.addErrors({
+      feedbackFormStore.addError({
         name: item.formName,
         errorText: i18nLocale.t('validation.requered'),
       });
     }
 
     if (!validEmail(item.value) && item.formName === 'email') {
-      feedbackFormStore.addErrors({
+      feedbackFormStore.addError({
         name: item.formName,
         errorText: i18nLocale.t('validation.email'),
       });
     }
 
     if (feedbackFormStore.isPhoneValid === false && item.formName === 'phone') {
-      feedbackFormStore.addErrors({
+      feedbackFormStore.addError({
         name: item.formName,
         errorText: i18nLocale.t('validation.phone'),
       });
@@ -304,27 +306,19 @@ const recaptcha = async () => {
 };
 
 const onSubmit = async () => {
-  try {
-    checkValid();
-    if (feedbackFormStore.errors.length === 0) {
-      const token = await recaptcha();
-      const data = adaptForm(token);
-      await feedbackFormStore.postFeedbackData(data);
-      feedbackFormStore.setMessage({
-        name: i18nLocale.t('validation.success'),
-        type: 'check',
-        id: Date.now().toLocaleString(),
-      });
-    } else {
-      feedbackFormStore.setMessage({
-        name: i18nLocale.t('validation.error'),
-        type: 'error',
-        id: Date.now().toLocaleString(),
-      });
-    }
-  } catch (error) {
+  checkValid();
+  if (feedbackFormStore.errors.length === 0) {
+    const token = await recaptcha();
+    const data = adaptForm(token);
+    await feedbackFormStore.postFeedbackData(data);
     feedbackFormStore.setMessage({
-      name: error.message,
+      name: i18nLocale.t('validation.success'),
+      type: 'check',
+      id: Date.now().toLocaleString(),
+    });
+  } else {
+    feedbackFormStore.setMessage({
+      name: i18nLocale.t('validation.error'),
       type: 'error',
       id: Date.now().toLocaleString(),
     });
@@ -450,14 +444,13 @@ onMounted(() => {
   }
 
   .feedback-form-phone {
+    padding: 0;
     display: flex;
     align-items: center;
-    padding: 0;
   }
 }
 
 .feedback-form-modal {
-
   & .nomessage {
     display: block;
   }
@@ -513,16 +506,14 @@ onMounted(() => {
 }
 
 @include bigmobile {
-
   .feedback-form-modal {
-
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 280px;
     }
 
     & .btn-text-wrap {
-      margin-top: 0;
+      margin-top: 0px;
     }
 
     & .feedback-form-input {
@@ -541,7 +532,6 @@ onMounted(() => {
 }
 
 @include minitablet {
-
   .feedback-form {
     width: 100%;
 
@@ -598,15 +588,14 @@ onMounted(() => {
   }
 
   .feedback-form-modal {
-
     & .feedback-form--long,
     & .feedback-form--short {
       min-width: 100%;
     }
 
     & .feedback-form-input {
-      height: 40px;
       margin-bottom: 6px;
+      height: 40px;
     }
 
     & .btn-text-wrap {

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useFeedbackForm } from './FeedbackForm';
 
 export const useProductsStore = defineStore({
   id: 'products-store',
@@ -10,12 +11,21 @@ export const useProductsStore = defineStore({
 
   actions: {
     async getProducts(locale) {
-      /* eslint-disable */
+      // eslint-disable-next-line no-undef
       const url = useRuntimeConfig().public.getProductsUrl;
-      /* eslint-enable */
-      const res = await fetch(`${url}${locale}`);
-      const data = await res.json();
-      this.products = data.data;
+      // eslint-disable-next-line no-undef
+      const { data, error } = await useFetch(`${url}${locale}`);
+      if (data.value) {
+        // eslint-disable-next-line no-undef
+        this.products = toRaw(data.value.data);
+      } else {
+        const feedbackFormStore = useFeedbackForm();
+        feedbackFormStore.setMessage({
+          name: error.value,
+          type: 'error',
+          id: Date.now().toLocaleString(),
+        });
+      }
     },
   },
 });
