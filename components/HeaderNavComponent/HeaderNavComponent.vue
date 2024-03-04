@@ -1,6 +1,7 @@
 <template>
   <nav :class="['header-nav container', addNavOpenCloseClass]">
     <div class="nav-wrap">
+      // почему не применяется - components/ButttonComponent/ButttonComponent.vue
       <button
         class="button header-nav-toggle"
         @click="changeNav()"

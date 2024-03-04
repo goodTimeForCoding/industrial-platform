@@ -1,3 +1,4 @@
+// согласно доки первый идет скрипт, потом темплейт и потом стили
 <template>
   <div class="advantage container">
     <h2 class="advanatge-title">
@@ -47,7 +48,8 @@
 
 <script setup>
 import { useZyfraStore } from '@/store/ZyfraStore.js';
-
+// https://nuxt.com/modules/nuxt-viewport#default-configuration
+// есть вот такой модуль, он позволит избавиться от этих переменных
 const MINITABLET_BREAKPOINT = 768;
 const BIGMOBILE_BREAKPOINT = 700;
 const MIDDLEMOBILE_BREAKPOINT = 499;
@@ -106,6 +108,7 @@ const isTabletBreakpoint = computed(() => {
 
   & .advantage-text {
     order: -1;
+    // для этого есть шорткады - margin: 0 0 30px;
     margin: 0;
     margin-bottom: 30px;
     padding: 0;

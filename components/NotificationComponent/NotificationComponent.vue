@@ -37,6 +37,7 @@ export default {
 
   methods: {
     hideNotification() {
+      // для чего тут элемент асинхронного кода? т.е. зачем setTimeout?
       setTimeout(() => {
         const messagesArray = this.messages.map(a => ({ ...a }));
         if (this.messages.length) {
@@ -49,6 +50,7 @@ export default {
 
   watch: {
     messages: {
+      // val, oldVal - в итоге не применяются
       handler(val, oldVal) {
         this.hideNotification();
       },
