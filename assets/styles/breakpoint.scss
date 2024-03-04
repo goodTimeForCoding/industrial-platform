@@ -3,7 +3,7 @@
     @content;
   }
 }
-
+// есть tablet разница в 1 пиесель
 @mixin desktop {
   @media (min-width: (1025px)) {
     @content;
@@ -33,7 +33,7 @@
     @content;
   }
 }
-
+// избыточно
 @mixin bigmobile {
   @media (max-width: (700px)) {
     @content;

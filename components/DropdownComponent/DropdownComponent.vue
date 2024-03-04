@@ -1,6 +1,7 @@
 <template>
   <section class="dropdown-component" v-click-outside="noVisible">
     <div class="selected-item">
+      // почему не используется - components/BaseInput/BaseInput.vue
       <input
         :class="addDropDownClass"
         @click="changeView"
