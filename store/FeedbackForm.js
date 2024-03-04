@@ -63,7 +63,6 @@ export const useFeedbackForm = defineStore({
 
     setNewMessageArray(messageArr) {
       this.messages = messageArr;
-      console.log(1)
     },
 
     async postFeedbackData(data) {
