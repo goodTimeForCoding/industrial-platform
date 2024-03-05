@@ -7,7 +7,7 @@
       {{ $t('advantage.text') }}
     </p>
 
-    <div class="advantage-wrap" v-if="isTabletBreakpoint">
+    <div v-if="isTabletBreakpoint" class="advantage-wrap">
       <Swiper
         class="advantage-swiper"
         :modules="[SwiperPagination]"
@@ -27,12 +27,12 @@
       </Swiper>
     </div>
 
-    <div class="advantage-wrap" v-else>
+    <div v-else class="advantage-wrap">
       <div class="advantage-cards">
         <div
-          :class="['advantage-card', card.bgClass]"
           v-for="card in advantagesData"
           :key="card.id"
+          :class="['advantage-card', card.bgClass]"
         >
           <div class="advantage-card-wrap">
             <p class="card-text">
@@ -46,14 +46,14 @@
 </template>
 
 <script setup>
-import { useZyfraStore } from '@/store/ZyfraStore.js';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const MINITABLET_BREAKPOINT = 768;
-const BIGMOBILE_BREAKPOINT = 700;
-const MIDDLEMOBILE_BREAKPOINT = 499;
+const BIGMOBILE_BREAKPOINT = 699;
+const MIDDLEMOBILE_BREAKPOINT = 424;
 const zyfraStore = useZyfraStore();
 
-const advantagesData = reactive([
+const advantagesData = [
   {
     id: 1,
     advantage: 'advantage.factoryCard',
@@ -69,7 +69,7 @@ const advantagesData = reactive([
     advantage: 'advantage.directyCard',
     bgClass: 'direct',
   },
-]);
+];
 
 const addPerViewCount = computed(() => {
   if (zyfraStore.screenWidth <= MIDDLEMOBILE_BREAKPOINT) return 1.15;
@@ -78,8 +78,7 @@ const addPerViewCount = computed(() => {
 });
 
 const isTabletBreakpoint = computed(() => {
-  if (zyfraStore.screenWidth <= MINITABLET_BREAKPOINT) return true;
-  return false;
+  return zyfraStore.screenWidth <= MINITABLET_BREAKPOINT;
 });
 </script>
 
@@ -151,26 +150,34 @@ const isTabletBreakpoint = computed(() => {
   }
 
   & .factory {
-    background-image: url('/arrow-right.svg'), url('/arrow-left.svg'),
-      url('/arrow-turn-top.svg'), url('/factory.png');
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/arrow-turn-top.svg'),
+      url('/bg-img/factory.png');
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position: top 63px right 31px, bottom 60px right 31px,
-      bottom 60px left 37px, top 38px left 34px;
+    background-position:
+      top 63px right 31px,
+      bottom 60px right 31px,
+      bottom 60px left 37px,
+      top 38px left 34px;
   }
 
   & .architecture {
-    background-image: url('/arrow-right.svg'), url('/arrow-left.svg'),
-      url('/gears.png');
+    background-image: url('/bg-img/arrow-right.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/gears.png');
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: top 63px right 31px, bottom 60px right 31px,
+    background-position:
+      top 63px right 31px,
+      bottom 60px right 31px,
       top 28px left 30px;
   }
 
   & .direct {
-    background-image: url('/arrow-turn-bottom.svg'), url('/arrow-left.svg'),
-      url('/challenges.png');
+    background-image: url('/bg-img/arrow-turn-bottom.svg'),
+      url('/bg-img/arrow-left.svg'), url('/bg-img/challenges.png');
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: top 63px right 28px, bottom 60px right 31px,
+    background-position:
+      top 63px right 28px,
+      bottom 60px right 31px,
       top 38px left 34px;
   }
 }
@@ -280,7 +287,7 @@ const isTabletBreakpoint = computed(() => {
     }
 
     & .advantage-card {
-      width: 330px;
+      width: 277px;
       height: 350px;
     }
   }

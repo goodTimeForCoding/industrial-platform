@@ -8,7 +8,7 @@
             <div class="img-wrap">
               <img
                 class="definition-img quality-img"
-                src="/quality.png"
+                src="/content-img/quality.png"
                 width="38"
                 height="41"
               />
@@ -21,7 +21,7 @@
             <div class="img-wrap">
               <img
                 class="definition-img computer-img"
-                src="/computer.png"
+                src="/content-img/computer.png"
                 width="38"
                 height="34"
               />
@@ -36,7 +36,7 @@
             <div class="img-wrap">
               <img
                 class="definition-img"
-                src="/api.png"
+                src="/content-img/api.png"
                 width="38"
                 height="34"
               />
@@ -47,7 +47,7 @@
             <div class="img-wrap">
               <img
                 class="definition-img lines-img"
-                src="/lines.png"
+                src="/content-img/lines.png"
                 width="38"
                 height="34"
               />

@@ -12,15 +12,22 @@
     <div ref="education">
       <EducationComponent />
     </div>
-    <div class="feedback container" id="feedback" ref="feedback">
+    <div id="feedback" ref="feedback" class="feedback container">
       <FeedbackFormComponent />
     </div>
   </div>
 </template>
 
 <script setup>
-import { useZyfraStore } from '@/store/ZyfraStore.js';
 import { onMounted, ref } from 'vue';
+import MainHeaderComponent from '@/components/MainHeaderComponent/MainHeaderComponent.vue';
+import AdvantageComponent from '@/components/AdvantageComponent/AdvantageComponent.vue';
+import TasksComponent from '@/components/TasksComponent/TasksComponent.vue';
+import DefinitionComponent from '@/components/DefinitionComponent/DefinitionComponent.vue';
+import ProductsComponent from '@/components/ProductsComponent/ProductsComponent.vue';
+import EducationComponent from '@/components/EducationComponent/EducationComponent.vue';
+import FeedbackFormComponent from '@/components/_FormComponents/FeedbackFormComponent/FeedbackFormComponent.vue';
+import { useZyfraStore } from '@/store/ZyfraStore';
 
 const zyfraStore = useZyfraStore();
 const industry = ref(null);

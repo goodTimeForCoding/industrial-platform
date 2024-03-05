@@ -5,7 +5,7 @@
     "media": "Media",
     "industry": "Industries",
     "openMenu": "Open menu",
-    "icon": "/zyfra-en.svg",
+    "icon": "/zyfra-logo/zyfra-en.svg",
     "iconAlt": "company logo",
     "btnText": "Contact us"
   },
@@ -49,7 +49,7 @@
     "title": "Digital Industrial Platform",
     "collab": "Joint venture",
     "company": "«Zyfra» Group and «Gazprom Neft»",
-    "zyfraImg": "/zyfra-en.svg"
+    "zyfraImg": "/zyfra-logo/zyfra-en.svg"
   },
 
   "advantage": {
@@ -111,8 +111,7 @@
 
   "footer": {
     "newClients": "For new clients",
-    "currentClients": "Current clients.",
-    "adminQuestion": "Administrative matters",
+    "currentClients": "Current clients. Administrative matters",
     "technicalSupport": "Technical support",
     "monitoring": "System of monitoring Dispatcher",
     "mining": "Mining industry: WHIST",
@@ -121,7 +120,7 @@
     "career": "Career in Zyfra",
     "products": "Products",
     "industry": "Industries",
-    "icon": "/logo-footer-en.svg",
+    "icon": "/zyfra-logo/logo-footer-en.svg",
     "news": "News",
     "blog": "Blog",
     "media": "Media",
@@ -147,7 +146,7 @@
     "products": "Products",
     "education": "Training and partnership",
     "feedback": "Feedback",
-    "icon": "/zyfra-en.svg"
+    "icon": "/zyfra-logo/zyfra-en.svg"
   },
 
   "modal": {
@@ -158,5 +157,13 @@
     "title": "Digital Industrial Platform",
     "description": "We develop and introduce the industrial IoT-platform for oil-processing and chemical industry. The platform allows the enterprise to unite all industrial data to maximize economic effect of use of technologies IoT, ML and modern functional architecture of applications. Existence of the platform much accelerates creation and introduction of the products increasing efficiency of technological repartitions.",
     "lang": "en"
+  },
+
+  "validation": {
+    "requered": "The field is obligatory for filling",
+    "email": "Enter correct email",
+    "phone": "Enter correct phone",
+    "success": "Your request has been sent",
+    "error": "Fill a form"
   }
 }
